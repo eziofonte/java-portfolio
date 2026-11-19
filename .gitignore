@@ -10,3 +10,8 @@
 .project
 
 /tmp
+
+# Local AI skills
+/.agents/
+/.claude/
+/skills-lock.json
