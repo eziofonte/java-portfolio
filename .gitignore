@@ -1,4 +1,5 @@
-﻿/target/
+﻿/output/
+/target/
 *.class
 *.log
 .idea/
@@ -9,3 +10,8 @@
 .project
 
 /tmp
+
+# Local AI skills
+/.agents/
+/.claude/
+/skills-lock.json
