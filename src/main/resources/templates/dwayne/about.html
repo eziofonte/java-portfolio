@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-18" th:href="@{/dwayne/style.css(v='portfolio-18')}">
-    <link rel="stylesheet" href="/dwayne/about.css?v=13" th:href="@{/dwayne/about.css(v=13)}">
+    <link rel="stylesheet" href="/dwayne/about.css?v=18" th:href="@{/dwayne/about.css(v=18)}">
     <script src="/dwayne/about-interactions.js?v=7" th:src="@{/dwayne/about-interactions.js(v=7)}" defer></script>
 </head>
 <body class="about-page">
@@ -76,8 +76,12 @@
                 </div>
             </article>
 
-            <article class="about-card facts-card" aria-labelledby="facts-title">
+            <article class="about-card personal-card facts-card" aria-labelledby="facts-title" tabindex="0">
                 <h2 id="facts-title">Fun Facts</h2>
+                <div class="personal-art" aria-hidden="true">
+                    <img class="personal-art-rocket" src="/dwayne/assets/IMG_9910.png" th:src="@{/dwayne/assets/IMG_9910.png}" alt="">
+                    <img class="personal-art-bulb" src="/dwayne/assets/IMG_9915.png" th:src="@{/dwayne/assets/IMG_9915.png}" alt="">
+                </div>
                 <ul class="personal-list">
                     <li>I started to play video games at the age of 4</li>
                     <li>I used to play guitar mediocrely.</li>
@@ -86,8 +90,11 @@
                 </ul>
             </article>
 
-            <article class="about-card favorites-card" aria-labelledby="favorites-title">
+            <article class="about-card personal-card favorites-card" aria-labelledby="favorites-title" tabindex="0">
                 <h2 id="favorites-title">Favorites</h2>
+                <div class="personal-art" aria-hidden="true">
+                    <img class="personal-art-heart" src="/dwayne/assets/IMG_9914.png" th:src="@{/dwayne/assets/IMG_9914.png}" alt="">
+                </div>
                 <dl class="personal-list favorites-list">
                     <div><dt>Food</dt><dd>Sisig, Curry, Sinigang</dd></div>
                     <div><dt>Color</dt><dd>Black, Purple, Gray</dd></div>
@@ -98,15 +105,19 @@
                 </dl>
             </article>
 
-            <article class="about-card hobbies-card" aria-labelledby="hobbies-title">
+            <article class="about-card personal-card hobbies-card" aria-labelledby="hobbies-title" tabindex="0">
                 <p class="card-label"></p>
                 <h2 id="hobbies-title">My Hobbies</h2>
+                <div class="personal-art" aria-hidden="true">
+                    <img class="personal-art-basketball" src="/dwayne/assets/IMG_9913.png" th:src="@{/dwayne/assets/IMG_9913.png}" alt="">
+                    <img class="personal-art-controller" src="/dwayne/assets/IMG_9912.png" th:src="@{/dwayne/assets/IMG_9912.png}" alt="">
+                </div>
                 <ul class="hobby-list">
                     <li><span>Cubing</span><small>Rubik's cube</small></li>
                     <li><span>Card games</span><small>Poker, blackjack &amp; more</small></li>
                     <li><span>Running</span><small>Endurance, Tempo</small></li>
                     <li><span>Reading</span><small>Books</small></li>
-                    <li><span>Basketball</span><small>Though I suck at it</small>/li>
+                    <li><span>Basketball</span><small>Though I suck at it</small></li>
                 </ul>
             </article>
 
