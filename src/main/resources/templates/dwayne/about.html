@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-18" th:href="@{/dwayne/style.css(v='portfolio-18')}">
-    <link rel="stylesheet" href="/dwayne/about.css?v=10" th:href="@{/dwayne/about.css(v=10)}">
-    <script src="/dwayne/about-interactions.js?v=6" th:src="@{/dwayne/about-interactions.js(v=6)}" defer></script>
+    <link rel="stylesheet" href="/dwayne/about.css?v=13" th:href="@{/dwayne/about.css(v=13)}">
+    <script src="/dwayne/about-interactions.js?v=7" th:src="@{/dwayne/about-interactions.js(v=7)}" defer></script>
 </head>
 <body class="about-page">
     <a class="skip-link" href="#about-story">Skip to my story</a>
@@ -18,12 +18,7 @@
             <span class="identity-name">Dwayne Ezail Talavera</span>
             <span class="identity-discipline">Design &amp; research</span>
         </a>
-        <nav class="about-nav" aria-label="Portfolio navigation">
-            <a href="/dwayne" th:href="@{/dwayne}">Home</a>
-            <a href="/dwayne/about" th:href="@{/dwayne/about}" aria-current="page">About</a>
-            <a href="/dwayne#work" th:href="@{/dwayne#work}">Work</a>
-            <a href="/dwayne#contact" th:href="@{/dwayne#contact}">Contact</a>
-        </nav>
+        <a class="about-back" href="/dwayne" th:href="@{/dwayne}"><span aria-hidden="true">↖</span> Back to portfolio</a>
     </header>
 
     <main class="about-detail">
@@ -40,32 +35,28 @@
                     <p>I'm <strong>Dwayne Ezail Talavera</strong>, a BSIT student at <strong>Pamantasan ng Lungsod ng Maynila</strong> and a UI/UX designer exploring how things look, feel, and work. I love making interfaces that are clean, thought-out, and intuitive.</p>
                 </section>
                 <section class="story-part">
-                    <h3>Design meets code</h3>
-                    <p>For me, a good interface starts with the person using it. I like working through the layout, the details, and the small decisions that make a page easier to find your way around.</p>
-                    <p>From a first sketch in Figma to a working page, I'm learning to connect the details of design with the logic behind them.</p>
+                    <h3>Where I'm from</h3>
+                    <p>I was born and raised in Tondo, Manila. My Dad worked as a Casino Dealer and so was my Mom. Growing up they repeatedly told me to get off the computer and go outside. (Told to touch grass at such a young age.)</p>
                 </section>
                 <section class="story-part">
-                    <h3>Learning by building</h3>
-                    <p>My work brings together interface design and development. The Academic Performance Predictor connects a designed interface with sign-in, assessment forms, and private assessment history.</p>
-                    <a class="text-link" href="/dwayne#work" th:href="@{/dwayne#work}">Explore the project <span aria-hidden="true">↗</span></a>
+                    <h3>What I Used To Do</h3>
+                    <p>When I was 16, I got my first job as a work-from-home basketball statistician __________ [redacted due to child labor laws] based off in USA. After that was unemployment because no one would take in a minor. So I started selling virtual items on Roblox where i made big bux.</p>
                 </section>
                 <section class="story-part">
-                    <h3>How I approach things</h3>
-                    <p>Understand the problem. Explore a few ideas. Build, try it out, and refine. I'm still learning, and each project is a chance to make the next one more considered.</p>
+                    <h3>What I do now</h3>
+                    <p>Now, I'm just a broke college student trying to make it in the world of UI/UX design. Learned how to code and how to stop coding (thanks, AI)</p>
                 </section>
                 <section class="story-part">
-                    <h3>Away from the screen</h3>
-                    <p>Outside design and coding, I enjoy solving Rubik's cubes, playing card games like poker and blackjack, running, and reading books.</p>
+                    <h3>What I'm looking for</h3>
+                    <p>Impactful, purposeful work with a diverse team of talented people. I also think the personal computer needs its iPhone moment ↗.</p>
                 </section>
-                <div class="story-signoff"><span>Still curious.</span><em>Always learning.</em></div>
             </article>
 
             <figure class="about-card about-photo-card" aria-label="Photo gallery">
                 <div class="gallery-stage">
-                    <img class="gallery-image-front is-active" src="/dwayne/assets/portrait.png" th:src="@{/dwayne/assets/portrait.png}" alt="Placeholder portrait of Dwayne" width="991" height="1588">
+                    <img class="gallery-image-front is-active" src="/dwayne/assets/photos/fav1.JPG" th:src="@{/dwayne/assets/photos/fav1.JPG}" alt="Gallery photo" width="991" height="1588">
                     <img class="gallery-image-back" alt="" aria-hidden="true">
                     <button class="gallery-next" type="button" aria-label="Show next photo"></button>
-                    <span class="gallery-badge">Placeholder photos</span>
                     <span class="gallery-icon" aria-hidden="true"><img src="/dwayne/assets/imgs/photos.png" th:src="@{/dwayne/assets/imgs/photos.png}" alt=""></span>
                     <div class="gallery-categories" role="group" aria-label="Photo categories">
                         <button class="gallery-category" type="button" data-category="all" aria-label="All photos" title="All photos" aria-pressed="true"><img src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62f3408bff92d3dec1bc25b0_everything-icon.svg" alt="" onerror="this.hidden=true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button>
@@ -85,28 +76,37 @@
                 </div>
             </article>
 
-            <article class="about-card tools-card" aria-labelledby="tools-title">
-                <p class="card-label">The toolkit</p>
-                <h2 id="tools-title">Ideas into<br><em>interfaces.</em></h2>
-                <ul class="tool-tags" aria-label="Design and development tools">
-                    <li>Figma</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>SQL</li><li>Spring Boot</li><li>Java</li>
+            <article class="about-card facts-card" aria-labelledby="facts-title">
+                <h2 id="facts-title">Fun Facts</h2>
+                <ul class="personal-list">
+                    <li>I started to play video games at the age of 4</li>
+                    <li>I used to play guitar mediocrely.</li>
+                    <li>I made hella money selling virtual items on Roblox.</li>
+                    <li>Being an Astronaut was my dream.</li>
                 </ul>
             </article>
 
-            <a class="about-card project-card" href="/dwayne#work" th:href="@{/dwayne#work}" aria-labelledby="project-card-title">
-                <div class="project-card-image"><img src="/dwayne/assets/acadperf1.png" th:src="@{/dwayne/assets/acadperf1.png}" alt="Academic Performance Predictor home page" width="2541" height="1438" loading="lazy"></div>
-                <p class="card-label">From idea to screen</p>
-                <h2 id="project-card-title">Academic Performance Predictor <span aria-hidden="true">↗</span></h2>
-            </a>
+            <article class="about-card favorites-card" aria-labelledby="favorites-title">
+                <h2 id="favorites-title">Favorites</h2>
+                <dl class="personal-list favorites-list">
+                    <div><dt>Food</dt><dd>Sisig, Curry, Sinigang</dd></div>
+                    <div><dt>Color</dt><dd>Black, Purple, Gray</dd></div>
+                    <div><dt>Movie</dt><dd>Interstellar, Coach Carter</dd></div>
+                    <div><dt>Song</dt><dd>Stand by Me - Oasis</dd></div>
+                    <div><dt>Artist</dt><dd>Oasis, Frank Ocean</dd></div>
+                    <div><dt>Place</dt><dd>Yabu ❤</dd></div>
+                </dl>
+            </article>
 
             <article class="about-card hobbies-card" aria-labelledby="hobbies-title">
-                <p class="card-label">Outside the portfolio</p>
-                <h2 id="hobbies-title">The other <em>interests.</em></h2>
+                <p class="card-label"></p>
+                <h2 id="hobbies-title">My Hobbies</h2>
                 <ul class="hobby-list">
                     <li><span>Cubing</span><small>Rubik's cube</small></li>
                     <li><span>Card games</span><small>Poker, blackjack &amp; more</small></li>
-                    <li><span>Running</span></li>
+                    <li><span>Running</span><small>Endurance, Tempo</small></li>
                     <li><span>Reading</span><small>Books</small></li>
+                    <li><span>Basketball</span><small>Though I suck at it</small>/li>
                 </ul>
             </article>
 
@@ -132,22 +132,11 @@
                 <div class="music-playlist" id="music-playlist" aria-label="Playlist" hidden></div>
             </article>
 
-            <aside class="about-card about-quote">
-                <img src="/dwayne/assets/IMG_9906-transparent.png" th:src="@{/dwayne/assets/IMG_9906-transparent.png}" alt="" aria-hidden="true" loading="lazy">
-                <blockquote>Kasi mas matikas yung tahimik lang,<br>kesa dun sa nagmamagaling.</blockquote>
-            </aside>
-
-            <section class="about-card about-connect" aria-labelledby="connect-title">
-                <p class="card-label">The next conversation</p>
-                <h2 id="connect-title">An idea in <em>mind?</em></h2>
-                <a class="text-link" href="mailto:dwayneezailbusiness@gmail.com">Let's talk <span aria-hidden="true">↗</span></a>
-            </section>
         </div>
     </main>
 
     <footer class="about-footer">
         <span>© 2026 Dwayne Ezail Talavera</span>
-        <a class="text-link" href="/dwayne#about" th:href="@{/dwayne#about}">Back to portfolio <span aria-hidden="true">↗</span></a>
     </footer>
 </body>
 </html>

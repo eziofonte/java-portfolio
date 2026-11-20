@@ -7,7 +7,7 @@
     <meta name="description" content="Dwayne Ezail Talavera — student and UI/UX designer exploring thoughtful interfaces, design, and code.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-18" th:href="@{/dwayne/style.css(v='portfolio-18')}">
+    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-21" th:href="@{/dwayne/style.css(v='portfolio-21')}">
     <script src="/dwayne/project-carousel.js" th:src="@{/dwayne/project-carousel.js}" defer></script>
     <script>
         // Activate only with JavaScript; always uncover the page if initialization fails.
@@ -47,6 +47,7 @@
         </header>
 
         <section class="hero" id="top" aria-labelledby="hero-title">
+            <a class="hero-chooser" href="/" th:href="@{/}" aria-label="Back to portfolio selection"><span>↖ &nbsp;All portfolios</span></a>
             <div class="hero-composition">
                 <h1 class="hero-title" id="hero-title">
                     <span class="title-line"><span>Student.</span></span>
@@ -57,6 +58,7 @@
                 </figure>
             </div>
             <img class="decoration hero-wave" src="/dwayne/assets/IMG_9898-transparent.png" th:src="@{/dwayne/assets/IMG_9898-transparent.png}" alt="" aria-hidden="true">
+            <a class="hero-scroll" href="#skills" aria-label="Scroll down to skills"><svg viewBox="0 0 32 20" aria-hidden="true"><path d="M2 3l14 14L30 3"/></svg></a>
             <address class="hero-contact" aria-label="Contact information">
                 <a href="mailto:dwayneezailbusiness@gmail.com"><span class="contact-label" aria-hidden="true">@</span><span>dwayneezail32</span></a>
                 <a href="tel:+639157779067"><span class="contact-label" aria-hidden="true">T</span><span>+63 915 777 9067</span></a>

@@ -34,7 +34,6 @@
     const galleryNext = document.querySelector('.gallery-next');
     const categoryBar = document.querySelector('.gallery-categories');
     const galleryStatus = document.querySelector('.gallery-status');
-    const galleryBadge = document.querySelector('.gallery-badge');
     const categoryButtons = [...document.querySelectorAll('.gallery-category')];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let front = document.querySelector('.gallery-image-front');
@@ -50,12 +49,10 @@
         const items = visiblePhotos();
         if (!items.length) {
             gallery.classList.add('is-empty');
-            galleryBadge.textContent = `No ${category} photos yet`;
             galleryStatus.textContent = `No ${category} photos yet`;
             return;
         }
         gallery.classList.remove('is-empty');
-        galleryBadge.textContent = '';
         photoIndex = (index + items.length) % items.length;
         const photo = items[photoIndex];
         back.src = photo.src;
