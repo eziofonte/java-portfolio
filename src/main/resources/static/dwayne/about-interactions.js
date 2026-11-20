@@ -1,11 +1,25 @@
 (() => {
     // Replace these placeholder paths and descriptions with your own photos.
-    // Each photo can belong to one or more of: places, favorites, pets.
+    // Each photo can belong to one or more of: places, favorites, cars.
     const photos = [
-        { src: '/dwayne/assets/portrait.png', alt: 'Placeholder portrait of Dwayne', categories: ['favorites'] },
-        { src: '/dwayne/assets/acadperf1.png', alt: 'Placeholder project screenshot for places', categories: ['places'] },
-        { src: '/dwayne/assets/acadperf2.png', alt: 'Placeholder project screenshot for favorites', categories: ['favorites'] },
-        { src: '/dwayne/assets/acadperf3.png', alt: 'Placeholder project screenshot for pets', categories: ['pets'] },
+        { src: '/dwayne/assets/photos/fav1.jpg', alt: 'Placeholder portrait of Dwayne', categories: ['favorites'] },
+        { src: '/dwayne/assets/photos/fav2.png', alt: 'Placeholder portrait of Dwayne', categories: ['favorites'] },
+        { src: '/dwayne/assets/photos/fav3.png', alt: 'Placeholder portrait of Dwayne', categories: ['favorites'] },
+        { src: '/dwayne/assets/photos/fav4.png', alt: 'Placeholder portrait of Dwayne', categories: ['favorites'] },
+        { src: '/dwayne/assets/photos/fav5.png', alt: 'Placeholder portrait of Dwayne', categories: ['favorites'] },
+
+        { src: '/dwayne/assets/photos/places1.png', alt: 'Placeholder project screenshot for places', categories: ['places'] },
+        { src: '/dwayne/assets/photos/places2.png', alt: 'Placeholder project screenshot for places', categories: ['places'] },
+        { src: '/dwayne/assets/photos/places3.png', alt: 'Placeholder project screenshot for places', categories: ['places'] },
+        { src: '/dwayne/assets/photos/places4.png', alt: 'Placeholder project screenshot for places', categories: ['places'] },
+        { src: '/dwayne/assets/photos/places5.png', alt: 'Placeholder project screenshot for places', categories: ['places'] },
+
+        { src: '/dwayne/assets/photos/cars1.png', alt: 'Placeholder project screenshot for cars', categories: ['cars'] },
+        { src: '/dwayne/assets/photos/cars2.png', alt: 'Placeholder project screenshot for cars', categories: ['cars'] },
+        { src: '/dwayne/assets/photos/cars3.png', alt: 'Placeholder project screenshot for cars', categories: ['cars'] },
+        { src: '/dwayne/assets/photos/cars4.png', alt: 'Placeholder project screenshot for cars', categories: ['cars'] },
+        { src: '/dwayne/assets/photos/cars5.png', alt: 'Placeholder project screenshot for cars', categories: ['cars'] },
+
     ];
     // Add an audio path or direct audio URL, artwork path, and more tracks here.
     const tracks = [
@@ -20,6 +34,7 @@
     const galleryNext = document.querySelector('.gallery-next');
     const categoryBar = document.querySelector('.gallery-categories');
     const galleryStatus = document.querySelector('.gallery-status');
+    const galleryBadge = document.querySelector('.gallery-badge');
     const categoryButtons = [...document.querySelectorAll('.gallery-category')];
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let front = document.querySelector('.gallery-image-front');
@@ -34,9 +49,13 @@
     const showPhoto = (index, announce = false) => {
         const items = visiblePhotos();
         if (!items.length) {
-            galleryStatus.textContent = 'No photos yet';
+            gallery.classList.add('is-empty');
+            galleryBadge.textContent = `No ${category} photos yet`;
+            galleryStatus.textContent = `No ${category} photos yet`;
             return;
         }
+        gallery.classList.remove('is-empty');
+        galleryBadge.textContent = '';
         photoIndex = (index + items.length) % items.length;
         const photo = items[photoIndex];
         back.src = photo.src;
