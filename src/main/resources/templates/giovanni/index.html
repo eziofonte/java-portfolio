@@ -1,16 +1,197 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Giovanni's Portfolio</title>
-  <link rel="stylesheet" href="/giovanni/style.css">
+  <title th:text="${name} + ' | Breaking Portfolio'">Gio | Breaking Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Oswald:wght@400;600&family=Inter:wght@800;900&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/giovanni/breakingcss.css}">
 </head>
 <body>
-  <main>
-    <h1>Giovanni's Portfolio</h1>
-    <p>Welcome! This portfolio is coming soon.</p>
-    <a href="/">Back to the group portfolio</a>
+
+<header class="dock">
+  <a class="dock-badge" href="#top" aria-label="Top">Gi<sup>0</sup></a>
+  <nav aria-label="Main">
+    <a href="#about">About Me</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#favorites">Favorites</a>
+    <a href="#skills">Skills</a>
+    <a href="#facts">Fun Facts</a>
+    <a href="/" th:href="@{/}" class="dock-back">Group portfolio</a>
+  </nav>
+  <a href="#contact" class="dock-cta">Better Call Gio</a>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="hero-copy">
+    <span class="tiles"><span class="tile">Gi<small>0</small></span><span class="tile">O<small>8</small></span></span>
+    <h1>I am not in danger.<br>I am the one who ships.</h1>
+    <p class="hero-sub"><span th:text="${name}">Giovanni</span> &mdash; student, developer, and part-time chemist of questionable ideas.</p>
+    <div class="hero-actions">
+      <button id="say-name" class="btn" type="button">Say my name</button>
+      <a class="btn ghost" href="#contact">Better call Gio</a>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <figure class="hero-tv">
+    <div class="htv-casing">
+      <div class="htv-bezel">
+        <div class="htv-screen">
+          <span class="htv-fallback" aria-hidden="true">🧑‍🔬</span>
+          <img th:src="@{/giovanni/gio.jpg}" alt="Giovanni" onerror="this.remove()">
+          <span class="htv-live"><i></i>LIVE</span>
+          <span class="htv-osd">CH-01 GIOVANNI</span>
+        </div>
+      </div>
+      <div class="htv-deck"><span class="htv-grille"></span><span class="htv-led"></span><span class="htv-grille"></span></div>
+    </div>
+  </figure>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="wrap">
+  <div class="sec-head"><h2>About Me</h2><span class="ch">CH-02 THE COOK</span></div>
+  <div class="about-grid">
+    <dl class="screen-card facts-sheet">
+      <div><dt>Name</dt><dd th:text="${name}">Giovanni</dd></div>
+      <div><dt>Age</dt><dd th:text="${age}"></dd></div>
+      <div><dt>Birthday</dt><dd th:text="${birthday}"></dd></div>
+      <div><dt>Height</dt><dd th:text="${height}"></dd></div>
+      <div><dt>Weight</dt><dd th:text="${weight}"></dd></div>
+      <div class="wide"><dt>Personality</dt><dd th:text="${personality}"></dd></div>
+    </dl>
+    <div class="two-col">
+      <div class="memo"><h3>Strengths</h3><ul><li th:each="s : ${strengths}" th:text="${s}"></li></ul></div>
+      <div class="memo bad"><h3>Weaknesses</h3><ul><li th:each="w : ${weaknesses}" th:text="${w}"></li></ul></div>
+    </div>
+  </div>
+  <h3 class="sub-h">Hobbies and interests</h3>
+  <div class="hobbies">
+    <div class="hobby" th:each="hb : ${hobbies}"><strong th:text="${hb.category}"></strong><span th:text="${hb.items}"></span></div>
+  </div>
+  <figure class="meme"><div class="meme-art">🧪</div><span class="top">Me: I'll start the project early</span><span class="bottom">Also me at 3 AM: cooking</span></figure>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="wrap alt">
+  <div class="sec-head"><h2>Achievements</h2><span class="ch">CH-03 LAB RESULTS</span></div>
+  <div class="awards">
+    <article class="award" th:each="a : ${awards}">
+      <span class="year" th:text="${a.year}"></span>
+      <div><h3 th:text="${a.title}"></h3><p th:text="${a.detail}"></p></div>
+    </article>
+  </div>
+</section>
+
+<!-- FAVORITES -->
+<section id="favorites" class="wrap">
+  <div class="sec-head"><h2>Favorites</h2><span class="ch">CH-04 PERIODIC TABLE</span></div>
+  <div class="elements">
+    <div class="element" th:each="f, st : ${favorites}">
+      <small th:text="${st.count}">1</small>
+      <b th:text="${f.symbol}">Fd</b>
+      <span class="e-label" th:text="${f.label}"></span>
+      <span class="e-value" th:text="${f.value}"></span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="wrap alt">
+  <div class="sec-head"><h2>Skills and Talents</h2><span class="ch">CH-05 PRODUCT PURITY</span></div>
+  <div class="screen-card skills">
+    <div class="skill" th:each="s : ${skills}">
+      <div class="skill-top"><span th:text="${s.name}"></span><span th:text="${s.purity} + '% pure'"></span></div>
+      <div class="bar"><i th:style="'width:' + ${s.purity} + '%'"></i></div>
+    </div>
+  </div>
+  <h3 class="sub-h">Special talents</h3>
+  <ul class="chips"><li th:each="t : ${talents}" th:text="${t}"></li></ul>
+  <figure class="meme alt-meme"><div class="meme-art">🧑‍🔬</div><span class="top">When the code compiles first try</span><span class="bottom">Say my name</span></figure>
+</section>
+
+<!-- FUN FACTS -->
+<section id="facts" class="wrap">
+  <div class="sec-head"><h2>Fun Facts</h2><span class="ch">CH-06 CLASSIFIED</span></div>
+  <ol class="facts"><li th:each="f : ${funFacts}" th:text="${f}"></li></ol>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <main class="crt-wrap" aria-label="Retro CRT contact television">
+    <div class="crt-shadow"></div>
+    <div class="crt-casing">
+      <div class="crt-bezel">
+        <div class="crt-screen" id="crtScreen">
+          <div class="crt-scanlines"></div>
+          <div class="crt-roll"></div>
+          <div class="crt-glass"></div>
+          <div class="crt-static" id="crtStatic"></div>
+          <div class="crt-osd" id="crtOsd"><span id="osdLeft">CH-03 VIDEO</span><span id="osdRight">PLAY &#9658;</span></div>
+
+          <div class="crt-content" id="crtContent">
+            <div class="crt-top">
+              <div>
+                <h2 class="crt-title">Better<br>Call Gio</h2>
+                <p class="crt-sub">Albuquerque state of mind &mdash; worldwide delivery</p>
+              </div>
+              <figure class="crt-pip">
+                <span class="crt-pip-fallback" aria-hidden="true">🧑‍🔬</span>
+                <img th:src="@{/giovanni/gio.jpg}" alt="Giovanni" onerror="this.remove()">
+                <span class="crt-rec"><i></i>LIVE</span>
+              </figure>
+            </div>
+
+            <div class="crt-mid">
+              <p class="crt-sub">Click to call</p>
+              <button type="button" id="callBtn" class="crt-number" aria-label="Open the contact form">1-800-CALL-GIO</button>
+              <p class="crt-sub crt-tag">Available for projects. Fast response guaranteed.<br>No shortcuts &mdash; 99.1% pure code only</p>
+            </div>
+
+            <div class="crt-bottom">
+              <p class="crt-sub">Or email direct</p>
+              <button type="button" id="copyEmail" class="crt-email" title="Click to copy">gio@example.com</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="crt-deck">
+        <div class="crt-grille" aria-hidden="true"></div>
+        <div class="crt-controls">
+          <span class="crt-led" id="powerLed" title="Power"></span>
+          <button type="button" class="hw-btn" id="chBtn" title="Change channel">CH &#9650;</button>
+          <button type="button" class="hw-btn" id="powerBtn" title="Power">POWER</button>
+        </div>
+        <div class="crt-grille" aria-hidden="true"></div>
+      </div>
+    </div>
   </main>
+
+  <dialog id="contactDialog" class="crt-dialog" th:attr="data-open=${sent != null or error != null}">
+    <div class="dialog-head">
+      <span class="dialog-line">LINE CONNECTED // 1-800</span>
+      <button type="button" id="closeDialog" aria-label="Close">&#10005;</button>
+    </div>
+    <h3>Start a project</h3>
+    <p class="flash ok" th:if="${sent}" th:text="${sent}"></p>
+    <p class="flash err" th:if="${error}" th:text="${error}"></p>
+    <form th:action="@{/giovanni/contact}" method="post" class="dialog-form">
+      <label>Name <input type="text" name="name" required></label>
+      <label>Email <input type="email" name="email" required></label>
+      <label>Your case <textarea name="message" rows="4" required></textarea></label>
+      <button class="btn" type="submit">Call Gio</button>
+    </form>
+  </dialog>
+</section>
+
+<footer>
+  <p>Built with HTML, CSS and Spring Boot. Cooked in the desert, served fresh. <a href="/" th:href="@{/}">Back to the group portfolio</a></p>
+</footer>
+
+<script th:src="@{/giovanni/main.js}"></script>
 </body>
 </html>
