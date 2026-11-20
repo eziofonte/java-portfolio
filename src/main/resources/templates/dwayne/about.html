@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About — Dwayne Ezail Talavera</title>
+    <meta name="description" content="Meet Dwayne, a BSIT student at Pamantasan ng Lungsod ng Maynila exploring design, code, cubing, books, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-18" th:href="@{/dwayne/style.css(v='portfolio-18')}">
+    <link rel="stylesheet" href="/dwayne/about.css?v=13" th:href="@{/dwayne/about.css(v=13)}">
+    <script src="/dwayne/about-interactions.js?v=7" th:src="@{/dwayne/about-interactions.js(v=7)}" defer></script>
+</head>
+<body class="about-page">
+    <a class="skip-link" href="#about-story">Skip to my story</a>
+    <header class="about-header">
+        <a class="identity" href="/dwayne" th:href="@{/dwayne}" aria-label="Dwayne Ezail Talavera, portfolio home">
+            <span class="identity-name">Dwayne Ezail Talavera</span>
+            <span class="identity-discipline">Design &amp; research</span>
+        </a>
+        <a class="about-back" href="/dwayne" th:href="@{/dwayne}"><span aria-hidden="true">↖</span> Back to portfolio</a>
+    </header>
+
+    <main class="about-detail">
+        <div class="about-intro">
+            <h1 class="visually-hidden">Behind the design.</h1>
+            <p><span aria-hidden="true">↖</span> Click around...</p>
+        </div>
+
+        <div class="about-grid">
+            <article class="about-card story-card" id="about-story" aria-labelledby="story-title">
+                <div class="card-heading"><h2 id="story-title">What I'm about.</h2><span aria-hidden="true">01</span></div>
+                <section class="story-part">
+                    <h3>A little introduction</h3>
+                    <p>I'm <strong>Dwayne Ezail Talavera</strong>, a BSIT student at <strong>Pamantasan ng Lungsod ng Maynila</strong> and a UI/UX designer exploring how things look, feel, and work. I love making interfaces that are clean, thought-out, and intuitive.</p>
+                </section>
+                <section class="story-part">
+                    <h3>Where I'm from</h3>
+                    <p>I was born and raised in Tondo, Manila. My Dad worked as a Casino Dealer and so was my Mom. Growing up they repeatedly told me to get off the computer and go outside. (Told to touch grass at such a young age.)</p>
+                </section>
+                <section class="story-part">
+                    <h3>What I Used To Do</h3>
+                    <p>When I was 16, I got my first job as a work-from-home basketball statistician __________ [redacted due to child labor laws] based off in USA. After that was unemployment because no one would take in a minor. So I started selling virtual items on Roblox where i made big bux.</p>
+                </section>
+                <section class="story-part">
+                    <h3>What I do now</h3>
+                    <p>Now, I'm just a broke college student trying to make it in the world of UI/UX design. Learned how to code and how to stop coding (thanks, AI)</p>
+                </section>
+                <section class="story-part">
+                    <h3>What I'm looking for</h3>
+                    <p>Impactful, purposeful work with a diverse team of talented people. I also think the personal computer needs its iPhone moment ↗.</p>
+                </section>
+            </article>
+
+            <figure class="about-card about-photo-card" aria-label="Photo gallery">
+                <div class="gallery-stage">
+                    <img class="gallery-image-front is-active" src="/dwayne/assets/photos/fav1.JPG" th:src="@{/dwayne/assets/photos/fav1.JPG}" alt="Gallery photo" width="991" height="1588">
+                    <img class="gallery-image-back" alt="" aria-hidden="true">
+                    <button class="gallery-next" type="button" aria-label="Show next photo"></button>
+                    <span class="gallery-icon" aria-hidden="true"><img src="/dwayne/assets/imgs/photos.png" th:src="@{/dwayne/assets/imgs/photos.png}" alt=""></span>
+                    <div class="gallery-categories" role="group" aria-label="Photo categories">
+                        <button class="gallery-category" type="button" data-category="all" aria-label="All photos" title="All photos" aria-pressed="true"><img src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62f3408bff92d3dec1bc25b0_everything-icon.svg" alt="" onerror="this.hidden=true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button>
+                        <button class="gallery-category" type="button" data-category="places" aria-label="Places" title="Places" aria-pressed="false"><img src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62f33ef05cac0a959ca7e5e6_places-icon.svg" alt="" onerror="this.hidden=true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 5-2 7 3 6-3v14l-6 3-7-3-5 2zM8 4v14m7-11v14"/><circle cx="17.5" cy="8" r="2"/></svg></button>
+                        <button class="gallery-category" type="button" data-category="favorites" aria-label="Favorites" title="Favorites" aria-pressed="false"><img src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62f34342e3e5062aabcadb04_heart-icon.svg" alt="" onerror="this.hidden=true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.3 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+                        <button class="gallery-category" type="button" data-category="cars" aria-label="Cars" title="Cars" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 11 1.7-4.1A2 2 0 0 1 8.5 5.7h7a2 2 0 0 1 1.8 1.2L19 11l1.3.5a1.5 1.5 0 0 1 1 1.4v4.3h-2.1a2.2 2.2 0 0 1-4.3 0H9.1a2.2 2.2 0 0 1-4.3 0H2.7v-4.3a1.5 1.5 0 0 1 1-1.4L5 11Z"/><path d="M5 11h14M5 14h2m10 0h2"/></svg></button>
+                    </div>
+                </div>
+                <figcaption class="visually-hidden">Little moments, in pictures. <span class="gallery-status" aria-live="polite"></span></figcaption>
+            </figure>
+
+            <article class="about-card social-card" aria-labelledby="social-title">
+                <div class="social-heading"><a class="social-profile" href="https://x.com/d_ezail" target="_blank" rel="noopener noreferrer"><img class="social-avatar" src="/dwayne/assets/imgs/X_profilepic.png" th:src="@{/dwayne/assets/imgs/X_profilepic.png}" alt=""><span><span class="social-name" id="social-title">laize</span><span class="social-handle">@d_ezail</span></span></a><a class="social-icon" href="https://x.com/d_ezail" target="_blank" rel="noopener noreferrer" aria-label="Dwayne on X"><img src="/dwayne/assets/imgs/X_logo.png" th:src="@{/dwayne/assets/imgs/X_logo.png}" alt=""></a></div>
+                <p class="card-copy">Design, code &amp; the things I'm learning. <a href="https://www.linkedin.com/in/dwayne-ezail-talavera-6887102b4/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></p>
+                <div class="social-actions">
+                    <a class="social-button" href="https://x.com/d_ezail" target="_blank" rel="noopener noreferrer">Find me on X <span aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="about-card facts-card" aria-labelledby="facts-title">
+                <h2 id="facts-title">Fun Facts</h2>
+                <ul class="personal-list">
+                    <li>I started to play video games at the age of 4</li>
+                    <li>I used to play guitar mediocrely.</li>
+                    <li>I made hella money selling virtual items on Roblox.</li>
+                    <li>Being an Astronaut was my dream.</li>
+                </ul>
+            </article>
+
+            <article class="about-card favorites-card" aria-labelledby="favorites-title">
+                <h2 id="favorites-title">Favorites</h2>
+                <dl class="personal-list favorites-list">
+                    <div><dt>Food</dt><dd>Sisig, Curry, Sinigang</dd></div>
+                    <div><dt>Color</dt><dd>Black, Purple, Gray</dd></div>
+                    <div><dt>Movie</dt><dd>Interstellar, Coach Carter</dd></div>
+                    <div><dt>Song</dt><dd>Stand by Me - Oasis</dd></div>
+                    <div><dt>Artist</dt><dd>Oasis, Frank Ocean</dd></div>
+                    <div><dt>Place</dt><dd>Yabu ❤</dd></div>
+                </dl>
+            </article>
+
+            <article class="about-card hobbies-card" aria-labelledby="hobbies-title">
+                <p class="card-label"></p>
+                <h2 id="hobbies-title">My Hobbies</h2>
+                <ul class="hobby-list">
+                    <li><span>Cubing</span><small>Rubik's cube</small></li>
+                    <li><span>Card games</span><small>Poker, blackjack &amp; more</small></li>
+                    <li><span>Running</span><small>Endurance, Tempo</small></li>
+                    <li><span>Reading</span><small>Books</small></li>
+                    <li><span>Basketball</span><small>Though I suck at it</small>/li>
+                </ul>
+            </article>
+
+            <article class="about-card music-card" aria-labelledby="music-title">
+                <p class="visually-hidden">A favorite track</p>
+                <div class="music-top"><div class="music-record" aria-hidden="true"><span>HC</span></div><img class="music-artwork" alt="" hidden><img class="music-icon" src="/dwayne/assets/imgs/appmu.png" th:src="@{/dwayne/assets/imgs/appmu.png}" alt="" aria-hidden="true"></div>
+                <h2 class="music-title" id="music-title">Hotel California</h2>
+                <p class="music-artist">Eagles</p>
+                <p class="music-status" role="status">Audio coming soon</p>
+                <audio class="music-audio" preload="none"></audio>
+                <div class="music-progress" aria-label="Track progress">
+                    <span class="music-elapsed">0:00</span>
+                    <input class="music-seek" type="range" min="0" max="1000" value="0" aria-label="Seek through track" disabled>
+                    <span class="music-duration">0:00</span>
+                </div>
+                <div class="music-controls" aria-label="Music controls">
+                    <button class="music-playlist-toggle" type="button" aria-label="Show playlist" aria-expanded="false" aria-controls="music-playlist"><img src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62ca1d5ec50496da5cb597a7_playlist-icon.svg" alt="" onerror="this.hidden=true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4zm0 4h16v12H4zm6 2v8l6-4z"/></svg></button>
+                    <button class="music-previous" type="button" aria-label="Previous track" disabled><img src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62fac3ad2ab1e7e474b27d3a_Rewind.svg" alt="" onerror="this.hidden=true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5v14L1 12zm11 0v14L12 12z"/></svg></button>
+                    <button class="music-play is-paused" type="button" aria-label="Play" disabled><img class="play-icon" src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62fabd366b970a019c1aae02_play-icon-1.svg" alt="" onerror="this.hidden=true"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v18l14-9z"/></svg><img class="pause-icon" src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62ca1d5e7c26b54ee0453ea4_Pause.svg" alt="" onerror="this.hidden=true"><svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h5v18H5zm9 0h5v18h-5z"/></svg></button>
+                    <button class="music-next" type="button" aria-label="Next track" disabled><img src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62fac3ad3c443c4ef6f7c040_Fast%20Fwd.svg" alt="" onerror="this.hidden=true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5v14l10-7zm11 0v14l10-7z"/></svg></button>
+                    <button class="music-mute" type="button" aria-label="Mute" aria-pressed="false" disabled><img class="volume-icon" src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62fabd366b970a37931aae07_volume-on-dark.svg" alt="" onerror="this.hidden=true"><svg class="volume-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9zm12-1v8c1.8-.6 3-2.1 3-4s-1.2-3.4-3-4zm0-4v2c3 .8 5 3.1 5 6s-2 5.2-5 6v2c4.2-.9 7-4 7-8s-2.8-7.1-7-8z"/></svg><img class="muted-icon" src="https://cdn.prod.website-files.com/62c89bdb7c26b515f632de67/62fabd36e5a13afbdde3b4f0_volume-off-dark.svg" alt="" onerror="this.hidden=true"><svg class="muted-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9zm12-.5L16.5 7l2.5 2.5L21.5 7 23 8.5 20.5 11l2.5 2.5-1.5 1.5-2.5-2.5-2.5 2.5-1.5-1.5 2.5-2.5z"/></svg></button>
+                </div>
+                <div class="music-playlist" id="music-playlist" aria-label="Playlist" hidden></div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="about-footer">
+        <span>© 2026 Dwayne Ezail Talavera</span>
+    </footer>
+</body>
+</html>
