@@ -7,7 +7,8 @@
     <meta name="description" content="Dwayne Ezail Talavera — student and UI/UX designer exploring thoughtful interfaces, design, and code.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-13" th:href="@{/dwayne/style.css(v='portfolio-13')}">
+    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-21" th:href="@{/dwayne/style.css(v='portfolio-21')}">
+    <script src="/dwayne/project-carousel.js" th:src="@{/dwayne/project-carousel.js}" defer></script>
     <script>
         // Activate only with JavaScript; always uncover the page if initialization fails.
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -22,6 +23,7 @@
 </head>
 <body>
     <a class="skip-link" href="#about">Skip to about</a>
+    <div class="scroll-ruler" aria-hidden="true"><div class="scroll-ruler-fill"></div><span class="scroll-ruler-marker">0</span></div>
     <!-- Original vanilla implementation inspired by Skiper 8 / Dennis Snellenberg. -->
     <div class="entrance-loader" aria-hidden="true">
         <div class="loader-curtain">
@@ -45,6 +47,7 @@
         </header>
 
         <section class="hero" id="top" aria-labelledby="hero-title">
+            <a class="hero-chooser" href="/" th:href="@{/}" aria-label="Back to portfolio selection"><span>↖ &nbsp; Back</span></a>
             <div class="hero-composition">
                 <h1 class="hero-title" id="hero-title">
                     <span class="title-line"><span>Student.</span></span>
@@ -54,6 +57,8 @@
                     <img class="portrait" src="/dwayne/assets/portrait.png" th:src="@{/dwayne/assets/portrait.png}" alt="Dwayne wearing glasses and a black T-shirt, looking down" width="991" height="1588" fetchpriority="high" decoding="async">
                 </figure>
             </div>
+            <img class="decoration hero-wave" src="/dwayne/assets/IMG_9898-transparent.png" th:src="@{/dwayne/assets/IMG_9898-transparent.png}" alt="" aria-hidden="true">
+            <a class="hero-scroll" href="#skills" aria-label="Scroll down to skills"><svg viewBox="0 0 32 20" aria-hidden="true"><path d="M2 3l14 14L30 3"/></svg></a>
             <address class="hero-contact" aria-label="Contact information">
                 <a href="mailto:dwayneezailbusiness@gmail.com"><span class="contact-label" aria-hidden="true">@</span><span>dwayneezail32</span></a>
                 <a href="tel:+639157779067"><span class="contact-label" aria-hidden="true">T</span><span>+63 915 777 9067</span></a>
@@ -63,6 +68,9 @@
         </section>
 
         <section class="skills" id="skills" aria-labelledby="skills-title">
+          <img class="decoration skills-thumb" src="/dwayne/assets/IMG_9897-transparent.png" th:src="@{/dwayne/assets/IMG_9897-transparent.png}" alt="" aria-hidden="true" loading="lazy">
+          <img class="decoration skills-snake" src="/dwayne/assets/IMG_9905-transparent.png" th:src="@{/dwayne/assets/IMG_9905-transparent.png}" alt="" aria-hidden="true" loading="lazy">
+          <img class="decoration skills-coffee" src="/dwayne/assets/IMG_9904-transparent.png" th:src="@{/dwayne/assets/IMG_9904-transparent.png}" alt="" aria-hidden="true" loading="lazy">
           <div class="skills-stage">
             <h2 class="skills-heading" id="skills-title">My Skills?</h2>
             <ul class="skills-list">
@@ -81,15 +89,16 @@
         <section class="page-section about-section" id="about" aria-labelledby="about-title">
           <div class="section-content">
             <div class="section-heading" data-reveal>
-                <p class="eyebrow"><span>01 / A little context</span><span>About me</span></p>
-                <h2 class="statement" id="about-title">A curious mind.<br>A thing for <em>good design.</em></h2>
+                <p class="eyebrow"><span>01</span><span></span></p>
+                <h2 class="statement" id="about-title">Building with Intention.<br>A thing for <em>good design.</em></h2>
+                <img class="decoration about-idea" src="/dwayne/assets/IMG_9906-transparent.png" th:src="@{/dwayne/assets/IMG_9906-transparent.png}" alt="" aria-hidden="true" loading="lazy">
             </div>
             <div class="about-bottom" data-reveal>
-                <p class="section-aside">Design meets code.<br>Still learning. Always curious.</p>
+                <p class="section-aside">Kasi mas matikas yung tahimik lang,<br>kesa dun sa nagmamagaling</p>
                 <div class="about-copy">
-                    <p>I'm Dwayne, a student and UI/UX designer exploring how things look, feel, and work. I like making interfaces that are clear, considered, and easy to find your way around.</p>
-                    <p>From a first sketch in Figma to a working page, I'm learning to connect the details of design with the logic behind them.</p>
-                    <a class="text-link" href="#work">See what I'm working on <span aria-hidden="true">↘</span></a>
+                    <p>I'm <strong>Dwayne</strong>, a student and UI/UX designer exploring how things look, feel, and work. I love making interfaces that are clean, thought-out, and intuitive.</p>
+                    <p>As a student, I'm still learning to connect the details of design with the logic behind them.</p>
+                    <a class="text-link" href="/dwayne/about" th:href="@{/dwayne/about}">See more <span aria-hidden="true">↗</span></a>
                 </div>
             </div>
           </div>
@@ -98,12 +107,24 @@
         <section class="page-section work-section" id="work" aria-labelledby="work-title">
           <div class="section-content">
             <div class="section-heading" data-reveal>
-                <p class="eyebrow"><span>02 / From idea to screen</span><span>Selected work</span></p>
-                <h2 class="statement" id="work-title">Made to <em>be explored.</em></h2>
+                <p class="eyebrow"><span>02</span><span></span></p>
+                <h2 class="statement" id="work-title">Made with <em>love.</em></h2>
             </div>
             <article class="featured-project">
-                <div class="project-preview" data-reveal>
-                    <img class="project-screenshot" src="/dwayne/assets/academic-performance-placeholder.jpg.png" th:src="@{/dwayne/assets/academic-performance-placeholder.jpg.png}" alt="Academic Performance Predictor home page" width="2541" height="1440" loading="lazy">
+                <div class="project-preview" data-reveal role="region" aria-roledescription="carousel" aria-label="Academic Performance Predictor screenshots">
+                    <div class="carousel-viewport" tabindex="0" aria-label="Project screenshots">
+                        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 6"><img class="project-screenshot" src="/dwayne/assets/acadperf1.png" th:src="@{/dwayne/assets/acadperf1.png}" alt="Academic Performance Predictor screenshot 1" loading="lazy" draggable="false"></div>
+                        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 6"><img class="project-screenshot" src="/dwayne/assets/acadperf2.png" th:src="@{/dwayne/assets/acadperf2.png}" alt="Academic Performance Predictor screenshot 2" loading="lazy" draggable="false"></div>
+                        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 6"><img class="project-screenshot" src="/dwayne/assets/acadperf3.png" th:src="@{/dwayne/assets/acadperf3.png}" alt="Academic Performance Predictor screenshot 3" loading="lazy" draggable="false"></div>
+                        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 6"><img class="project-screenshot" src="/dwayne/assets/acadperf4.png" th:src="@{/dwayne/assets/acadperf4.png}" alt="Academic Performance Predictor screenshot 4" loading="lazy" draggable="false"></div>
+                        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 6"><img class="project-screenshot" src="/dwayne/assets/acadperf5.png" th:src="@{/dwayne/assets/acadperf5.png}" alt="Academic Performance Predictor screenshot 5" loading="lazy" draggable="false"></div>
+                        <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="6 of 6"><img class="project-screenshot" src="/dwayne/assets/acadperf6.png" th:src="@{/dwayne/assets/acadperf6.png}" alt="Academic Performance Predictor screenshot 6" loading="lazy" draggable="false"></div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-button carousel-prev" type="button" aria-label="Previous screenshot" disabled><span aria-hidden="true">&#8592;</span></button>
+                        <span class="carousel-counter" aria-live="polite" aria-atomic="true">1 / 6</span>
+                        <button class="carousel-button carousel-next" type="button" aria-label="Next screenshot"><span aria-hidden="true">&#8594;</span></button>
+                    </div>
                 </div>
                 <div class="project-information" data-reveal>
                     <div><p class="project-category">01 / Featured project</p><h3>Academic Performance Predictor<span class="project-title-period">.</span></h3></div>
@@ -112,14 +133,15 @@
                     </div>
                 </div>
             </article>
-            <p class="work-footnote" data-reveal>More ideas are taking shape. This space will grow with them.</p>
+            <p class="work-footnote" data-reveal></p>
+            <img class="decoration work-laptop" src="/dwayne/assets/IMG_9901-transparent.png" th:src="@{/dwayne/assets/IMG_9901-transparent.png}" alt="" aria-hidden="true" loading="lazy">
           </div>
         </section>
 
         <section class="page-section approach-section" id="approach" aria-labelledby="approach-title">
           <div class="section-content">
             <div class="section-heading" data-reveal>
-                <p class="eyebrow"><span>03 / How I approach things</span><span>The process</span></p>
+                <p class="eyebrow"><span>03</span><span>The process</span></p>
                 <h2 class="statement" id="approach-title">Think it through.<br><em>Then make it real.</em></h2>
             </div>
             <ol class="process-list">
@@ -132,7 +154,8 @@
 
         <footer class="page-section contact-section" id="contact" aria-labelledby="contact-title">
           <div class="section-content">
-            <p class="eyebrow" data-reveal><span>04 / The next conversation</span><span>Say hello</span></p>
+            <img class="decoration contact-peace" src="/dwayne/assets/IMG_9899-transparent.png" th:src="@{/dwayne/assets/IMG_9899-transparent.png}" alt="" aria-hidden="true" loading="lazy">
+            <p class="eyebrow" data-reveal><span>04</span><span></span></p>
             <div class="contact-main" data-reveal>
                 <h2 id="contact-title">Have something<br><em>in mind?</em></h2>
                 <a class="contact-invitation" href="mailto:dwayneezailbusiness@gmail.com">Let's talk <span aria-hidden="true">↗</span></a>
@@ -163,7 +186,7 @@
 
             main.inert = true;
             const word = loader.querySelector('.loader-word');
-            const greetings = ['Hello', 'Bonjour', 'Ciao', 'Olá', 'こんにちは', 'Guten Tag', 'Kumusta', 'Welcome'];
+            const greetings = ['Hello', 'Kumusta', 'Bonjour', 'Olá', 'Nǐ hǎo', 'Namaste', 'Ciao', 'Welcome'];
             const timers = [];
             let finished = false;
             const finish = () => {
@@ -199,6 +222,8 @@
             const skills = document.querySelector('.skills');
             const skillsHeading = document.querySelector('.skills-heading');
             const skillWords = [...document.querySelectorAll('.skill-word')];
+            const scrollRuler = document.querySelector('.scroll-ruler');
+            const scrollMarker = document.querySelector('.scroll-ruler-marker');
             let activeSkill = null;
             let frame = 0;
             let heroHeight = hero.offsetHeight;
@@ -207,12 +232,17 @@
                 frame = 0;
                 const progress = motion.matches ? 0 : Math.min(1, Math.max(0, window.scrollY / heroHeight));
                 root.style.setProperty('--scroll-progress', progress.toFixed(4));
+                const scrollable = root.scrollHeight - window.innerHeight;
+                const pageProgress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+                root.style.setProperty('--page-progress', pageProgress);
+                scrollMarker.textContent = Math.round(pageProgress * 100);
                 skills.classList.toggle('is-animated', !motion.matches);
+                const bounds = skills.getBoundingClientRect();
+                scrollRuler.classList.toggle('is-visible', bounds.top <= window.innerHeight / 2);
                 if (motion.matches) {
                     skillWords.forEach(item => item.style.removeProperty('opacity'));
                     return;
                 }
-                const bounds = skills.getBoundingClientRect();
                 if (bounds.top < window.innerHeight && bounds.bottom > 0) {
                     const heading = skillsHeading.getBoundingClientRect();
                     const center = heading.top + heading.height / 2;
