@@ -9,23 +9,61 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.ResourcePatternResolver;
+
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class GiovanniController {
 
     private static final Logger log = LoggerFactory.getLogger(GiovanniController.class);
 
+    /** Changes on every app start so browsers never reuse an old stylesheet. */
+    private static final long BUILD = System.currentTimeMillis();
+
+    private final ResourcePatternResolver resolver;
+
+    public GiovanniController(ResourcePatternResolver resolver) {
+        this.resolver = resolver;
+    }
+
+    /** Every image inside static/giovanni/album/ becomes a slide, sorted by file name. */
+    private List<String> albumPhotos() {
+        try {
+            Resource[] files = resolver.getResources("classpath:static/giovanni/album/*");
+            return Arrays.stream(files)
+                .map(Resource::getFilename)
+                .filter(Objects::nonNull)
+                .filter(n -> n.toLowerCase().matches(".+\\.(jpg|jpeg|png|webp|gif|avif)"))
+                .sorted(String.CASE_INSENSITIVE_ORDER)
+                .toList();
+        } catch (IOException e) {
+            return List.of();
+        }
+    }
+
     // ---- Small data holders (edit the data in home() below) ----
     public record Hobby(String category, String items) {}
     public record Award(String year, String title, String detail) {}
     public record Favorite(String symbol, String label, String value) {}
     public record Skill(String name, double purity) {}
+    public record Work(String title, String tag, String detail, String image, String link) {}
+    public record Step(String number, String title, String detail) {}
 
     @GetMapping("/giovanni")
     public String home(Model m) {
         // ===== ABOUT ME  (replace every value with the real you) =====
+        m.addAttribute("v", BUILD);
         m.addAttribute("name", "Giovanni");
+
+        // ===== PHOTO ALBUM (drop any photos into src/main/resources/static/giovanni/album/) =====
+        List<String> album = albumPhotos();
+        m.addAttribute("album", album);
+
         m.addAttribute("age", "20");
         m.addAttribute("birthday", "January 1, 2005");
         m.addAttribute("height", "5'8\" (173 cm)");
@@ -64,7 +102,19 @@ public class GiovanniController {
             new Skill("Drawing / Design", 85.0),
             new Skill("Public speaking", 78.5),
             new Skill("Making people laugh", 99.1)));
-        m.addAttribute("talents", List.of("Fixing bugs with one line", "Remembering song lyrics", "Finding the best snack spot", "Making memes on demand"));
+
+        // ===== WORKS (images go in static/giovanni/: work1.jpg, work2.jpg, work3.jpg; link can be "") =====
+        m.addAttribute("works", List.of(
+            new Work("Project One", "WEB APP", "What it does and the problem it solves. Replace this with your own project.", "work1.jpg", ""),
+            new Work("Project Two", "MOBILE", "Another piece of work. Mention the tools you used and what you learned.", "work2.jpg", ""),
+            new Work("Project Three", "DESIGN", "A design or school project you are proud of.", "work3.jpg", "")));
+
+        // ===== PROCESS =====
+        m.addAttribute("steps", List.of(
+            new Step("01", "Gather the ingredients", "Research, requirements and understanding the problem before writing a single line."),
+            new Step("02", "Write the formula", "Plan the structure, sketch the screens and pick the right stack."),
+            new Step("03", "Cook", "Build in small batches: code, test, fix, repeat."),
+            new Step("04", "Purity test", "Review, polish and ship only what is 99.1% pure.")));
 
         // ===== FUN FACTS =====
         m.addAttribute("funFacts", List.of(
