@@ -91,7 +91,7 @@
 .personal-art-controller { width: 52%; left: 9%; top: 53%; transition: width .5s ease, left .5s ease, right .5s ease, top .5s ease; }
 .favorites-card:hover .personal-art, .favorites-card:focus-visible .personal-art { transform: scale(.22); }
 .facts-card:is(:hover, :focus-visible) .personal-art-bulb,
-.hobbies-card:is(:hover, :focus-visible) .personal-art-controller { width: 13.64%; height: auto; top: 6.6%; transform: rotate(0); }
+.hobbies-card:is(:hover, :focus-visible) .personal-art-controller { width: 13.64%; height: auto; top: calc(clamp(16px, 2.4vw, 30px) + clamp(13.2px, 1.1vw, 17.6px) - 6.82cqw); transform: rotate(0); }
 .facts-card:is(:hover, :focus-visible) .personal-art-bulb { right: 4.18%; top: calc(clamp(16px, 2.4vw, 30px) + clamp(13.2px, 1.1vw, 17.6px) - 6.82cqw); }
 .hobbies-card:is(:hover, :focus-visible) .personal-art-controller { left: 82.18%; }
 .facts-card:is(:hover, :focus-visible) .personal-art-rocket { animation: rocket-exit .65s ease-in forwards; }
