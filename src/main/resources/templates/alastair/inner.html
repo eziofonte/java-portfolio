@@ -1,0 +1,219 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="rewards">
+<div id="content-about" class="modal content-page" role="dialog" aria-labelledby="about-title">
+    <div class="modal-content">
+      <div id="about-loading" class="about-loading" role="status" hidden></div>
+
+      <article class="about-layout">
+        <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+
+        <div class="about-scene">
+          <div class="about-monitor">
+            <span class="about-label">About Me</span>
+            <h2 id="about-title">Alastair Crucillo</h2>
+
+            <section class="about-section">
+              <h3>Personal details</h3>
+              <dl class="about-details">
+                <div><dt>Full Name</dt><dd id="about-name">Alastair Nichole A. Crucillo</dd></div>
+                <div><dt>Birthday</dt><dd id="about-birthday">September 18, 2005</dd></div>
+                <div><dt>Age</dt><dd id="about-age">21</dd></div>
+
+                <div>
+                  <dt>Height</dt>
+                  <dd>
+                    <div id="about-height" aria-live="polite">174 cm</div>
+                    <select id="height-unit" aria-label="Height unit">
+                      <option value="cm">cm</option>
+                      <option value="m">m</option>
+                      <option value="ft">ft / in</option>
+                    </select>
+                  </dd>
+                </div>
+
+                <div>
+                  <dt>Weight</dt>
+                  <dd>
+                    <div id="about-weight" aria-live="polite">70 kg</div>
+                    <select id="weight-unit" aria-label="Weight unit">
+                      <option value="kg">kg</option>
+                      <option value="lb">lb</option>
+                      <option value="st">st</option>
+                    </select>
+                  </dd>
+                </div>
+
+                <div><dt>Personality</dt><dd id="about-personality">Matikas lang</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <img class="about-portrait" src="/alastair/images/about-alastair.png"
+              alt="Alastair Crucillo" width="468" height="700">
+
+          <button type="button" id="about-cord" class="about-cord"
+                  aria-label="Pull to switch profile" aria-pressed="false"></button>
+        </div>
+      </article>
+    </div>
+  </div>
+
+      <div id="content-achievements" class="modal content-page"
+     role="dialog" aria-labelledby="achievements-title">
+  <div class="modal-content">
+    <article class="achievement-log">
+      <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+
+      <header class="achievement-header">
+        <h2 id="achievements-title">Achievements</h2>
+        <span id="achievement-count" role="status">10 milestones</span>
+      </header>
+
+      <div class="achievement-filters" role="radiogroup" aria-label="Filter achievements">
+        <label><input type="radio" name="achievement-filter" value="all" checked>All</label>
+        <label><input type="radio" name="achievement-filter" value="school">School</label>
+        <label><input type="radio" name="achievement-filter" value="gaming">Gaming</label>
+        <label><input type="radio" name="achievement-filter" value="basketball">Basketball</label>
+        <label><input type="radio" name="achievement-filter" value="projects">Projects</label>
+      </div>
+
+      <ul class="achievement-list">
+        <li class="achievement-card" data-category="school">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Dean’s Lister</h3><p>First year · First and second semesters</p></div>
+        </li>
+        <li class="achievement-card" data-category="school">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>With High Honors</h3><p>Grade 12</p></div>
+        </li>
+        <li class="achievement-card" data-category="school">
+  <span class="achievement-badge" aria-hidden="true"></span>
+  <div>
+    <h3>With Honors</h3>
+    <p>Grades 10 and 11</p>
+  </div>
+</li>
+        <li class="achievement-card" data-category="school">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>First Honor</h3><p>Kindergarten through Grade 3</p></div>
+        </li>
+
+        <li class="achievement-card" data-category="gaming">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Platinum</h3><p>VALORANT peak rank · Ascendant skills, if you ask me.</p></div>
+        </li>
+        <li class="achievement-card" data-category="gaming">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>100 Stars</h3><p>Mobile Legends ranked play</p></div>
+        </li>
+        <li class="achievement-card" data-category="gaming">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>One-Day Minecraft Run</h3><p>Finished Minecraft in a single day.</p></div>
+        </li>
+
+        <li class="achievement-card" data-category="basketball">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Champion</h3><p>Inter-Barangay 3×3 Basketball</p></div>
+        </li>
+        <li class="achievement-card" data-category="basketball">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Most Valuable Player</h3><p>Inter-Barangay 3×3 Basketball</p></div>
+        </li>
+        <li class="achievement-card" data-category="basketball">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Mythical Five</h3><p>PATHFit Culminating Task</p></div>
+        </li>
+
+        <li class="achievement-card" data-category="projects">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div>
+            <h3>Arcade Portfolio</h3>
+            <p>Customized this portfolio with playable games, unlockable reward pages, and saved progress.</p>
+          </div>
+        </li>
+      </ul>
+    </article>
+  </div>
+</div>
+   <div id="content-favorites" class="modal content-page"
+     role="dialog" aria-labelledby="favorites-title">
+  <div class="modal-content">
+    <article class="favorites-layout">
+      <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+      <h2 id="favorites-title">Favorites</h2>
+
+      <div class="favorite-grid">
+        <section class="favorite-card favorite-photo"
+                 style="--favorite-image: url('/alastair/images/pastil.jpg')">
+          <span>Favorite food</span>
+          <h3>Pastil</h3>
+        </section>
+
+        <section class="favorite-card favorite-photo"
+                 style="--favorite-image: url('/alastair/images/favorite-person.jpg')">
+          <span>Favorite person</span>
+          <h3>&lt;3</h3>
+        </section>
+
+        <section class="favorite-card favorite-wide favorite-playlist">
+          <span>Favorite songs</span>
+          <h3>My Playlist</h3>
+          <div id="favorite-track-status" role="status">Songs coming soon.</div>
+          <audio id="favorite-audio" controls preload="metadata" hidden
+                 aria-label="Favorite songs player"></audio>
+          <ol id="favorite-track-list" aria-label="Playlist"></ol>
+        </section>
+
+        <section class="favorite-card favorite-purple">
+          <span>Favorite color</span>
+          <h3>Purple</h3>
+        </section>
+
+        <section class="favorite-card favorite-photo favorite-wide favorite-movie"
+                 style="--favorite-image: url('/alastair/images/spider-man.jpg')">
+          <span>Favorite movie</span>
+          <h3>Spider-Man</h3>
+        </section>
+
+        <button type="button" id="favorite-player"
+                class="favorite-card favorite-photo favorite-player" data-player="curry">
+          <span>Favorite NBA player</span>
+          <strong id="favorite-player-name" aria-live="polite">Stephen Curry</strong>
+          <small>Tap to switch</small>
+        </button>
+
+        <section class="favorite-card favorite-photo favorite-wide"
+                 style="--favorite-image: url('/alastair/images/ayala-manila-bay.jpg')">
+          <span>Favorite place</span>
+          <h3>Ayala Malls Manila Bay</h3>
+        </section>
+
+        <section class="favorite-card favorite-wide favorite-court">
+          <span>Favorite sport</span>
+          <h3>Basketball</h3>
+          <div id="favorite-shot-result" role="status">Pull the ball back and let go to shoot.</div>
+          <canvas id="favorite-court-canvas" width="480" height="260"
+                  aria-label="Basketball shooting game. Drag the ball back and release to shoot."></canvas>
+          <div class="favorite-shot-actions">
+            <span id="favorite-shot-score">0 of 0 made</span>
+          </div>
+        </section>
+      </div>
+    </article>
+  </div>
+</div>
+
+<div id="content-skills" class="modal content-page">
+  <div class="modal-content">
+    <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+    <h2>Skills</h2>
+    <p>Java, JS</p>
+  </div>
+</div>
+
+<div id="content-fun-facts" class="modal content-page">
+  <div class="modal-content">
+    <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+    <h2>Fun Facts</h2>
+  </div>
+</div>
+</th:block>
