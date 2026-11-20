@@ -59,9 +59,7 @@ html.is-entering { overflow: hidden; }
 .hero-scroll svg { width: 32px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; animation: scroll-hint 2.8s ease-in-out infinite; }
 @keyframes scroll-hint { 0%, 100% { transform: translateY(-3px); } 50% { transform: translateY(3px); } }
 .hero-composition { position: relative; width: 100%; min-height: inherit; }
-.hero-title { position: absolute; z-index: 2; top: 12.7vw; left: 25.2%; font-size: clamp(40px, 3.85vw, 100px); font-weight: 500; line-height: .94; letter-spacing: -.055em; transform: translate3d(0, calc(var(--scroll-progress) * -110px), 0); opacity: calc(1 - var(--scroll-progress) * .85); }
-.title-line { display: block; overflow: hidden; padding: .06em .08em .08em 0; margin: -.06em -.08em -.08em 0; }
-.title-line > span { display: block; }
+.hero-title { position: absolute; z-index: 2; top: 12.7vw; left: 50%; text-align: center; font-size: clamp(40px, 3.85vw, 100px); font-weight: 500; line-height: .94; letter-spacing: -.055em; transform: translate(-50%, calc(var(--scroll-progress) * -110px)); opacity: calc(1 - var(--scroll-progress) * .85); }.title-line > span { display: block; }
 .portrait-frame { position: absolute; z-index: 1; top: 20.2vw; left: 35.5%; width: 29%; height: 31vw; overflow: hidden; opacity: calc(1 - var(--scroll-progress) * .65); transform: translate3d(0, calc(var(--scroll-progress) * -35px), 0); mask-image: linear-gradient(to bottom, var(--foreground) 92%, transparent); }
 .portrait { display: block; width: 100%; height: auto; transform: scale(calc(1 + var(--scroll-progress) * .04)); transform-origin: center top; }
 .hero-contact { position: absolute; z-index: 3; top: 44.2vw; left: var(--edge); font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(16px, 1.35vw, 28px); font-weight: 400; font-style: normal; line-height: 1.15; }
