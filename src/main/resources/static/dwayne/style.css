@@ -92,7 +92,7 @@ html.is-entering { overflow: hidden; }
 .skills.is-animated .skill-word.is-active { opacity: 1; }
 
 /* The skills release into the rest of the story, without an ending screen. */
-.page-section { min-height: 100svh; display: flex; align-items: center; padding: clamp(64px, 10svh, 120px) var(--section-edge); }
+.page-section { min-height: 100svh; display: flex; align-items: center; padding: clamp(30px, 10svh, 96px) var(--section-edge); }
 .section-content { width: 100%; }
 .section-heading { margin-bottom: clamp(48px, 6vw, 100px); }
 .eyebrow { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: clamp(40px, 5vw, 80px); font-size: clamp(12px, .85vw, 16px); line-height: 1.5; color: var(--muted); }
