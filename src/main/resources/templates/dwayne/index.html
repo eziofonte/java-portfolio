@@ -7,7 +7,7 @@
     <meta name="description" content="Dwayne Ezail Talavera — student and UI/UX designer exploring thoughtful interfaces, design, and code.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-17" th:href="@{/dwayne/style.css(v='portfolio-17')}">
+    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-18" th:href="@{/dwayne/style.css(v='portfolio-18')}">
     <script src="/dwayne/project-carousel.js" th:src="@{/dwayne/project-carousel.js}" defer></script>
     <script>
         // Activate only with JavaScript; always uncover the page if initialization fails.
@@ -87,7 +87,7 @@
         <section class="page-section about-section" id="about" aria-labelledby="about-title">
           <div class="section-content">
             <div class="section-heading" data-reveal>
-                <p class="eyebrow"><span>01 / A little context</span><span>About me</span></p>
+                <p class="eyebrow"><span>01</span><span>About me</span></p>
                 <h2 class="statement" id="about-title">Curious mind.<br>A thing for <em>good design.</em></h2>
                 <img class="decoration about-idea" src="/dwayne/assets/IMG_9906-transparent.png" th:src="@{/dwayne/assets/IMG_9906-transparent.png}" alt="" aria-hidden="true" loading="lazy">
             </div>
@@ -105,7 +105,7 @@
         <section class="page-section work-section" id="work" aria-labelledby="work-title">
           <div class="section-content">
             <div class="section-heading" data-reveal>
-                <p class="eyebrow"><span>02 / From idea to screen</span><span>Selected work</span></p>
+                <p class="eyebrow"><span>02</span><span></span></p>
                 <h2 class="statement" id="work-title">Made to <em>be explored.</em></h2>
             </div>
             <article class="featured-project">
@@ -131,7 +131,7 @@
                     </div>
                 </div>
             </article>
-            <p class="work-footnote" data-reveal>More ideas are taking shape. This space will grow with them.</p>
+            <p class="work-footnote" data-reveal></p>
             <img class="decoration work-laptop" src="/dwayne/assets/IMG_9901-transparent.png" th:src="@{/dwayne/assets/IMG_9901-transparent.png}" alt="" aria-hidden="true" loading="lazy">
           </div>
         </section>
@@ -139,7 +139,7 @@
         <section class="page-section approach-section" id="approach" aria-labelledby="approach-title">
           <div class="section-content">
             <div class="section-heading" data-reveal>
-                <p class="eyebrow"><span>03 / How I approach things</span><span>The process</span></p>
+                <p class="eyebrow"><span>03</span><span>The process</span></p>
                 <h2 class="statement" id="approach-title">Think it through.<br><em>Then make it real.</em></h2>
             </div>
             <ol class="process-list">
@@ -153,7 +153,7 @@
         <footer class="page-section contact-section" id="contact" aria-labelledby="contact-title">
           <div class="section-content">
             <img class="decoration contact-peace" src="/dwayne/assets/IMG_9899-transparent.png" th:src="@{/dwayne/assets/IMG_9899-transparent.png}" alt="" aria-hidden="true" loading="lazy">
-            <p class="eyebrow" data-reveal><span>04 / The next conversation</span><span>Say hello</span></p>
+            <p class="eyebrow" data-reveal><span>04 / The next conversation</span><span></span></p>
             <div class="contact-main" data-reveal>
                 <h2 id="contact-title">Have something<br><em>in mind?</em></h2>
                 <a class="contact-invitation" href="mailto:dwayneezailbusiness@gmail.com">Let's talk <span aria-hidden="true">↗</span></a>
@@ -184,7 +184,7 @@
 
             main.inert = true;
             const word = loader.querySelector('.loader-word');
-            const greetings = ['Hello', 'Bonjour', 'Kumusta', 'Olá', 'Nǐ hǎo', 'Namaste', 'Ciao', 'Welcome'];
+            const greetings = ['Hello', 'Kumusta', 'Bonjour', 'Olá', 'Nǐ hǎo', 'Namaste', 'Ciao', 'Welcome'];
             const timers = [];
             let finished = false;
             const finish = () => {
@@ -220,6 +220,7 @@
             const skills = document.querySelector('.skills');
             const skillsHeading = document.querySelector('.skills-heading');
             const skillWords = [...document.querySelectorAll('.skill-word')];
+            const scrollRuler = document.querySelector('.scroll-ruler');
             const scrollMarker = document.querySelector('.scroll-ruler-marker');
             let activeSkill = null;
             let frame = 0;
@@ -234,11 +235,12 @@
                 root.style.setProperty('--page-progress', pageProgress);
                 scrollMarker.textContent = Math.round(pageProgress * 100);
                 skills.classList.toggle('is-animated', !motion.matches);
+                const bounds = skills.getBoundingClientRect();
+                scrollRuler.classList.toggle('is-visible', bounds.top <= window.innerHeight / 2);
                 if (motion.matches) {
                     skillWords.forEach(item => item.style.removeProperty('opacity'));
                     return;
                 }
-                const bounds = skills.getBoundingClientRect();
                 if (bounds.top < window.innerHeight && bounds.bottom > 0) {
                     const heading = skillsHeading.getBoundingClientRect();
                     const center = heading.top + heading.height / 2;
