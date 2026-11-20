@@ -3,14 +3,203 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alastair's Portfolio</title>
+  <title>Alastair | Arcade Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@400;600;700;800&family=Lobster&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/alastair/style.css">
 </head>
 <body>
-  <main>
-    <h1>Alastair's Portfolio</h1>
-    <p>Welcome! This portfolio is coming soon.</p>
-    <a href="/">Back to the group portfolio</a>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="logo">RBX</div><a href="#">Charts</a><a href="#">Marketplace</a><a href="#">Create</a><a href="#">Robux</a>
+    </div>
+    <div class="nav-center"><div class="search-bar">🔍 Search</div></div>
+    <div class="nav-right">
+      <div class="nav-icon">🔔</div><div class="robux-count"><span class="robux-icon">💎</span> 667k</div>
+      <div id="theme-toggle" class="theme-toggle" title="Toggle Dark Mode">🌙</div>
+      <div class="mini-avatar" style="background: url('https://via.placeholder.com/40/333333/FFFFFF?text=A') center/cover;"></div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="main-avatar" style="background: url('https://via.placeholder.com/150/333333/FFFFFF?text=AL') center/cover;"></div>
+      <h1>Hello, Alastair!</h1>
+    </div>
+  </header>
+
+  <main class="app-container">
+    <section class="connections-section">
+      <h2>Connections (3)</h2>
+      <div class="connection-row">
+        <div class="connection-item"><div class="avatar-frame"><img src="https://via.placeholder.com/60/FF0000/FFFFFF?text=G1"><span class="status-badge"></span></div><p>[Groupmate 1]</p></div>
+        <div class="connection-item"><div class="avatar-frame"><img src="https://via.placeholder.com/60/0000FF/FFFFFF?text=G2"><span class="status-badge"></span></div><p>[Groupmate 2]</p></div>
+        <div class="connection-item"><div class="avatar-frame"><img src="https://via.placeholder.com/60/00FF00/FFFFFF?text=G3"><span class="status-badge"></span></div><p>[Groupmate 3]</p></div>
+      </div>
+    </section>
+
+    <section class="experiences-section">
+      <h2>Continue →</h2>
+      <div class="game-grid">
+        <div class="game-card" data-game="game1">
+          <div class="game-thumb" style="background: url('/alastair/images/g1.jpg') center/cover;">
+            <span class="lock-overlay" id="lock-game1">🔒 Play to Unlock</span>
+          </div>
+          <div class="game-info"><h3>About Me</h3><div class="game-stats"><span>👍 98%</span> <span>👤 12.4K</span></div></div>
+        </div>
+        <div class="game-card" data-game="game2">
+          <div class="game-thumb" style="background: url('/alastair/images/g2.jpg') center/cover;">
+            <span class="lock-overlay" id="lock-game2">🔒 Play to Unlock</span>
+          </div>
+          <div class="game-info"><h3>Achievements</h3><div class="game-stats"><span>👍 95%</span> <span>👤 8.2K</span></div></div>
+        </div>
+        <div class="game-card" data-game="game3">
+          <div class="game-thumb" style="background: url('/alastair/images/g3.jpg') center/cover;">
+            <span class="lock-overlay" id="lock-game3">🔒 Play to Unlock</span>
+          </div>
+          <div class="game-info"><h3>Favorites</h3><div class="game-stats"><span>👍 89%</span> <span>👤 5.1K</span></div></div>
+        </div>
+        <div class="game-card" data-game="game4">
+          <div class="game-thumb" style="background: url('/alastair/images/g4.jpg') center/cover;">
+            <span class="lock-overlay" id="lock-game4">🔒 Play to Unlock</span>
+          </div>
+          <div class="game-info"><h3>Skills & Talents</h3><div class="game-stats"><span>👍 92%</span> <span>👤 10.5K</span></div></div>
+        </div>
+        <div class="game-card" data-game="game5">
+          <div class="game-thumb" style="background: url('/alastair/images/g5.jpg') center/cover;">
+            <span class="lock-overlay" id="lock-game5">🔒 Play to Unlock</span>
+          </div>
+          <div class="game-info"><h3>Fun Facts</h3><div class="game-stats"><span>👍 99%</span> <span>👤 15K</span></div></div>
+        </div>
+      </div>
+    </section>
+    <div style="text-align: center;"><button id="unlock-all-btn" class="prof-btn">Skip / Unlock All (Prof Mode)</button></div>
   </main>
+
+  <div id="countdown-overlay"><div id="countdown-text">3</div></div>
+  
+  <div id="victory-overlay">
+    <h1 id="victory-text">VICTORY!</h1>
+    <button id="victory-btn" onclick="closeVictory()">Collect Reward</button>
+  </div>
+
+  <div id="minecraft-toast" class="toast hidden">
+    <div class="toast-icon">🏆</div>
+    <div class="toast-text">
+      <span class="toast-title">Advancement Made!</span>
+      <span class="toast-desc" id="toast-desc">GOATED INFO 1/5 UNLOCKED</span>
+    </div>
+  </div>
+
+  <div id="modal-container">
+    <div id="game1" class="modal game-modal">
+      <div class="modal-content">
+        <button class="close-btn" data-close="true">X</button>
+        <div class="modal-header">
+          <h2>Echo Echo Sort</h2>
+          <p>Click two adjacent Echo Echoes to swap them. Sort 1 to 6!</p>
+        </div>
+        <div id="echo-container" class="echo-grid"></div>
+      </div>
+    </div>
+
+    <div id="game2" class="modal game-modal">
+      <div class="modal-content">
+        <button class="close-btn" data-close="true">X</button>
+        <div class="modal-header">
+          <h2>Yoshi Egg Hunt</h2>
+          <p>Click the Eggs! Avoid the Bombs! 10 Eggs in 30s.</p>
+          <h3 class="game-hud">Eggs: <span id="game2-score">0</span>/10 | Time: <span id="game2-time">30</span>s</h3>
+        </div>
+        <div id="yoshi-arena" class="yoshi-arena"></div>
+      </div>
+    </div>
+
+    <div id="game3" class="modal game-modal">
+      <div class="modal-content" style="background: #0f1115; border: 1px solid #333; text-align: center;">
+        <button class="close-btn" data-close="true">X</button>
+        <div class="modal-header">
+          <h2 style="color: #fff;">Tic Tac Toe</h2>
+          <p style="color: #888;">Beat the bot to unlock Favorites.</p>
+        </div>
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+          <div class="ttt-premium" id="ttt-board"></div>
+        </div>
+        <h3 id="game3-status" style="color: #00A2FF; font-family: 'Press Start 2P'; font-size: 1.5rem; margin-top: 1rem;">Your Turn (X)</h3>
+      </div>
+    </div>
+
+    <div id="game4" class="modal game-modal">
+      <div class="modal-content">
+        <button class="close-btn" data-close="true">X</button>
+        <div class="modal-header">
+          <h2>Tota Tola Catcher</h2>
+          <p>Catch Cokes (+1)! Avoid Rocks (-1)! 10 Cokes in 30s.</p>
+          <h3 class="game-hud">Cokes: <span id="game4-score">0</span>/10 | Time: <span id="game4-time">30</span>s</h3>
+        </div>
+        <div id="pinoy-arena" class="pinoy-arena">
+          <div id="pinoy-catcher"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="game5" class="modal game-modal">
+      <div class="modal-content" style="max-width: 800px; margin: auto; height: auto;">
+        <button class="close-btn" data-close="true">X</button>
+        <h2 style="text-align: center; margin-bottom: 1rem;">Guess the Meme</h2>
+        <img src="/alastair/images/meme1.jpg" alt="Meme" style="width: 100%; max-height: 500px; border-radius: 8px; margin-bottom: 1rem; background: #333; object-fit: contain;">
+        <p style="text-align: center; margin-bottom: 1rem;">What is this meme?</p>
+        <button class="prof-btn" style="width: 100%; margin-bottom: 10px;" data-win="game5">A) The classic meme</button>
+        <button class="prof-btn" style="width: 100%; margin-bottom: 10px;" data-win="game5">B) Another option</button>
+      </div>
+    </div>
+    
+    <div id="content-about" class="modal content-page">
+      <div class="modal-content">
+        <button class="back-btn" data-close="true">← Back to Arcade</button>
+        <h2>About Me</h2>
+        <ul style="list-style: none; line-height: 1.8;">
+          <li><strong>Name:</strong> Alastair</li>
+          <li><strong>Age:</strong> 20</li>
+          <li><strong>Hobbies:</strong> Coding, Gaming</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="content-achievements" class="modal content-page">
+      <div class="modal-content">
+        <button class="back-btn" data-close="true">← Back to Arcade</button>
+        <h2>Achievements</h2>
+        <p>Dean's Lister</p>
+      </div>
+    </div>
+    
+    <div id="content-favorites" class="modal content-page">
+      <div class="modal-content">
+        <button class="back-btn" data-close="true">← Back to Arcade</button>
+        <h2>Favorites</h2>
+        <p>Food: Burger</p>
+      </div>
+    </div>
+    
+    <div id="content-skills" class="modal content-page">
+      <div class="modal-content">
+        <button class="back-btn" data-close="true">← Back to Arcade</button>
+        <h2>Skills</h2>
+        <p>Java, JS</p>
+      </div>
+    </div>
+    
+    <div id="content-fun-facts" class="modal content-page">
+      <div class="modal-content">
+        <button class="back-btn" data-close="true">← Back to Arcade</button>
+        <h2>Fun Facts</h2>
+        <p>I talk to my code.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/alastair/script.js"></script>
 </body>
 </html>

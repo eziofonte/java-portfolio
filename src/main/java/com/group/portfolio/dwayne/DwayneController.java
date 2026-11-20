@@ -9,4 +9,9 @@ public class DwayneController {
     public String index() {
         return "dwayne/index";
     }
+
+    @GetMapping("/dwayne/about")
+    public String about() {
+        return "dwayne/about";
+    }
 }
