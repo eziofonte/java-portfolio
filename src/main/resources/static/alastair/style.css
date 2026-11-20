@@ -755,12 +755,7 @@ body {
   border: 3px solid #333;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    transition: none !important;
-    animation: none !important;
-  }
-  .robux-balance {
+.robux-balance {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -775,6 +770,11 @@ body {
   margin: -10px -9px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 .game-name {
   display: block;
   padding: 0.7rem;

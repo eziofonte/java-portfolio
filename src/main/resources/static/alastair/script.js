@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('theme', enabled ? 'dark' : 'light');
     } catch {}
   });
-  document.querySelectorAll('.avatar-frame img, .robux-balance img').forEach(image => {
+  document.querySelectorAll('.avatar-frame img').forEach(image => {
     const showPortrait = () => {
       image.hidden = false;
     };
