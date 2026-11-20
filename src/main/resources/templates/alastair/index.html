@@ -4,91 +4,138 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alastair | Arcade Portfolio</title>
-  
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@400;600;700;800&family=Lobster&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/alastair/style.css">
+  <script src="/alastair/script.js" defer></script>
 </head>
 <body>
+ <nav class="navbar" aria-label="Main navigation">
+  <div class="nav-left">
+    <a class="logo" href="/">ANC</a>
+    <a href="/">Charts</a>
+    <a href="/">Marketplace</a>
+    <a href="/">Create</a>
+    <a href="/">Robux</a>
+  </div>
 
-  <nav class="navbar">
-    <div class="nav-left">
-      <div class="logo">RBX</div><a href="#">Charts</a><a href="#">Marketplace</a><a href="#">Create</a><a href="#">Robux</a>
-    </div>
-    <div class="nav-center"><div class="search-bar">🔍 Search</div></div>
-    <div class="nav-right">
-      <div class="nav-icon">🔔</div><div class="robux-count"><span class="robux-icon">💎</span> 667k</div>
-      <div id="theme-toggle" class="theme-toggle" title="Toggle Dark Mode">🌙</div>
-      <div class="mini-avatar" style="background: url('https://via.placeholder.com/40/333333/FFFFFF?text=A') center/cover;"></div>
-    </div>
-  </nav>
+  <div class="nav-right">
+    <span class="robux-balance" aria-label="6767 Robux">
+      <img src="/alastair/images/robux.png" alt="" width="42" height="42">
+      6767
+    </span>
 
-  <header class="hero">
-    <div class="hero-content">
-      <div class="main-avatar" style="background: url('https://via.placeholder.com/150/333333/FFFFFF?text=AL') center/cover;"></div>
-      <h1>Hello, Alastair!</h1>
-    </div>
-  </header>
+    <button type="button" id="theme-toggle" class="theme-toggle"
+            aria-label="Dark mode" aria-pressed="false">
+      <svg class="theme-icon theme-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.9 13.35A9 9 0 0 1 10.65 3.1 9 9 0 1 0 20.9 13.35Z"/>
+      </svg>
+      <svg class="theme-icon theme-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>
+      </svg>
+    </button>
 
+    <div class="mini-avatar" style="background: url('https://via.placeholder.com/40/333333/FFFFFF?text=A') center/cover;"></div>
+  </div>
+</nav>
+
+ <header class="hero">
+  <div class="hero-content">
+    <div class="main-avatar"
+         style="background: url('/alastair/images/RBXa.png') center / cover no-repeat;"></div>
+    <h1>Hello, Alastair!</h1>
+  </div>
+</header>
   <main class="app-container">
     <section class="connections-section">
       <h2>Connections (3)</h2>
       <div class="connection-row">
-        <div class="connection-item"><div class="avatar-frame"><img src="https://via.placeholder.com/60/FF0000/FFFFFF?text=G1"><span class="status-badge"></span></div><p>[Groupmate 1]</p></div>
-        <div class="connection-item"><div class="avatar-frame"><img src="https://via.placeholder.com/60/0000FF/FFFFFF?text=G2"><span class="status-badge"></span></div><p>[Groupmate 2]</p></div>
-        <div class="connection-item"><div class="avatar-frame"><img src="https://via.placeholder.com/60/00FF00/FFFFFF?text=G3"><span class="status-badge"></span></div><p>[Groupmate 3]</p></div>
+        <a class="connection-item" href="/dwayne">
+          <span class="avatar-frame" aria-hidden="true">
+            D
+            <img src="/alastair/images/RBXd.png" alt="" hidden>
+            <span class="status-badge"></span>
+          </span>
+          <span class="connection-name">Dwayne</span>
+        </a>
+
+        <a class="connection-item" href="/giovanni">
+          <span class="avatar-frame" aria-hidden="true">
+            G
+            <img src="/alastair/images/RBXg.png" alt="" hidden>
+            <span class="status-badge"></span>
+          </span>
+          <span class="connection-name">Giovanni</span>
+        </a>
+
+        <a class="connection-item" href="/martha">
+          <span class="avatar-frame" aria-hidden="true">
+            M
+            <img src="/alastair/images/RBXm.png" alt="" hidden>
+            <span class="status-badge"></span>
+          </span>
+          <span class="connection-name">Martha</span>
+        </a>
       </div>
     </section>
 
     <section class="experiences-section">
       <h2>Continue →</h2>
-      <div class="game-grid">
-        <div class="game-card" data-game="game1">
-          <div class="game-thumb" style="background: url('/alastair/images/g1.jpg') center/cover;">
-            <span class="lock-overlay" id="lock-game1">🔒 Play to Unlock</span>
-          </div>
-          <div class="game-info"><h3>About Me</h3><div class="game-stats"><span>👍 98%</span> <span>👤 12.4K</span></div></div>
-        </div>
-        <div class="game-card" data-game="game2">
-          <div class="game-thumb" style="background: url('/alastair/images/g2.jpg') center/cover;">
-            <span class="lock-overlay" id="lock-game2">🔒 Play to Unlock</span>
-          </div>
-          <div class="game-info"><h3>Achievements</h3><div class="game-stats"><span>👍 95%</span> <span>👤 8.2K</span></div></div>
-        </div>
-        <div class="game-card" data-game="game3">
-          <div class="game-thumb" style="background: url('/alastair/images/g3.jpg') center/cover;">
-            <span class="lock-overlay" id="lock-game3">🔒 Play to Unlock</span>
-          </div>
-          <div class="game-info"><h3>Favorites</h3><div class="game-stats"><span>👍 89%</span> <span>👤 5.1K</span></div></div>
-        </div>
-        <div class="game-card" data-game="game4">
-          <div class="game-thumb" style="background: url('/alastair/images/g4.jpg') center/cover;">
-            <span class="lock-overlay" id="lock-game4">🔒 Play to Unlock</span>
-          </div>
-          <div class="game-info"><h3>Skills & Talents</h3><div class="game-stats"><span>👍 92%</span> <span>👤 10.5K</span></div></div>
-        </div>
-        <div class="game-card" data-game="game5">
-          <div class="game-thumb" style="background: url('/alastair/images/g5.jpg') center/cover;">
-            <span class="lock-overlay" id="lock-game5">🔒 Play to Unlock</span>
-          </div>
-          <div class="game-info"><h3>Fun Facts</h3><div class="game-stats"><span>👍 99%</span> <span>👤 15K</span></div></div>
-        </div>
-      </div>
+     <div class="game-grid">
+  <button type="button" class="game-card is-locked" data-game="game1">
+    <span class="game-thumb" style="--cover: url('/alastair/images/g1.png');">
+      <span class="lock-overlay">🔒 Play to Unlock</span>
+    </span>
+    <span class="game-name">About Me</span>
+  </button>
+
+  <button type="button" class="game-card is-locked" data-game="game2">
+    <span class="game-thumb" style="--cover: url('/alastair/images/g2.png');">
+      <span class="lock-overlay">🔒 Play to Unlock</span>
+    </span>
+    <span class="game-name">Achievements</span>
+  </button>
+
+  <button type="button" class="game-card is-locked" data-game="game3">
+    <span class="game-thumb" style="--cover: url('/alastair/images/g3.png');">
+      <span class="lock-overlay">🔒 Play to Unlock</span>
+    </span>
+    <span class="game-name">Favorites</span>
+  </button>
+
+  <button type="button" class="game-card is-locked" data-game="game4">
+    <span class="game-thumb" style="--cover: url('/alastair/images/g4.png');">
+      <span class="lock-overlay">🔒 Play to Unlock</span>
+    </span>
+    <span class="game-name">Skills &amp; Talents</span>
+  </button>
+
+  <button type="button" class="game-card is-locked" data-game="game5">
+    <span class="game-thumb" style="--cover: url('/alastair/images/g5.png');">
+      <span class="lock-overlay">🔒 Play to Unlock</span>
+    </span>
+    <span class="game-name">Fun Facts</span>
+  </button>
+</div>
     </section>
-    <div style="text-align: center;"><button id="unlock-all-btn" class="prof-btn">Skip / Unlock All (Prof Mode)</button></div>
+
+    <div style="text-align: center;">
+      <button id="unlock-all-btn" class="prof-btn">Skip / Unlock All (Prof Mode)</button>
+    </div>
   </main>
 
   <div id="countdown-overlay"><div id="countdown-text">3</div></div>
-  
+
   <div id="victory-overlay">
     <h1 id="victory-text">VICTORY!</h1>
-    <button id="victory-btn" onclick="closeVictory()">Collect Reward</button>
+    <button id="victory-btn" type="button">Collect Reward</button>
   </div>
 
-  <div id="minecraft-toast" class="toast hidden">
+  <div id="minecraft-toast" class="toast" role="status">
     <div class="toast-icon">🏆</div>
     <div class="toast-text">
       <span class="toast-title">Advancement Made!</span>
-      <span class="toast-desc" id="toast-desc">GOATED INFO 1/5 UNLOCKED</span>
+      <span class="toast-desc" id="toast-desc"></span>
     </div>
   </div>
 
@@ -126,7 +173,7 @@
         <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
           <div class="ttt-premium" id="ttt-board"></div>
         </div>
-        <h3 id="game3-status" style="color: #00A2FF; font-family: 'Press Start 2P'; font-size: 1.5rem; margin-top: 1rem;">Your Turn (X)</h3>
+        <h3 id="game3-status" style="color: #00a2ff; font-family: 'Press Start 2P'; font-size: 1.5rem; margin-top: 1rem;">Your Turn (X)</h3>
       </div>
     </div>
 
@@ -154,7 +201,7 @@
         <button class="prof-btn" style="width: 100%; margin-bottom: 10px;" data-win="game5">B) Another option</button>
       </div>
     </div>
-    
+
     <div id="content-about" class="modal content-page">
       <div class="modal-content">
         <button class="back-btn" data-close="true">← Back to Arcade</button>
@@ -166,7 +213,7 @@
         </ul>
       </div>
     </div>
-    
+
     <div id="content-achievements" class="modal content-page">
       <div class="modal-content">
         <button class="back-btn" data-close="true">← Back to Arcade</button>
@@ -174,7 +221,7 @@
         <p>Dean's Lister</p>
       </div>
     </div>
-    
+
     <div id="content-favorites" class="modal content-page">
       <div class="modal-content">
         <button class="back-btn" data-close="true">← Back to Arcade</button>
@@ -182,7 +229,7 @@
         <p>Food: Burger</p>
       </div>
     </div>
-    
+
     <div id="content-skills" class="modal content-page">
       <div class="modal-content">
         <button class="back-btn" data-close="true">← Back to Arcade</button>
@@ -190,7 +237,7 @@
         <p>Java, JS</p>
       </div>
     </div>
-    
+
     <div id="content-fun-facts" class="modal content-page">
       <div class="modal-content">
         <button class="back-btn" data-close="true">← Back to Arcade</button>
@@ -199,7 +246,5 @@
       </div>
     </div>
   </div>
-
-  <script src="/alastair/script.js"></script>
 </body>
 </html>
