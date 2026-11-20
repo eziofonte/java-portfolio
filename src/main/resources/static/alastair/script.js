@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const victoryButton = document.getElementById('victory-btn');
 
+victoryButton.addEventListener('click', closeVictory);
   const contentIds = {
     game1: 'content-about',
     game2: 'content-achievements',
@@ -53,27 +54,41 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', () => endGame(button.dataset.win, 'win'));
   });
 
-    setupGodmode(() => {
+     setupGodmode(() => {
     Object.keys(contentIds).forEach(unlockGame);
+  }, () => {
+    unlocked.clear();
+
+    document.querySelectorAll('.game-card[data-game]').forEach(card => {
+      card.classList.add('is-locked');
+      try {
+        localStorage.removeItem(`alastair:unlocked:${card.dataset.game}`);
+      } catch {}
+    });
   });
 
-  victoryButton.addEventListener('click', closeVictory);
-
-  function openGame(gameId) {
-    if (unlocked.has(gameId)) {
-      document.getElementById(contentIds[gameId]).style.display = 'flex';
+  // ✅ The missing function — this is what a game-card click should call
+  function openGame(gameId, forceReplay = false) {
+  // Already unlocked & not forced to replay → show the reward content directly.
+  if (!forceReplay && unlocked.has(gameId)) {
+    const contentId = contentIds[gameId];
+    const content = contentId && document.getElementById(contentId);
+    if (content) {
+      closeModal();                 // make sure no game modal is open
+      content.style.display = 'flex';
       return;
     }
-
-    startCountdown(() => {
-      document.getElementById(gameId).style.display = 'flex';
-      if (gameId === 'game1') initEchoSort();
-      if (gameId === 'game2') initEggHunt();
-      if (gameId === 'game3') initTicTacToe();
-      if (gameId === 'game4') initCatcher();
-    });
   }
 
+  // Otherwise, play the mini-game.
+  startCountdown(() => {
+    document.getElementById(gameId).style.display = 'flex';
+    if (gameId === 'game1') initEchoSort();
+    if (gameId === 'game2') initEggHunt();
+    if (gameId === 'game3') initTicTacToe();
+    if (gameId === 'game4') initCatcher();
+  });
+}
   function closeModal() {
     document.querySelectorAll('.modal').forEach(modal => {
       modal.style.display = 'none';
@@ -162,23 +177,24 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.style.display = 'flex';
   }
 
-  function closeVictory() {
+ function closeVictory() {
   const overlay = document.getElementById('victory-overlay');
   const gameId = overlay.dataset.currentGame;
+  const outcome = overlay.dataset.outcome;
   overlay.style.display = 'none';
 
-  if (overlay.dataset.outcome !== 'win') {
-    openGame(gameId);
+  if (outcome !== 'win') {
+    openGame(gameId, true);        // replay on loss
     return;
   }
 
   unlockGame(gameId);
-
   try {
     localStorage.setItem(`alastair:unlocked:${gameId}`, '1');
   } catch {}
 
   showToast();
+  openGame(gameId);                // ✅ now shows the reward content
 }
 
   /* Game 1: Echo Echo Sort */
@@ -456,15 +472,15 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Alastair Nichole A. Crucillo',
       birthday: 'September 18, 2005',
       age: '21',
-      height: 174,
-      weight: 70,
+      height: 175,
+      weight: 72,
       personality: 'Matikas lang',
      photo: 'about-alastair.png'
     },
     {
       name: 'Dwight Ramos',
       birthday: 'September 2, 1998',
-      age: '28 (as of November 2026)',
+      age: '28',
       height: 193,
       weight: 95,
       personality: 'Chill, humble, soft-spoken',
@@ -727,45 +743,48 @@ function createOtpInput(container, { length = 6, onChange, onComplete, validate 
   };
 }
 
-function setupGodmode(unlockAll) {
+function setupGodmode(unlockAll, resetAllLocks) {
   const button = document.getElementById('unlock-all-btn');
   const dialog = document.getElementById('godmode-dialog');
+  const actions = document.getElementById('godmode-actions');
+  const unlockButton = document.getElementById('godmode-unlock');
+  const resetButton = document.getElementById('godmode-reset');
   const demoActions = document.getElementById('otp-demo-actions');
   const demo = new URLSearchParams(location.search).get('otp-demo') === '1';
   const expected = demo ? '123456' : '061916';
 
-  let unlockTimer;
-
   const otp = createOtpInput(document.getElementById('godmode-otp'), {
     length: 6,
-    validate(code) {
-      const match = code === expected;
-
-      if (match && !demo) {
-        unlockTimer = setTimeout(() => {
-          if (!dialog.open) return;
-          unlockAll();
-          dialog.close();
-        }, 500);
-      }
-
-      return match;
-    }
+   validate(code) {
+  const verified = code === expected;
+  if (verified) {                 // ✅ removed the !demo check
+    actions.hidden = false;
+    unlockButton.focus();
+  }
+  return verified;
+}
   });
 
   button.addEventListener('click', () => {
-    clearTimeout(unlockTimer);
+    actions.hidden = true;
     otp.reset();
     dialog.showModal();
     otp.focus();
   });
 
-  dialog.addEventListener('close', () => clearTimeout(unlockTimer));
+  unlockButton.addEventListener('click', () => {
+    unlockAll();
+    dialog.close();
+  });
+
+  resetButton.addEventListener('click', () => {
+    resetAllLocks();
+    dialog.close();
+  });
 
   if (demo) {
     demoActions.hidden = false;
     document.getElementById('godmode-hint').textContent = 'Demo PIN: 123456';
-
     demoActions.querySelector('[data-demo="valid"]').onclick = () => otp.setValue('123456');
     demoActions.querySelector('[data-demo="invalid"]').onclick = () => otp.setValue('000000');
     demoActions.querySelector('[data-demo="clear"]').onclick = () => {
