@@ -197,7 +197,7 @@ footer a { color: var(--crystal); }
 .hob strong { color: #fff; }
 .hob span { color: #9a9185; font-size: .85rem; }
 @media (max-width: 820px) { .bento { grid-template-columns: 1fr; } }
-.crt-logo { display: block; width: 100%; max-width: 330px; height: auto; margin: 0;
+.crt-logo { display: block; width: 100%; max-width: 230px; height: auto; margin: 0;
   filter: drop-shadow(2px 0 0 #050b26) drop-shadow(-2px 0 0 #050b26) drop-shadow(0 2px 0 #050b26) drop-shadow(0 -2px 0 #050b26) drop-shadow(0 6px 10px rgba(0,0,0,.45)); }
 
 /* video channel on the contact TV */

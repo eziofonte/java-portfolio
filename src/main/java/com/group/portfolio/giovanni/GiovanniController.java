@@ -80,8 +80,8 @@ public class GiovanniController {
         // ===== ACHIEVEMENTS =====
         m.addAttribute("awards", List.of(
             new Award("2024", "Dean's Lister", "Kept the grades pure: 99.1% pure."),
-            new Award("2023", "Hackathon Finalist", "Shipped a working prototype in 24 hours."),
-            new Award("2022", "Best in Programming", "Compiled on the first try. Allegedly."),
+            new Award("2023", "NC II Web Development", "TESDA certificate holder"),
+            new Award("2022", "With Honors", "Aciheved a GWA of 92"),
             new Award("2021", "Academic Excellence Award", "Consistent honor student.")));
 
         // ===== FAVORITES =====
@@ -89,8 +89,8 @@ public class GiovanniController {
             new Favorite("Fd", "Favorite food", "Sinigang"),
             new Favorite("Cl", "Favorite color", "Crystal blue"),
             new Favorite("Mv", "Favorite movie", "El Camino"),
-            new Favorite("Sg", "Favorite song", "Your favorite song"),
-            new Favorite("Ar", "Favorite artist", "Your favorite artist"),
+            new Favorite("Sg", "Favorite song", "Origimal"),
+            new Favorite("Ar", "Favorite artist", "Uncle Dags"),
             new Favorite("Pl", "Favorite place", "Albuquerque (someday)")));
 
         // ===== SKILLS AND TALENTS =====
@@ -122,7 +122,7 @@ public class GiovanniController {
             "I'm a motorcycle enthusiast who frequently rides to Los Baños to visit my girlfriend at UPLB.",
             "Survived a near-drowning and a two-day coma as a kid, so I like to think I'm pretty hard to take down. (masamang damo yan boi)",
             "Before writing Java code, I was a certified comp shop kid—once stayed so long playing at the computeran that I got locked out of our house.    ",
-            "I have started more side projects than I can count, and finished a surprising number.",
+            "In 2023, I was involved in a major motorcycle accident",
             "I will always watch the pilot episode of any show before deciding if it is good."));
         return "giovanni/index";
     }
