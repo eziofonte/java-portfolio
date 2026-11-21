@@ -1656,3 +1656,94 @@ body.dark-mode .about-scene .about-cord {
 @media (max-width: 900px) {
   .sit-board-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Polish: smooth opens, hover/press feedback, victory flair, sound toggle ===== */
+html { scroll-behavior: smooth; }
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+}
+
+/* Windows and overlays fade in instead of snapping on */
+.modal { animation: modalFade .25s ease-out; }
+.content-page .modal-content { animation: popIn .35s cubic-bezier(.2, .8, .2, 1); }
+#countdown-overlay, #victory-overlay { animation: modalFade .2s ease-out; }
+
+@keyframes modalFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Countdown numbers pop each time they change (JS restarts this animation) */
+#countdown-text { animation: countPop .45s cubic-bezier(.2, 1.5, .4, 1); }
+
+@keyframes countPop {
+  from { opacity: 0; transform: scale(.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* VICTORY! / TOTA TOLA! slam in, losses shake */
+#victory-text { animation: victoryPop .6s cubic-bezier(.2, 1.6, .4, 1) both; }
+#victory-text.lose-text { animation: loseShake .5s ease-out both; }
+
+@keyframes victoryPop {
+  0% { opacity: 0; transform: scale(.3) rotate(-6deg); }
+  70% { transform: scale(1.12) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes loseShake {
+  0% { opacity: 0; transform: translateY(-20px); }
+  30% { opacity: 1; transform: translateX(-10px); }
+  50% { transform: translateX(8px); }
+  70% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Cards and buttons: lift on hover, squish on press */
+.game-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28), 0 0 0 1px var(--accent-blue);
+}
+
+.game-card:active { transform: translateY(-3px) scale(.99); }
+
+button { transition: transform .15s ease, background-color .2s ease, box-shadow .2s ease; }
+button:not(:disabled):active { transform: scale(.96); }
+
+.prof-btn, .theme-toggle { transition: background-color .2s ease, color .2s ease, transform .15s ease; }
+.prof-btn:hover, .theme-toggle:hover { transform: translateY(-2px); }
+
+#victory-btn { transition: transform .15s ease, box-shadow .2s ease, filter .2s ease; }
+#victory-btn:hover { filter: brightness(1.12); }
+
+/* Sound on/off button (added by sfx.js) */
+.sound-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1500;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-main);
+  background: var(--bg-surface);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.sound-toggle:hover { transform: translateY(-2px) scale(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .modal, .content-page .modal-content, #countdown-overlay, #victory-overlay,
+  #countdown-text, #victory-text, #victory-text.lose-text { animation: none !important; }
+  .game-card, button, .prof-btn, .theme-toggle { transition: none !important; }
+  .game-card:hover, .prof-btn:hover, .theme-toggle:hover, .sound-toggle:hover { transform: none; }
+}

@@ -65,7 +65,7 @@
 
       <header class="achievement-header">
         <h2 id="achievements-title">Achievements</h2>
-        <span id="achievement-count" role="status">11 milestones</span>
+        <span id="achievement-count" role="status">10 milestones</span>
       </header>
 
       <div class="achievement-filters" role="radiogroup" aria-label="Filter achievements">
@@ -171,6 +171,13 @@
         <button type="button" id="playlist-next" aria-label="Next track">▶▶</button>
       </div>
     </div>
+  </div>
+
+  <div class="playlist-progress-row">
+    <span id="playlist-time-current">0:00</span>
+    <input type="range" id="playlist-progress" min="0" max="100" step="0.1" value="0"
+           aria-label="Song progress">
+    <span id="playlist-time-total">0:00</span>
   </div>
 
   <audio id="favorite-audio" preload="none" hidden></audio>
