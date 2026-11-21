@@ -1073,7 +1073,7 @@
       made with ♡ by martha issabelle
     </span>
 
-    <a href="#/cards">
+    <a href="#/cards" id="footer-card-link" hidden>
       choose another card ↑
     </a>
 
@@ -1108,6 +1108,8 @@
       if (!allowedPages.includes(page)) {
         page = "home";
       }
+
+      document.getElementById("footer-card-link").hidden = page === "home";
 
       pages.forEach((section) => {
 
