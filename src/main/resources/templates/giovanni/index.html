@@ -131,13 +131,10 @@
 
 <!-- SKILLS -->
 <section id="skills" class="wrap alt">
-  <div class="sec-head"><h2>Skills and Talents</h2><span class="ch">CH-05 PRODUCT PURITY</span></div>
-  <div class="screen-card skills">
-    <div class="skill" th:each="s : ${skills}">
-      <div class="skill-top"><span th:text="${s.name}"></span><span th:text="${s.purity} + '% pure'"></span></div>
-      <div class="bar"><i th:style="'width:' + ${s.purity} + '%'"></i></div>
-    </div>
-  </div>
+  <div class="sec-head"><h2>Skills and Talents</h2><span class="ch">CH-05 THE FORMULA</span></div>
+  <ul class="skill-list">
+    <li th:each="s : ${skills}" th:text="${s}"></li>
+  </ul>
 </section>
 
 <!-- WORKS AND PROCESS -->
@@ -153,6 +150,7 @@
         <span class="work-tag" th:text="${w.tag}"></span>
         <h3 th:text="${w.title}"></h3>
         <p th:text="${w.detail}"></p>
+        <ul class="work-features" th:if="${not #lists.isEmpty(w.features)}"><li th:each="f : ${w.features}" th:text="${f}"></li></ul>
         <a class="work-link" th:if="${not #strings.isEmpty(w.link)}" th:href="${w.link}" target="_blank" rel="noopener">View project &#8599;</a>
       </div>
     </article>
