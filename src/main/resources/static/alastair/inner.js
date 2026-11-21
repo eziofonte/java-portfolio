@@ -2,72 +2,114 @@ document.addEventListener('DOMContentLoaded', () => {
   const page = document.getElementById('content-favorites');
   if (!page) return;
 
-    // ---- Curry <-> LeBron switch ----
+  // ---- Curry <-> LeBron switch ----
   const playerCard = document.getElementById('favorite-player');
   const playerName = document.getElementById('favorite-player-name');
+
   const players = {
-    curry:  { name: 'Stephen Curry', image: '/alastair/images/curry.jpg' },
-    lebron: { name: 'LeBron James',  image: '/alastair/images/lebron.jpg' }
+    curry: {
+      name: 'Stephen Curry',
+      image: '/alastair/images/curry.jpg'
+    },
+    lebron: {
+      name: 'LeBron James',
+      image: '/alastair/images/lebron.jpg'
+    }
   };
 
   if (playerCard && playerName) {
     playerCard.addEventListener('click', () => {
-      const next = playerCard.dataset.player === 'curry' ? 'lebron' : 'curry';
+      const next =
+        playerCard.dataset.player === 'curry' ? 'lebron' : 'curry';
+
       playerCard.dataset.player = next;
-      playerCard.style.setProperty('--favorite-image', `url('${players[next].image}')`);
+
+      playerCard.style.setProperty(
+        '--favorite-image',
+        `url('${players[next].image}')`
+      );
+
       playerName.textContent = players[next].name;
     });
   }
 
-    // ---- Slingshot basketball ----
+  // ---- Slingshot basketball ----
   const canvas = document.getElementById('favorite-court-canvas');
   const ctx = canvas.getContext('2d');
   const result = document.getElementById('favorite-shot-result');
   const score = document.getElementById('favorite-shot-score');
 
-  const W = canvas.width, H = canvas.height;
+  const W = canvas.width;
+  const H = canvas.height;
+
   const FLOOR = H - 20;
   const R = 12;
   const START = { x: 80, y: 150 };
   const GRAVITY = 700;
-  const POWER = 9;                 // launch speed per pixel pulled
+  const POWER = 9;
   const MAX_PULL = 75;
-  const DT = 1 / 120;              // fixed physics step
+  const DT = 1 / 120;
 
-  const RIM_Y = 120, RIM_L = 372, RIM_R = 424;
-  const BOARD_X = 424, BOARD_TOP = 55, BOARD_BOTTOM = 140;
+  const RIM_Y = 120;
+  const RIM_L = 372;
+  const RIM_R = 424;
 
- const ball = { x: START.x, y: START.y, vx: 0, vy: 0 };
-let state = 'ready';
-let made = 0, attempts = 0;
+  const BOARD_X = 424;
+  const BOARD_TOP = 55;
+  const BOARD_BOTTOM = 140;
 
-let shotStreak = 0;
-let goldenBallUnlocked = localStorage.getItem('goldenBallUnlocked') === 'true';
+  const ball = {
+    x: START.x,
+    y: START.y,
+    vx: 0,
+    vy: 0
+  };
 
-let scored = false, touchedRim = false, bounces = 0, flightTime = 0;
-  let lastTime = 0, acc = 0;
+  let state = 'ready';
+  let made = 0;
+  let attempts = 0;
+
+  let shotStreak = 0;
+  let goldenBallUnlocked =
+    localStorage.getItem('goldenBallUnlocked') === 'true';
+
+  let scored = false;
+  let touchedRim = false;
+  let bounces = 0;
+  let flightTime = 0;
+  let lastTime = 0;
+  let acc = 0;
 
   const setScore = () => {
-  score.textContent = `${made} of ${attempts} made`;
+    score.textContent = `${made} of ${attempts} made`;
 
-  if (goldenBallUnlocked) {
-    score.textContent += ' | Golden Ball Unlocked';
-  }
-};
+    if (goldenBallUnlocked) {
+      score.textContent += ' | Golden Ball Unlocked';
+    }
+  };
 
-  // ---------- drawing ----------
+  // ---------- Drawing ----------
+
   function drawHoop() {
     ctx.fillStyle = '#ffffff1f';
     ctx.fillRect(0, FLOOR, W, 4);
 
     ctx.fillStyle = '#f5d5a5';
-    ctx.fillRect(BOARD_X, BOARD_TOP, 6, BOARD_BOTTOM - BOARD_TOP);
+    ctx.fillRect(
+      BOARD_X,
+      BOARD_TOP,
+      6,
+      BOARD_BOTTOM - BOARD_TOP
+    );
 
     ctx.strokeStyle = '#ffffff66';
     ctx.lineWidth = 1.5;
+
     for (let i = 0; i <= 4; i++) {
       const topX = RIM_L + (i * (RIM_R - RIM_L)) / 4;
-      const botX = RIM_L + 8 + (i * (RIM_R - RIM_L - 16)) / 4;
+      const botX =
+        RIM_L + 8 + (i * (RIM_R - RIM_L - 16)) / 4;
+
       ctx.beginPath();
       ctx.moveTo(topX, RIM_Y + 2);
       ctx.lineTo(botX, RIM_Y + 34);
@@ -84,16 +126,25 @@ let scored = false, touchedRim = false, bounces = 0, flightTime = 0;
   }
 
   function drawBall() {
-   ctx.fillStyle = goldenBallUnlocked ? '#ffd700' : '#ff8a2b';
-ctx.strokeStyle = goldenBallUnlocked ? '#8a6500' : '#5a2a0a';
+    ctx.fillStyle = goldenBallUnlocked
+      ? '#ffd700'
+      : '#ff8a2b';
+
+    ctx.strokeStyle = goldenBallUnlocked
+      ? '#8a6500'
+      : '#5a2a0a';
+
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.arc(ball.x, ball.y, R, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+
     ctx.beginPath();
-    ctx.moveTo(ball.x - R, ball.y); ctx.lineTo(ball.x + R, ball.y);
-    ctx.moveTo(ball.x, ball.y - R); ctx.lineTo(ball.x, ball.y + R);
+    ctx.moveTo(ball.x - R, ball.y);
+    ctx.lineTo(ball.x + R, ball.y);
+    ctx.moveTo(ball.x, ball.y - R);
+    ctx.lineTo(ball.x, ball.y + R);
     ctx.stroke();
   }
 
@@ -105,14 +156,23 @@ ctx.strokeStyle = goldenBallUnlocked ? '#8a6500' : '#5a2a0a';
     ctx.lineTo(ball.x, ball.y);
     ctx.stroke();
 
-    // predicted path uses the exact same physics as the real shot
-    const p = { x: ball.x, y: ball.y,
-                vx: (START.x - ball.x) * POWER,
-                vy: (START.y - ball.y) * POWER };
+    // The predicted path uses the same physics as the real shot.
+    const p = {
+      x: ball.x,
+      y: ball.y,
+      vx: (START.x - ball.x) * POWER,
+      vy: (START.y - ball.y) * POWER
+    };
+
     ctx.fillStyle = '#ffffffcc';
+
     for (let i = 0; i < 22; i++) {
-      for (let s = 0; s < 6; s++) integrate(p, DT);
+      for (let s = 0; s < 6; s++) {
+        integrate(p, DT);
+      }
+
       if (p.y > FLOOR - R) break;
+
       ctx.beginPath();
       ctx.arc(p.x, p.y, 2.6, 0, Math.PI * 2);
       ctx.fill();
@@ -122,11 +182,16 @@ ctx.strokeStyle = goldenBallUnlocked ? '#8a6500' : '#5a2a0a';
   function draw() {
     ctx.clearRect(0, 0, W, H);
     drawHoop();
-    if (state === 'aiming') drawAim();
+
+    if (state === 'aiming') {
+      drawAim();
+    }
+
     drawBall();
   }
 
-  // ---------- physics ----------
+  // ---------- Physics ----------
+
   function integrate(b, dt) {
     b.vy += GRAVITY * dt;
     b.x += b.vx * dt;
@@ -134,13 +199,20 @@ ctx.strokeStyle = goldenBallUnlocked ? '#8a6500' : '#5a2a0a';
   }
 
   function bounceOffPoint(px, py) {
-    const dx = ball.x - px, dy = ball.y - py;
+    const dx = ball.x - px;
+    const dy = ball.y - py;
     const dist = Math.hypot(dx, dy);
+
     if (dist >= R + 2 || dist === 0) return;
-    const nx = dx / dist, ny = dy / dist;
+
+    const nx = dx / dist;
+    const ny = dy / dist;
+
     ball.x = px + nx * (R + 2);
     ball.y = py + ny * (R + 2);
+
     const dot = ball.vx * nx + ball.vy * ny;
+
     if (dot < 0) {
       ball.vx -= 1.5 * dot * nx;
       ball.vy -= 1.5 * dot * ny;
@@ -150,19 +222,25 @@ ctx.strokeStyle = goldenBallUnlocked ? '#8a6500' : '#5a2a0a';
 
   function step(dt) {
     const prevY = ball.y;
+
     integrate(ball, dt);
 
     bounceOffPoint(RIM_L, RIM_Y);
     bounceOffPoint(RIM_R, RIM_Y);
 
-    // backboard
-    if (ball.x + R > BOARD_X && ball.y > BOARD_TOP && ball.y < BOARD_BOTTOM && ball.vx > 0) {
+    // Backboard
+    if (
+      ball.x + R > BOARD_X &&
+      ball.y > BOARD_TOP &&
+      ball.y < BOARD_BOTTOM &&
+      ball.vx > 0
+    ) {
       ball.x = BOARD_X - R;
       ball.vx *= -0.55;
       touchedRim = true;
     }
 
-    // floor: only bounce when actually falling into it
+    // Floor
     if (ball.y + R > FLOOR && ball.vy > 0) {
       ball.y = FLOOR - R;
       ball.vy *= -0.5;
@@ -170,106 +248,121 @@ ctx.strokeStyle = goldenBallUnlocked ? '#8a6500' : '#5a2a0a';
       bounces++;
     }
 
-    // basket: center crosses rim height going down, between the rim edges
-    if (!scored && prevY < RIM_Y && ball.y >= RIM_Y && ball.vy > 0 &&
-        ball.x > RIM_L + 2 && ball.x < RIM_R - 2) {
+    // Basket
+    if (
+      !scored &&
+      prevY < RIM_Y &&
+      ball.y >= RIM_Y &&
+      ball.vy > 0 &&
+      ball.x > RIM_L + 2 &&
+      ball.x < RIM_R - 2
+    ) {
       scored = true;
     }
   }
-// ---------- ball controls and animation ----------
-function resetBall() {
-  ball.x = START.x;
-  ball.y = START.y;
-  ball.vx = 0;
-  ball.vy = 0;
 
-  state = 'ready';
-  scored = false;
-  touchedRim = false;
-  bounces = 0;
-  flightTime = 0;
-  acc = 0;
+  // ---------- Ball controls and animation ----------
 
-  draw();
-}
+  function resetBall() {
+    ball.x = START.x;
+    ball.y = START.y;
+    ball.vx = 0;
+    ball.vy = 0;
 
-function launch() {
-  ball.vx = (START.x - ball.x) * POWER;
-  ball.vy = (START.y - ball.y) * POWER;
+    state = 'ready';
+    scored = false;
+    touchedRim = false;
+    bounces = 0;
+    flightTime = 0;
+    acc = 0;
 
-  attempts++;
-  scored = false;
-  touchedRim = false;
-  bounces = 0;
-  flightTime = 0;
-  acc = 0;
-
-  state = 'flying';
-  result.textContent = 'Shot taken!';
-
-  lastTime = performance.now();
-  requestAnimationFrame(loop);
-}
-
-function loop(now) {
-  if (state !== 'flying') return;
-
-  const elapsed = Math.min((now - lastTime) / 1000, 0.05);
-  lastTime = now;
-  acc += elapsed;
-  flightTime += elapsed;
-
-  while (acc >= DT) {
-    step(DT);
-    acc -= DT;
+    draw();
   }
 
-  draw();
+  function launch() {
+    ball.vx = (START.x - ball.x) * POWER;
+    ball.vy = (START.y - ball.y) * POWER;
 
-  const outOfCourt =
-    ball.x > W + R ||
-    ball.x < -R ||
-    ball.y > H + R;
+    attempts++;
+    scored = false;
+    touchedRim = false;
+    bounces = 0;
+    flightTime = 0;
+    acc = 0;
 
-  const shotFinished =
-    outOfCourt ||
-    (bounces >= 2 && Math.abs(ball.vy) < 80) ||
-    flightTime > 5;
+    state = 'flying';
+    result.textContent = 'Shot taken!';
 
-  if (shotFinished) {
-    finishShot();
-    return;
+    lastTime = performance.now();
+    requestAnimationFrame(loop);
   }
 
-  requestAnimationFrame(loop);
-}
-  // ---------- shot flow ----------
-  function finishShot() {
-  state = 'resetting';
-  if (scored) {
-    made++;
-    shotStreak++;
+  function loop(now) {
+    if (state !== 'flying') return;
 
-    result.textContent = touchedRim
-      ? 'Bucket! Rattled in.'
-      : 'Swish! Nothing but net.';
+    const elapsed = Math.min(
+      (now - lastTime) / 1000,
+      0.05
+    );
 
-    // Secret Easter egg: 3 consecutive shots
-    if (shotStreak >= 3 && !goldenBallUnlocked) {
-      goldenBallUnlocked = true;
-      localStorage.setItem('goldenBallUnlocked', 'true');
+    lastTime = now;
+    acc += elapsed;
+    flightTime += elapsed;
+
+    while (acc >= DT) {
+      step(DT);
+      acc -= DT;
     }
 
-  } else {
-    shotStreak = 0;
-    result.textContent = 'Missed. Pull back and try again.';
+    draw();
+
+    const outOfCourt =
+      ball.x > W + R ||
+      ball.x < -R ||
+      ball.y > H + R;
+
+    const shotFinished =
+      outOfCourt ||
+      (bounces >= 2 && Math.abs(ball.vy) < 80) ||
+      flightTime > 5;
+
+    if (shotFinished) {
+      finishShot();
+      return;
+    }
+
+    requestAnimationFrame(loop);
   }
 
-  setScore();
-  setTimeout(resetBall, 800);
-}
+  // ---------- Shot flow ----------
 
-  // ---------- input (press anywhere on the court and drag) ----------
+  function finishShot() {
+    state = 'resetting';
+
+    if (scored) {
+      made++;
+      shotStreak++;
+
+      result.textContent = touchedRim
+        ? 'Bucket! Rattled in.'
+        : 'Swish! Nothing but net.';
+
+      // Secret Easter egg: 3 consecutive shots
+      if (shotStreak >= 3 && !goldenBallUnlocked) {
+        goldenBallUnlocked = true;
+        localStorage.setItem('goldenBallUnlocked', 'true');
+      }
+    } else {
+      shotStreak = 0;
+      result.textContent = 'Missed. Pull back and try again.';
+    }
+
+    setScore();
+    setTimeout(resetBall, 800);
+  }
+
+  // ---------- Input ----------
+
   function pointerPos(e) {
     const rect = canvas.getBoundingClientRect();
 
@@ -324,7 +417,6 @@ function loop(now) {
 
     e.preventDefault();
 
-    const p = pointerPos(e);
     aimTo(e);
 
     const pulled = Math.hypot(
@@ -333,7 +425,9 @@ function loop(now) {
     );
 
     if (pulled < 10) {
-      result.textContent = 'Pull the ball back and let go to shoot.';
+      result.textContent =
+        'Pull the ball back and let go to shoot.';
+
       resetBall();
       return;
     }
@@ -344,29 +438,61 @@ function loop(now) {
   canvas.addEventListener('pointerup', release);
   canvas.addEventListener('pointercancel', release);
 
-
   setScore();
   draw();
-  });
+});
 
-  document.addEventListener('DOMContentLoaded', () => {
+
+// ============================================================
+// FAVORITES PLAYLIST
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', () => {
   const audio = document.getElementById('favorite-audio');
   const play = document.getElementById('playlist-play');
+
   if (!audio || !play) return;
 
   const tracks = [
-    { file: 'untitled.mp3', title: 'Untitled', artist: 'Rex Orange County' },
-    { file: 'jimmy-cooks.mp3', title: 'Jimmy Cooks', artist: 'Drake' },
-    { file: 'chasing-cars.mp3', title: 'Chasing Cars', artist: 'Snow Patrol' },
-    { file: 'solo-mission.mp3', title: 'Solo Mission', artist: 'Waiian' },
-    { file: '99-percent-swag.mp3', title: '99% Swag', artist: 'Nio' }
+    {
+      file: 'untitled.mp3',
+      title: 'Untitled',
+      artist: 'Rex Orange County'
+    },
+    {
+      file: 'jimmy-cooks.mp3',
+      title: 'Jimmy Cooks',
+      artist: 'Drake'
+    },
+    {
+      file: 'chasing-cars.mp3',
+      title: 'Chasing Cars',
+      artist: 'Snow Patrol'
+    },
+    {
+      file: 'solo-mission.mp3',
+      title: 'Solo Mission',
+      artist: 'Waiian'
+    },
+    {
+      file: '99-percent-swag.mp3',
+      title: '99% Swag',
+      artist: 'Nio'
+    }
   ];
 
   const list = document.getElementById('favorite-track-list');
   const title = document.getElementById('playlist-title');
   const artist = document.getElementById('playlist-artist');
-  const cover = audio.closest('.favorite-playlist').querySelector('.playlist-cover');
-  const status = document.getElementById('favorite-track-status');
+
+  const cover = audio
+    .closest('.favorite-playlist')
+    .querySelector('.playlist-cover');
+
+  const status = document.getElementById(
+    'favorite-track-status'
+  );
+
   let current = 0;
 
   function playTrack() {
@@ -374,8 +500,12 @@ function loop(now) {
     status.textContent = '';
 
     audio.play().catch(error => {
-      if (error.name !== 'AbortError' && requested === current) {
-        status.textContent = `Couldn’t play ${tracks[current].title}. Check the audio filename.`;
+      if (
+        error.name !== 'AbortError' &&
+        requested === current
+      ) {
+        status.textContent =
+          `Couldn’t play ${tracks[current].title}. Check the audio filename.`;
       }
     });
   }
@@ -386,10 +516,14 @@ function loop(now) {
 
     button.type = 'button';
     button.textContent = `${track.title} — ${track.artist}`;
-    button.addEventListener('click', () => selectTrack(index, true));
+
+    button.addEventListener('click', () => {
+      selectTrack(index, true);
+    });
 
     item.append(button);
     list.append(item);
+
     return button;
   });
 
@@ -404,12 +538,24 @@ function loop(now) {
     current = next;
     title.textContent = track.title;
     artist.textContent = track.artist;
-    const coverFile = track.file.replace(/\.mp3$/i, '-cover.jpg');
-cover.style.setProperty('--playlist-cover', `url("/alastair/images/${coverFile}")`);
+
+    const coverFile = track.file.replace(
+      /\.mp3$/i,
+      '-cover.jpg'
+    );
+
+    cover.style.setProperty(
+      '--playlist-cover',
+      `url("/alastair/images/${coverFile}")`
+    );
+
     status.textContent = '';
 
     trackButtons.forEach((button, position) => {
-      button.setAttribute('aria-current', String(position === current));
+      button.setAttribute(
+        'aria-current',
+        String(position === current)
+      );
     });
 
     if (autoplay) playTrack();
@@ -417,43 +563,73 @@ cover.style.setProperty('--playlist-cover', `url("/alastair/images/${coverFile}"
 
   function updatePlayButton() {
     play.textContent = audio.paused ? '▶' : 'Ⅱ';
-    play.setAttribute('aria-label', audio.paused ? 'Play' : 'Pause');
+
+    play.setAttribute(
+      'aria-label',
+      audio.paused ? 'Play' : 'Pause'
+    );
   }
 
   play.addEventListener('click', () => {
-    if (audio.paused) playTrack();
-    else audio.pause();
+    if (audio.paused) {
+      playTrack();
+    } else {
+      audio.pause();
+    }
   });
 
-  document.getElementById('playlist-previous').addEventListener('click', () => {
-    selectTrack(current - 1, !audio.paused);
-  });
+  document
+    .getElementById('playlist-previous')
+    .addEventListener('click', () => {
+      selectTrack(current - 1, !audio.paused);
+    });
 
-  document.getElementById('playlist-next').addEventListener('click', () => {
-    selectTrack(current + 1, !audio.paused);
-  });
+  document
+    .getElementById('playlist-next')
+    .addEventListener('click', () => {
+      selectTrack(current + 1, !audio.paused);
+    });
 
   audio.addEventListener('play', updatePlayButton);
   audio.addEventListener('pause', updatePlayButton);
 
   audio.addEventListener('ended', () => {
-    if (current + 1 < tracks.length) selectTrack(current + 1, true);
-    else updatePlayButton();
+    if (current + 1 < tracks.length) {
+      selectTrack(current + 1, true);
+    } else {
+      updatePlayButton();
+    }
   });
 
-  document.querySelector('#content-favorites .back-btn').addEventListener('click', () => {
-    audio.pause();
-  });
+  document
+    .querySelector('#content-favorites .back-btn')
+    .addEventListener('click', () => {
+      audio.pause();
+    });
 
   selectTrack(0, false);
 });
+
+
+// ============================================================
+// SKILLS FILTER
+// ============================================================
+
 document.addEventListener('DOMContentLoaded', () => {
   const skillsPage = document.getElementById('content-skills');
   if (!skillsPage) return;
 
-  const tabs = Array.from(skillsPage.querySelectorAll('.val-tab'));
-  const domainCards = Array.from(skillsPage.querySelectorAll('.val-agent-card'));
-  const rows = Array.from(skillsPage.querySelectorAll('.val-row'));
+  const tabs = Array.from(
+    skillsPage.querySelectorAll('.val-tab')
+  );
+
+  const domainCards = Array.from(
+    skillsPage.querySelectorAll('.val-agent-card')
+  );
+
+  const rows = Array.from(
+    skillsPage.querySelectorAll('.val-row')
+  );
 
   const detailCode = document.getElementById('val-detail-code');
   const detailDomain = document.getElementById('val-detail-domain');
@@ -463,47 +639,86 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function selectRow(row) {
     if (!row) return;
-    rows.forEach(item => item.classList.toggle('is-selected', item === row));
+
+    rows.forEach(item => {
+      item.classList.toggle('is-selected', item === row);
+    });
   }
 
   function filterSkills(category) {
     tabs.forEach(tab => {
       const active = tab.dataset.valFilter === category;
+
       tab.classList.toggle('is-active', active);
       tab.setAttribute('aria-selected', String(active));
     });
 
     domainCards.forEach(card => {
-      card.classList.toggle('is-active', card.dataset.valFilter === category);
+      card.classList.toggle(
+        'is-active',
+        card.dataset.valFilter === category
+      );
     });
 
     let firstVisible = null;
+
     rows.forEach(row => {
-      const match = category === 'all' || row.dataset.category === category;
+      const match =
+        category === 'all' ||
+        row.dataset.category === category;
+
       row.hidden = !match;
-      if (match && !firstVisible) firstVisible = row;
+
+      if (match && !firstVisible) {
+        firstVisible = row;
+      }
     });
 
-    const current = skillsPage.querySelector('.val-row.is-selected');
-    if (!current || current.hidden) selectRow(firstVisible);
+    const current = skillsPage.querySelector(
+      '.val-row.is-selected'
+    );
+
+    if (!current || current.hidden) {
+      selectRow(firstVisible);
+    }
   }
 
-  tabs.forEach(tab => tab.addEventListener('click', () => filterSkills(tab.dataset.valFilter)));
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterSkills(tab.dataset.valFilter);
+    });
+  });
+
   domainCards.forEach(card => {
     card.addEventListener('click', () => {
       const target = card.dataset.valFilter;
-      filterSkills(card.classList.contains('is-active') ? 'all' : target);
+
+      filterSkills(
+        card.classList.contains('is-active')
+          ? 'all'
+          : target
+      );
     });
   });
+
   rows.forEach(row => {
-    row.querySelector('.val-row-btn')?.addEventListener('click', () => selectRow(row));
+    row.querySelector('.val-row-btn')
+      ?.addEventListener('click', () => selectRow(row));
   });
 
   filterSkills('all');
 });
 
+
+// ============================================================
+// FUN FACTS
+// ============================================================
+
 document.addEventListener('DOMContentLoaded', () => {
-  const funFactsPage = document.getElementById('content-fun-facts');
+  const funFactsPage = document.getElementById(
+    'content-fun-facts'
+  );
+
   if (!funFactsPage) return;
 
   const episodes = [
@@ -551,38 +766,87 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  const cards = Array.from(funFactsPage.querySelectorAll('.af-episode-card'));
-  const featureImage = funFactsPage.querySelector('#af-feature-image');
-  const featureTitle = funFactsPage.querySelector('#af-feature-title');
-  const featureDesc = funFactsPage.querySelector('#af-feature-desc');
-  const featureEpisode = funFactsPage.querySelector('#af-feature-episode');
-  const featureTag = funFactsPage.querySelector('#af-feature-tag');
+  const cards = Array.from(
+    funFactsPage.querySelectorAll('.af-episode-card')
+  );
 
-  const watchButton = funFactsPage.querySelector('#af-watch-btn');
-  const nextButton = funFactsPage.querySelector('#af-next-btn');
+  const featureImage = funFactsPage.querySelector(
+    '#af-feature-image'
+  );
 
-  const imageModal = funFactsPage.querySelector('#af-image-modal');
-  const modalImage = funFactsPage.querySelector('#af-modal-image');
-  const modalTitle = funFactsPage.querySelector('#af-modal-title');
-  const modalDesc = funFactsPage.querySelector('#af-modal-desc');
-  const modalEpisode = funFactsPage.querySelector('#af-modal-episode');
-  const closeButton = funFactsPage.querySelector('#af-close');
+  const featureTitle = funFactsPage.querySelector(
+    '#af-feature-title'
+  );
+
+  const featureDesc = funFactsPage.querySelector(
+    '#af-feature-desc'
+  );
+
+  const featureEpisode = funFactsPage.querySelector(
+    '#af-feature-episode'
+  );
+
+  const featureTag = funFactsPage.querySelector(
+    '#af-feature-tag'
+  );
+
+  const watchButton = funFactsPage.querySelector(
+    '#af-watch-btn'
+  );
+
+  const nextButton = funFactsPage.querySelector(
+    '#af-next-btn'
+  );
+
+  const imageModal = funFactsPage.querySelector(
+    '#af-image-modal'
+  );
+
+  const modalImage = funFactsPage.querySelector(
+    '#af-modal-image'
+  );
+
+  const modalTitle = funFactsPage.querySelector(
+    '#af-modal-title'
+  );
+
+  const modalDesc = funFactsPage.querySelector(
+    '#af-modal-desc'
+  );
+
+  const modalEpisode = funFactsPage.querySelector(
+    '#af-modal-episode'
+  );
+
+  const closeButton = funFactsPage.querySelector(
+    '#af-close'
+  );
 
   let currentEpisode = 0;
 
   function showEpisode(index) {
-    currentEpisode = (index + episodes.length) % episodes.length;
+    currentEpisode =
+      (index + episodes.length) % episodes.length;
+
     const episode = episodes[currentEpisode];
 
     featureImage.src = episode.image;
     featureImage.alt = episode.title;
     featureTitle.textContent = episode.title;
     featureDesc.textContent = episode.desc;
-    featureEpisode.textContent = `S1 · E${currentEpisode + 1}`;
-    if (featureTag) featureTag.textContent = episode.tag;
+
+    featureEpisode.textContent =
+      `S1 · E${currentEpisode + 1}`;
+
+    if (featureTag) {
+      featureTag.textContent = episode.tag;
+    }
 
     cards.forEach((card, cardIndex) => {
-      card.classList.toggle('is-active', cardIndex === currentEpisode);
+      card.classList.toggle(
+        'is-active',
+        cardIndex === currentEpisode
+      );
     });
   }
 
@@ -593,7 +857,9 @@ document.addEventListener('DOMContentLoaded', () => {
     modalImage.alt = episode.title;
     modalTitle.textContent = episode.title;
     modalDesc.textContent = episode.desc;
-    modalEpisode.textContent = `SEASON 1 · EPISODE ${currentEpisode + 1}`;
+
+    modalEpisode.textContent =
+      `SEASON 1 · EPISODE ${currentEpisode + 1}`;
 
     imageModal.hidden = false;
   }
@@ -603,28 +869,105 @@ document.addEventListener('DOMContentLoaded', () => {
     modalImage.src = '';
   }
 
-  cards.forEach((card) => {
+  cards.forEach(card => {
     card.addEventListener('click', () => {
       const episodeIndex = Number(card.dataset.ep);
-      if (!Number.isNaN(episodeIndex) && episodes[episodeIndex]) {
+
+      if (
+        !Number.isNaN(episodeIndex) &&
+        episodes[episodeIndex]
+      ) {
         showEpisode(episodeIndex);
       }
     });
   });
 
-  watchButton.addEventListener('click', openEpisodePreview);
-  nextButton?.addEventListener('click', () => showEpisode(currentEpisode + 1));
-  closeButton.addEventListener('click', closeEpisodePreview);
+  watchButton.addEventListener(
+    'click',
+    openEpisodePreview
+  );
 
-  imageModal.addEventListener('click', (event) => {
-    if (event.target === imageModal) closeEpisodePreview();
+  nextButton?.addEventListener('click', () => {
+    showEpisode(currentEpisode + 1);
   });
 
-  document.addEventListener('keydown', (event) => {
+  closeButton.addEventListener(
+    'click',
+    closeEpisodePreview
+  );
+
+  imageModal.addEventListener('click', event => {
+    if (event.target === imageModal) {
+      closeEpisodePreview();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !imageModal.hidden) {
       closeEpisodePreview();
     }
   });
 
   showEpisode(0);
+});
+
+
+// ============================================================
+// ACHIEVEMENTS CATEGORY FILTER — FIXED
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const page = document.getElementById(
+    'content-achievements'
+  );
+
+  if (!page) return;
+
+  const count = page.querySelector(
+    '#achievement-count'
+  );
+
+  function updateAchievements() {
+    const selected = page.querySelector(
+      'input[name="achievement-filter"]:checked'
+    );
+
+    const category = selected
+      ? selected.value.trim().toLowerCase()
+      : 'all';
+
+    let visible = 0;
+
+    page.querySelectorAll('.achievement-card').forEach(card => {
+      const cardCategory = (card.dataset.category || '')
+        .trim()
+        .toLowerCase();
+      const matches =
+        category === 'all' ||
+        cardCategory === category;
+
+      card.hidden = !matches;
+
+      if (matches) {
+        visible++;
+      }
+    });
+
+    if (count) {
+      count.textContent =
+        `${visible} ${visible === 1 ? 'milestone' : 'milestones'}`;
+    }
+  }
+
+  page.addEventListener('change', event => {
+    if (
+      event.target.matches(
+        'input[name="achievement-filter"]'
+      )
+    ) {
+      updateAchievements();
+    }
+  });
+
+  updateAchievements();
 });

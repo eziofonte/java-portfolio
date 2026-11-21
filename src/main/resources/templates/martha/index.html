@@ -1,16 +1,1187 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Martha's Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Martha Issabelle | Portfolio</title>
+
+  <!-- CSS for Spring Boot -->
   <link rel="stylesheet" href="/martha/style.css">
 </head>
+
 <body>
-  <main>
-    <h1>Martha's Portfolio</h1>
-    <p>Welcome! This portfolio is coming soon.</p>
-    <a href="/">Back to the group portfolio</a>
+
+  <!-- HEADER -->
+  <header class="topbar">
+
+    <a href="#/home" class="brand">
+      martha<br>issabelle
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#/home">home</a>
+      <a href="#/cards">the cards</a>
+    </nav>
+
+  </header>
+
+  <main id="app">
+
+    <!-- ======================= -->
+    <!-- HOMEPAGE                -->
+    <!-- ======================= -->
+
+    <div class="view home-view active"
+         data-view="home">
+
+      <section class="home screen">
+
+        <div class="collage">
+
+          <img
+            class="sticker astronaut"
+            src="/martha/assets/christina koch.png"
+            alt="Christina Koch">
+
+          <img
+            class="sticker cup"
+            src="/martha/assets/coffee.png"
+            alt="Coffee">
+
+          <img
+            class="sticker stamp"
+            src="/martha/assets/manila stamp.png"
+            alt="Manila stamp">
+
+          <img
+            class="sticker flag"
+            src="/martha/assets/hupplepuff.png"
+            alt="Hufflepuff">
+
+          <img
+            class="sticker flower"
+            src="/martha/assets/logo.jpg"
+            alt="Martha's flower">
+
+          <img
+            class="sticker lukes"
+            src="/martha/assets/lukes.png"
+            alt="Luke's Diner">
+
+          <img
+            class="sticker panda"
+            src="/martha/assets/hirono panda.png"
+            alt="Hirono Panda">
+
+          <img
+            class="sticker snoopy"
+            src="/martha/assets/snoppy in a typwriter.png"
+            alt="Snoopy typing">
+
+          <img
+            class="sticker lorelai"
+            src="/martha/assets/lorelai.png"
+            alt="Lorelai Gilmore">
+
+          <h1>
+            martha<br>issabelle
+          </h1>
+
+        </div>
+
+      </section>
+
+      <a href="#/cards" class="next-link">
+        pick a card →
+      </a>
+
+    </div>
+
+
+    <!-- ======================= -->
+    <!-- PLAYING CARDS PAGE      -->
+    <!-- ======================= -->
+
+    <div class="view cards-view"
+         data-view="cards">
+
+      <div class="cards-heading">
+
+        <span>
+          ♡ welcome to my little corner ♡
+        </span>
+
+        <h1>
+          What's in the cards for us?
+        </h1>
+
+        <p>
+          Hover to flip a card, then click to explore.
+        </p>
+
+      </div>
+
+      <div class="flip-grid">
+
+        <!-- ABOUT ME CARD -->
+
+        <a href="#/about"
+           class="flip-card"
+           aria-label="Open About Me">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+
+              <span class="card-corner">
+                A<br>♦
+              </span>
+
+              <span class="card-symbol">
+                ♦
+              </span>
+
+              <span class="card-corner bottom">
+                A<br>♦
+              </span>
+
+            </span>
+
+            <span class="flip-back">
+
+              <span class="card-back-suit">
+                ♦
+              </span>
+
+              <strong>ABOUT ME</strong>
+
+              <small>meet martha</small>
+
+              <span class="card-back-suit">
+                ♦
+              </span>
+
+            </span>
+
+          </span>
+
+        </a>
+
+
+        <!-- COFFEE CARD -->
+
+        <a href="#/coffee"
+           class="flip-card"
+           aria-label="Open Coffee">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+
+              <span class="card-corner">
+                A<br>♣
+              </span>
+
+              <span class="card-symbol">
+                ♣
+              </span>
+
+              <span class="card-corner bottom">
+                A<br>♣
+              </span>
+
+            </span>
+
+            <span class="flip-back">
+
+              <span class="card-back-suit">
+                ♣
+              </span>
+
+              <strong>
+                A CUP OF COFFEE?
+              </strong>
+
+              <small>my top picks</small>
+
+              <span class="card-back-suit">
+                ♣
+              </span>
+
+            </span>
+
+          </span>
+
+        </a>
+
+
+        <!-- CHIKA CARD -->
+
+        <a href="#/facts"
+           class="flip-card"
+           aria-label="Open Chika">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+
+              <span class="card-corner">
+                A<br>♥
+              </span>
+
+              <span class="card-symbol">
+                ♥
+              </span>
+
+              <span class="card-corner bottom">
+                A<br>♥
+              </span>
+
+            </span>
+
+            <span class="flip-back">
+
+              <span class="card-back-suit">
+                ♥
+              </span>
+
+              <strong>CHIKA!</strong>
+
+              <small>little facts</small>
+
+              <span class="card-back-suit">
+                ♥
+              </span>
+
+            </span>
+
+          </span>
+
+        </a>
+
+
+        <!-- CONTACT CARD -->
+
+        <a href="#/contact"
+           class="flip-card"
+           aria-label="Open Contact">
+
+          <span class="flip-inner">
+
+            <span class="flip-front">
+
+              <span class="card-corner">
+                A<br>♠
+              </span>
+
+              <span class="card-symbol">
+                ♠
+              </span>
+
+              <span class="card-corner bottom">
+                A<br>♠
+              </span>
+
+            </span>
+
+            <span class="flip-back">
+
+              <span class="card-back-suit">
+                ♠
+              </span>
+
+              <strong>CONTACT ME</strong>
+
+              <small>say hello</small>
+
+              <span class="card-back-suit">
+                ♠
+              </span>
+
+            </span>
+
+          </span>
+
+        </a>
+
+      </div>
+
+      <p class="card-footnote">
+        no wrong choices, promise ♡
+      </p>
+
+    </div>
+
+
+    <!-- ======================= -->
+    <!-- ABOUT ME PAGE           -->
+    <!-- ======================= -->
+
+    <div class="view detail-view"
+         data-view="about">
+
+      <div class="detail-nav">
+
+        <a href="#/cards">
+          ← back to cards
+        </a>
+
+        <span>01 / about me</span>
+
+      </div>
+
+      <section class="about screen">
+
+        <div class="about-left">
+
+          <p class="intro">
+
+            Hi my name is,
+
+            <strong>
+              Martha Issabelle Zamora.
+            </strong>
+
+          </p>
+
+          <h2 class="roles-title">
+            &gt;CURRENT ROLES&gt;&gt;
+          </h2>
+
+          <div class="roles">
+
+            <article>
+
+              <div class="role-symbol blue">
+                ♧<br>
+                STUDENT LEADER
+              </div>
+
+              <strong>
+                student leader
+              </strong>
+
+              <span>since 2014</span>
+
+            </article>
+
+            <article>
+
+              <div class="role-symbol red">
+                ♡<br>
+                CARETAKER
+              </div>
+
+              <strong>
+                certified<br>
+                (Caregiving NC II)
+              </strong>
+
+              <span>since 2024</span>
+
+            </article>
+
+            <article>
+
+              <div class="role-symbol olive">
+                ▤<br>
+                STUDENT ASSISTANT
+              </div>
+
+              <strong>
+                PLM budget office
+              </strong>
+
+              <span>since 2026</span>
+
+            </article>
+
+          </div>
+
+        </div>
+
+
+        <!-- PASSPORT -->
+
+        <aside class="passport">
+
+          <div class="passport-tape"></div>
+
+          <div class="passport-stamps">
+            ✈ MANILA &nbsp; ✈ PHILIPPINES
+          </div>
+
+          <div class="passport-body">
+
+            <div class="sketch">
+              Martha<br>♡
+            </div>
+
+            <div class="passport-data">
+
+              <span>NAME</span>
+
+              <b>
+                MARTHA ISSABELLE ZAMORA
+              </b>
+
+              <span>BASED IN</span>
+
+              <b>
+                METRO MANILA · PHI
+              </b>
+
+              <span>
+                EDUCATIONAL BACKGROUND
+              </span>
+
+              <b>STEM GRADUATE</b>
+
+              <b>
+                BS INFORMATION TECHNOLOGY
+              </b>
+
+            </div>
+
+          </div>
+
+        </aside>
+
+
+        <!-- BIOGRAPHY -->
+
+        <p class="bio">
+
+          Martha Issabelle Zamora is a Filipino
+          BS Information Technology student at
+          Pamantasan ng Lungsod ng Maynila with
+          a strong commitment to leadership,
+          service, and continuous learning.
+
+          A student leader since 2014, she has
+          developed initiative and a sense of
+          responsibility.
+
+          In 2024, she earned her Caregiving
+          NC II certification, applying her
+          skills to care for her family members.
+
+          Since 2026, she has served as a
+          Student Assistant at the PLM Budget
+          Office, gaining practical experience
+          in basic accountancy, budgeting,
+          and administrative operations.
+
+        </p>
+
+      </section>
+
+
+      <!-- MY ESSENTIALS -->
+
+      <section class="essentials screen">
+
+        <h2>My Essentials.</h2>
+
+        <div class="tray">
+
+          <div class="ticket">
+            BOARDING PASS<br>
+            ECONOMY ✈ MANILA
+          </div>
+
+          <div class="headphones">
+            ◉<span>◉</span>
+          </div>
+
+          <div class="book">
+
+            <small>
+              HARRY<br>POTTER
+            </small>
+
+            <span>
+              and the Prisoner<br>
+              of Azkaban
+            </span>
+
+            <strong>✦</strong>
+
+          </div>
+
+          <div class="passport-book">
+
+            PILIPINAS<br>
+
+            <span>☀</span>
+
+            <br>PASAPORTE
+
+          </div>
+
+          <div class="iced">
+
+            ☕
+
+            <small>iced coffee</small>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PLAYLIST -->
+
+      <section class="playlist screen">
+
+        <div class="frog"
+             aria-label="Frog wearing headphones">
+
+          🐸<span>🎧</span>
+
+        </div>
+
+        <div class="cassette">
+
+          <div class="cassette-title">
+            A &nbsp; if i were a playlist...
+          </div>
+
+          <div class="cassette-reels">
+            <span>◉</span>
+            <span>◉</span>
+          </div>
+
+          <div class="cassette-bottom">
+            TDK &nbsp; HIGH BIAS &nbsp; 90
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- ======================= -->
+    <!-- COFFEE PAGE             -->
+    <!-- ======================= -->
+
+    <div class="view detail-view"
+         data-view="coffee">
+
+      <div class="detail-nav">
+
+        <a href="#/cards">
+          ← back to cards
+        </a>
+
+        <span>
+          02 / a cup of coffee?
+        </span>
+
+      </div>
+
+      <section class="coffee-picks screen">
+
+        <div class="coffee-title">
+
+          <h2>a cup of coffee?</h2>
+
+          <p class="subtitle">
+            - top 5 picks -
+          </p>
+
+        </div>
+
+        <div class="coffee-gallery">
+
+          <!-- COFFEE 1 -->
+
+          <article>
+
+            <div class="frame frame1">
+
+              <div class="coffee-art">
+
+                <div class="coffee-cup cup-cream">
+
+                  <span class="cup-lid"></span>
+
+                  <span class="cup-label">
+                    ZUS
+                  </span>
+
+                  <span class="cup-straw"></span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <p>
+              <strong>Zus</strong><br>
+              Coconut Cafe Latte
+            </p>
+
+          </article>
+
+
+          <!-- COFFEE 2 -->
+
+          <article>
+
+            <div class="frame frame2">
+
+              <div class="coffee-art">
+
+                <div class="coffee-cup cup-amber">
+
+                  <span class="cup-lid"></span>
+
+                  <span class="cup-label">
+                    J.CO
+                  </span>
+
+                  <span class="cup-straw"></span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <p>
+              <strong>J.CO</strong><br>
+              Spanish Latte
+            </p>
+
+          </article>
+
+
+          <!-- COFFEE 3 -->
+
+          <article>
+
+            <div class="frame frame3">
+
+              <div class="coffee-art">
+
+                <div class="coffee-cup cup-chocolate">
+
+                  <span class="cup-lid"></span>
+
+                  <span class="cup-label">
+                    F
+                  </span>
+
+                  <span class="cup-straw"></span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <p>
+              <strong>Founder's Donuts</strong><br>
+              Tres Leches Latte
+            </p>
+
+          </article>
+
+
+          <!-- COFFEE 4 -->
+
+          <article>
+
+            <div class="frame frame4">
+
+              <div class="coffee-art">
+
+                <div class="coffee-cup cup-mocha">
+
+                  <span class="cup-lid"></span>
+
+                  <span class="cup-label">
+                    KA
+                  </span>
+
+                  <span class="cup-straw"></span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <p>
+              <strong>Kape Agosto</strong><br>
+              White Chocolate Mocha sub Oat
+            </p>
+
+          </article>
+
+
+          <!-- COFFEE 5 -->
+
+          <article>
+
+            <div class="frame frame5">
+
+              <div class="coffee-art">
+
+                <div class="coffee-cup cup-vienna">
+
+                  <span class="cup-lid"></span>
+
+                  <span class="cup-label">
+                    ★
+                  </span>
+
+                  <span class="cup-straw"></span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <p>
+              <strong>Starbucks</strong><br>
+              Vienna Creamy Latte
+            </p>
+
+          </article>
+
+        </div>
+
+        <div class="section-signoff">
+
+          <span>marthaissabelle</span>
+
+          <span>2026</span>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- ======================= -->
+    <!-- CHIKA / FACTS PAGE      -->
+    <!-- ======================= -->
+
+    <div class="view detail-view"
+         data-view="facts">
+
+      <div class="detail-nav">
+
+        <a href="#/cards">
+          ← back to cards
+        </a>
+
+        <span>03 / chika!</span>
+
+      </div>
+
+      <section class="facts screen">
+
+        <div class="facts-heading">
+
+          <span>
+            little things that make me, me
+          </span>
+
+          <h2>
+            Facts about <strong>M.I.</strong>
+          </h2>
+
+        </div>
+
+        <div class="fact-grid">
+
+          <!-- FACT 1 -->
+
+          <article>
+
+            <img
+              src="/martha/assets/christina koch.png"
+              alt="Christina Koch">
+
+            <p>
+              <strong>Christina Koch:</strong><br>
+              My ultimate girl crush, someone
+              I genuinely admire.
+            </p>
+
+          </article>
+
+
+          <!-- FACT 2 -->
+
+          <article>
+
+            <img
+              src="/martha/assets/hupplepuff.png"
+              alt="Hufflepuff">
+
+            <p>
+              <strong>Hufflepuff:</strong><br>
+              A Gryffindor at heart, but
+              Hufflepuff simply fits my
+              aesthetic better.
+            </p>
+
+          </article>
+
+
+          <!-- FACT 3 -->
+
+          <article>
+
+            <img
+              src="/martha/assets/hirono panda.png"
+              alt="Hirono Panda">
+
+            <p>
+              <strong>Hirono Panda:</strong><br>
+              A combination of my love for
+              Hirono and pandas, inspired
+              by yin and yang.
+            </p>
+
+          </article>
+
+
+          <!-- FACT 4 -->
+
+          <article>
+
+            <img
+              src="/martha/assets/lorelai.png"
+              alt="Lorelai Gilmore">
+
+            <p>
+              <strong>Lorelai Gilmore:</strong><br>
+              I aspire to have her quick wit
+              and impressive vocabulary.
+              She's partly responsible for
+              my excessive love of coffee.
+            </p>
+
+          </article>
+
+
+          <!-- FACT 5 -->
+
+          <article>
+
+            <img
+              src="/martha/assets/manila stamp.png"
+              alt="Manila Stamp">
+
+            <p>
+              <strong>Manila Stamp:</strong><br>
+              A little tribute to the city
+              where I was born and raised.
+            </p>
+
+          </article>
+
+
+          <!-- FACT 6 -->
+
+          <article>
+
+            <img
+              src="/martha/assets/snoppy in a typwriter.png"
+              alt="Snoopy Typewriter">
+
+            <p>
+              <strong>Snoopy Typewriter:</strong><br>
+              An old soul at heart. I'd choose
+              writing letters on a typewriter
+              over typing on a screen any day.
+            </p>
+
+          </article>
+
+
+          <!-- FACT 7 -->
+
+          <article>
+
+            <img
+              src="/martha/assets/lukes.png"
+              alt="Luke's Diner">
+
+            <p>
+              <strong>Luke's Diner:</strong><br>
+              My dream comfort spot, inspired
+              by my love for Gilmore Girls.
+            </p>
+
+          </article>
+
+
+          <!-- FACT 8 -->
+
+          <article>
+
+            <img
+              src="/martha/assets/coffee.png"
+              alt="Coffee Java">
+
+            <p>
+              <strong>Coffee (Java):</strong><br>
+              A little reference to our
+              programming subject, Java,
+              and my never-ending love
+              for coffee.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- ======================= -->
+    <!-- CONTACT PAGE            -->
+    <!-- ======================= -->
+
+    <div class="view detail-view"
+         data-view="contact">
+
+      <div class="detail-nav">
+
+        <a href="#/cards">
+          ← back to cards
+        </a>
+
+        <span>04 / contact me</span>
+
+      </div>
+
+      <section class="contact screen">
+
+        <div class="contact-paper">
+
+          <span class="contact-kicker">
+            a little note from me to you
+          </span>
+
+          <div class="contact-stamp">
+            M.I.
+            <small>with love ♡</small>
+          </div>
+
+          <h2>
+            let's keep<br>
+            in touch.
+          </h2>
+
+          <p>
+            coffee, conversations,
+            and everything in between.
+          </p>
+
+          <div class="contact-rule"></div>
+
+          <div class="contact-options">
+
+            <div>
+
+              <span>01 / SAY HELLO</span>
+
+              <strong>
+              m.issazamora@gmail.com
+              </strong>
+
+              <small>
+                Give a Shout
+              </small>
+            </div>
+
+            <div>
+
+              <span>
+                02 / FIND ME ONLINE
+              </span>
+
+              <strong>
+                @martha_zamora
+              </strong>
+
+              <small>
+                Instagram, Facebook, LinkedIn
+              </small>
+
+            </div>
+
+          </div>
+
+          <a href="#/cards"
+             class="contact-return">
+
+            ← choose another card
+
+          </a>
+
+        </div>
+
+        <div class="contact-stickers">
+
+          <img
+            src="/martha/assets/coffee.png"
+            alt="Coffee sticker">
+
+          <img
+            src="/martha/assets/snoppy in a typwriter.png"
+            alt="Snoopy sticker">
+
+          <img
+            src="/martha/assets/manila stamp.png"
+            alt="Manila sticker">
+
+        </div>
+
+      </section>
+
+    </div>
+
   </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <span>
+      made with ♡ by martha issabelle
+    </span>
+
+    <a href="#/cards">
+      choose another card ↑
+    </a>
+
+  </footer>
+
+
+  <!-- ======================= -->
+  <!-- PAGE NAVIGATION SCRIPT   -->
+  <!-- ======================= -->
+
+  <script>
+
+    const pages = document.querySelectorAll(
+      "[data-view]"
+    );
+
+    const allowedPages = [
+      "home",
+      "cards",
+      "about",
+      "coffee",
+      "facts",
+      "contact"
+    ];
+
+    function showPage() {
+
+      let page = window.location.hash
+        .replace("#/", "")
+        .trim();
+
+      if (!allowedPages.includes(page)) {
+        page = "home";
+      }
+
+      pages.forEach((section) => {
+
+        const isActive =
+          section.dataset.view === page;
+
+        section.classList.toggle(
+          "active",
+          isActive
+        );
+
+        section.hidden = !isActive;
+
+      });
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant"
+      });
+
+    }
+
+    // Display the correct screen on first load.
+    showPage();
+
+    // Change screens when visitors click links.
+    window.addEventListener(
+      "hashchange",
+      showPage
+    );
+
+    // Mobile: first tap flips, second tap opens.
+    const cards = document.querySelectorAll(
+      ".flip-card"
+    );
+
+    cards.forEach((card) => {
+
+      card.addEventListener("click", (event) => {
+
+        const touchDevice = window.matchMedia(
+          "(hover: none)"
+        ).matches;
+
+        if (
+          touchDevice &&
+          !card.classList.contains("tapped")
+        ) {
+
+          event.preventDefault();
+
+          cards.forEach((otherCard) => {
+            otherCard.classList.remove("tapped");
+          });
+
+          card.classList.add("tapped");
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+  <!-- Mobile card flip support -->
+  <style>
+    @media (hover: none) {
+      .flip-card.tapped .flip-inner {
+        transform: rotateY(180deg);
+      }
+    }
+  </style>
+
 </body>
 </html>

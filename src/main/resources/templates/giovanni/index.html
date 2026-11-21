@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Oswald:wght@400;600&family=Inter:wght@800;900&family=VT323&display=swap" rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/giovanni/breakingcss.css}">
+  <link rel="stylesheet" th:href="@{/giovanni/breakingcss.css(v=${v})}">
 </head>
 <body>
 
@@ -18,6 +18,7 @@
     <a href="#achievements">Achievements</a>
     <a href="#favorites">Favorites</a>
     <a href="#skills">Skills</a>
+    <a href="#works">Works</a>
     <a href="#facts">Fun Facts</a>
     <a href="/" th:href="@{/}" class="dock-back">Group portfolio</a>
   </nav>
@@ -40,9 +41,7 @@
     <div class="htv-casing">
       <div class="htv-bezel">
         <div class="htv-screen">
-          <span class="htv-fallback" aria-hidden="true">🧑‍🔬</span>
-          <img th:src="@{/giovanni/gio.jpg}" alt="Giovanni" onerror="this.remove()">
-          <span class="htv-live"><i></i>LIVE</span>
+          <img class="htv-photo" th:src="@{/giovanni/pogi_ako.jpg}" alt="Giovanni">
           <span class="htv-osd">CH-01 GIOVANNI</span>
         </div>
       </div>
@@ -63,16 +62,11 @@
       <div><dt>Weight</dt><dd th:text="${weight}"></dd></div>
       <div class="wide"><dt>Personality</dt><dd th:text="${personality}"></dd></div>
     </dl>
-    <div class="two-col">
-      <div class="memo"><h3>Strengths</h3><ul><li th:each="s : ${strengths}" th:text="${s}"></li></ul></div>
-      <div class="memo bad"><h3>Weaknesses</h3><ul><li th:each="w : ${weaknesses}" th:text="${w}"></li></ul></div>
-    </div>
+    <div class="memos">
+    <div class="memo"><h3>Strengths</h3><ul><li th:each="s : ${strengths}" th:text="${s}"></li></ul></div>
+    <div class="memo bad"><h3>Weaknesses</h3><ul><li th:each="w : ${weaknesses}" th:text="${w}"></li></ul></div>
   </div>
-  <h3 class="sub-h">Hobbies and interests</h3>
-  <div class="hobbies">
-    <div class="hobby" th:each="hb : ${hobbies}"><strong th:text="${hb.category}"></strong><span th:text="${hb.items}"></span></div>
   </div>
-  <figure class="meme"><div class="meme-art">🧪</div><span class="top">Me: I'll start the project early</span><span class="bottom">Also me at 3 AM: cooking</span></figure>
 </section>
 
 <!-- ACHIEVEMENTS -->
@@ -86,37 +80,90 @@
   </div>
 </section>
 
-<!-- FAVORITES -->
+<!-- FAVORITES, HOBBIES AND FUN FACTS (bento) -->
 <section id="favorites" class="wrap">
-  <div class="sec-head"><h2>Favorites</h2><span class="ch">CH-04 PERIODIC TABLE</span></div>
-  <div class="elements">
-    <div class="element" th:each="f, st : ${favorites}">
-      <small th:text="${st.count}">1</small>
-      <b th:text="${f.symbol}">Fd</b>
-      <span class="e-label" th:text="${f.label}"></span>
-      <span class="e-value" th:text="${f.value}"></span>
+  <div class="sec-head"><h2>Favorites and Fun Facts</h2><span class="ch">CH-04 BEHIND THE LAB</span></div>
+  <div class="bento">
+
+    <div class="album-wrap" id="album">
+      <figure class="album-card">
+        <div class="photo-ph"><span>Your photos go here<small>static/giovanni/album/</small></span></div>
+        <img class="album-slide" th:each="ph, st : ${album}" th:src="@{/giovanni/album/{f}(f=${ph})}" alt="Giovanni and his girlfriend" th:classappend="${st.first} ? 'active'">
+        <figcaption class="photo-pill"><span aria-hidden="true">&#9829;</span> Life lately</figcaption>
+        <span class="album-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#060d2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>
+        </span>
+        <div class="album-dots" id="albumDots"></div>
+        <div class="album-dock">
+          <button type="button" class="prev" aria-label="Previous photo">&#8249;</button>
+          <button type="button" class="toggle" aria-label="Pause slideshow">&#10074;&#10074;</button>
+          <button type="button" class="like" aria-label="Like this photo">&#9829;</button>
+          <button type="button" class="next" aria-label="Next photo">&#8250;</button>
+        </div>
+      </figure>
     </div>
+
+    <div class="card" id="facts">
+      <h3>Fun Facts</h3>
+      <ul class="rows plain"><li th:each="f : ${funFacts}" th:text="${f}"></li></ul>
+    </div>
+
+    <div class="card">
+      <h3>Favorites</h3>
+      <ul class="rows">
+        <li class="fav" th:each="f : ${favorites}">
+          <span class="sym" th:text="${f.symbol}">Fd</span>
+          <span class="lab" th:text="${#strings.capitalize(#strings.replace(f.label, 'Favorite ', ''))}"></span>
+          <span class="val" th:text="${f.value}"></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>My Hobbies</h3>
+      <ul class="rows">
+        <li class="hob" th:each="hb : ${hobbies}"><strong th:text="${hb.category}"></strong><span th:text="${hb.items}"></span></li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="wrap alt">
-  <div class="sec-head"><h2>Skills and Talents</h2><span class="ch">CH-05 PRODUCT PURITY</span></div>
-  <div class="screen-card skills">
-    <div class="skill" th:each="s : ${skills}">
-      <div class="skill-top"><span th:text="${s.name}"></span><span th:text="${s.purity} + '% pure'"></span></div>
-      <div class="bar"><i th:style="'width:' + ${s.purity} + '%'"></i></div>
-    </div>
-  </div>
-  <h3 class="sub-h">Special talents</h3>
-  <ul class="chips"><li th:each="t : ${talents}" th:text="${t}"></li></ul>
-  <figure class="meme alt-meme"><div class="meme-art">🧑‍🔬</div><span class="top">When the code compiles first try</span><span class="bottom">Say my name</span></figure>
+  <div class="sec-head"><h2>Skills and Talents</h2><span class="ch">CH-05 THE FORMULA</span></div>
+  <ul class="skill-list">
+    <li th:each="s : ${skills}" th:text="${s}"></li>
+  </ul>
 </section>
 
-<!-- FUN FACTS -->
-<section id="facts" class="wrap">
-  <div class="sec-head"><h2>Fun Facts</h2><span class="ch">CH-06 CLASSIFIED</span></div>
-  <ol class="facts"><li th:each="f : ${funFacts}" th:text="${f}"></li></ol>
+<!-- WORKS AND PROCESS -->
+<section id="works" class="wrap">
+  <div class="sec-head"><h2>Works and Process</h2><span class="ch">CH-06 THE LAB</span></div>
+  <div class="works">
+    <article class="work" th:each="w : ${works}">
+      <div class="work-media">
+        <span>Add <b th:text="${w.image}">work1.jpg</b></span>
+        <img th:src="@{|/giovanni/${w.image}|}" th:alt="${w.title}" onerror="this.remove()">
+      </div>
+      <div class="work-body">
+        <span class="work-tag" th:text="${w.tag}"></span>
+        <h3 th:text="${w.title}"></h3>
+        <p th:text="${w.detail}"></p>
+        <ul class="work-features" th:if="${not #lists.isEmpty(w.features)}"><li th:each="f : ${w.features}" th:text="${f}"></li></ul>
+        <a class="work-link" th:if="${not #strings.isEmpty(w.link)}" th:href="${w.link}" target="_blank" rel="noopener">View project &#8599;</a>
+      </div>
+    </article>
+  </div>
+
+  <h3 class="sub-h">The process</h3>
+  <ol class="process">
+    <li class="step" th:each="s : ${steps}">
+      <span class="step-num" th:text="${s.number}">01</span>
+      <h3 th:text="${s.title}"></h3>
+      <p th:text="${s.detail}"></p>
+    </li>
+  </ol>
 </section>
 
 <!-- CONTACT -->
@@ -126,6 +173,7 @@
     <div class="crt-casing">
       <div class="crt-bezel">
         <div class="crt-screen" id="crtScreen">
+          <video id="crtVideo" class="crt-video" th:src="@{/giovanni/meme.mp4}" playsinline loop preload="metadata"></video>
           <div class="crt-scanlines"></div>
           <div class="crt-roll"></div>
           <div class="crt-glass"></div>
@@ -135,13 +183,12 @@
           <div class="crt-content" id="crtContent">
             <div class="crt-top">
               <div>
-                <h2 class="crt-title">Better<br>Call Gio</h2>
+                <h2 class="crt-title"><img class="crt-logo" th:src="@{/giovanni/bettercallgio.png}" alt="Better Call Gio"></h2>
                 <p class="crt-sub">Albuquerque state of mind &mdash; worldwide delivery</p>
               </div>
               <figure class="crt-pip">
                 <span class="crt-pip-fallback" aria-hidden="true">🧑‍🔬</span>
-                <img th:src="@{/giovanni/gio.jpg}" alt="Giovanni" onerror="this.remove()">
-                <span class="crt-rec"><i></i>LIVE</span>
+                <img th:src="@{/giovanni/contact.jpg}" alt="Giovanni" onerror="this.remove()">
               </figure>
             </div>
 
@@ -153,7 +200,7 @@
 
             <div class="crt-bottom">
               <p class="crt-sub">Or email direct</p>
-              <button type="button" id="copyEmail" class="crt-email" title="Click to copy">gio@example.com</button>
+              <button type="button" id="copyEmail" class="crt-email" title="Click to copy">giovannilapena26@gmail.com</button>
             </div>
           </div>
         </div>
@@ -164,6 +211,7 @@
         <div class="crt-controls">
           <span class="crt-led" id="powerLed" title="Power"></span>
           <button type="button" class="hw-btn" id="chBtn" title="Change channel">CH &#9650;</button>
+          <button type="button" class="hw-btn" id="muteBtn" title="Mute the meme channel">MUTE</button>
           <button type="button" class="hw-btn" id="powerBtn" title="Power">POWER</button>
         </div>
         <div class="crt-grille" aria-hidden="true"></div>
@@ -192,6 +240,6 @@
   <p>Built with HTML, CSS and Spring Boot. Cooked in the desert, served fresh. <a href="/" th:href="@{/}">Back to the group portfolio</a></p>
 </footer>
 
-<script th:src="@{/giovanni/main.js}"></script>
+<script th:src="@{/giovanni/main.js(v=${v})}"></script>
 </body>
 </html>

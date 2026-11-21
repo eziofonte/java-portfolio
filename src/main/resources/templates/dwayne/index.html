@@ -7,7 +7,7 @@
     <meta name="description" content="Dwayne Ezail Talavera — student and UI/UX designer exploring thoughtful interfaces, design, and code.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-21" th:href="@{/dwayne/style.css(v='portfolio-21')}">
+    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-22" th:href="@{/dwayne/style.css(v='portfolio-22')}">
     <script src="/dwayne/project-carousel.js" th:src="@{/dwayne/project-carousel.js}" defer></script>
     <script>
         // Activate only with JavaScript; always uncover the page if initialization fails.
@@ -35,7 +35,7 @@
     </div>
     <main id="portfolio">
         <header class="site-header">
-            <a class="identity" href="#top" aria-label="Dwayne Ezail Talavera, back to top">
+            <a class="identity" href="/dwayne/about" th:href="@{/dwayne/about}" aria-label="About Dwayne Ezail Talavera">
                 <span class="identity-name">Dwayne Ezail Talavera</span>
                 <span class="identity-discipline">Design &amp; research</span>
             </a>
@@ -54,7 +54,9 @@
                     <span class="title-line"><span>UI/UX Designer.</span></span>
                 </h1>
                 <figure class="portrait-frame">
-                    <img class="portrait" src="/dwayne/assets/portrait.png" th:src="@{/dwayne/assets/portrait.png}" alt="Dwayne wearing glasses and a black T-shirt, looking down" width="991" height="1588" fetchpriority="high" decoding="async">
+                    <a class="portrait-link" href="/dwayne/about" th:href="@{/dwayne/about}" aria-label="Learn more about Dwayne">
+                        <img class="portrait" src="/dwayne/assets/portrait.png" th:src="@{/dwayne/assets/portrait.png}" alt="Dwayne wearing glasses and a black T-shirt, looking down" width="991" height="1588" fetchpriority="high" decoding="async">
+                    </a>
                 </figure>
             </div>
             <img class="decoration hero-wave" src="/dwayne/assets/IMG_9898-transparent.png" th:src="@{/dwayne/assets/IMG_9898-transparent.png}" alt="" aria-hidden="true">
