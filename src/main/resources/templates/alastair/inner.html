@@ -1,0 +1,712 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="rewards">
+<div id="content-about" class="modal content-page" role="dialog" aria-labelledby="about-title">
+    <div class="modal-content">
+      <div id="about-loading" class="about-loading" role="status" hidden></div>
+
+      <article class="about-layout">
+        <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+
+        <div class="about-scene">
+          <div class="about-monitor">
+            <span class="about-label">About Me</span>
+            <h2 id="about-title">Alastair Crucillo</h2>
+
+            <section class="about-section">
+              <h3>Personal details</h3>
+              <dl class="about-details">
+                <div><dt>Full Name</dt><dd id="about-name">Alastair Nichole A. Crucillo</dd></div>
+                <div><dt>Birthday</dt><dd id="about-birthday">September 18, 2005</dd></div>
+                <div><dt>Age</dt><dd id="about-age">21</dd></div>
+
+                <div>
+                  <dt>Height</dt>
+                  <dd>
+                    <div id="about-height" aria-live="polite">174 cm</div>
+                    <select id="height-unit" aria-label="Height unit">
+                      <option value="cm">cm</option>
+                      <option value="m">m</option>
+                      <option value="ft">ft / in</option>
+                    </select>
+                  </dd>
+                </div>
+
+                <div>
+                  <dt>Weight</dt>
+                  <dd>
+                    <div id="about-weight" aria-live="polite">70 kg</div>
+                    <select id="weight-unit" aria-label="Weight unit">
+                      <option value="kg">kg</option>
+                      <option value="lb">lb</option>
+                      <option value="st">st</option>
+                    </select>
+                  </dd>
+                </div>
+
+                <div><dt>Personality</dt><dd id="about-personality">Matikas lang</dd></div>
+              </dl>
+            </section>
+          </div>
+
+          <img class="about-portrait" src="/alastair/images/about-alastair.png"
+              alt="Alastair Crucillo" width="468" height="700">
+
+          <button type="button" id="about-cord" class="about-cord"
+                  aria-label="Pull to switch profile" aria-pressed="false"></button>
+        </div>
+      </article>
+    </div>
+  </div>
+
+      <div id="content-achievements" class="modal content-page"
+     role="dialog" aria-labelledby="achievements-title">
+  <div class="modal-content">
+    <article class="achievement-log">
+      <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+
+      <header class="achievement-header">
+        <h2 id="achievements-title">Achievements</h2>
+        <span id="achievement-count" role="status">10 milestones</span>
+      </header>
+
+      <div class="achievement-filters" role="radiogroup" aria-label="Filter achievements">
+        <label><input type="radio" name="achievement-filter" value="all" checked>All</label>
+        <label><input type="radio" name="achievement-filter" value="school">School</label>
+        <label><input type="radio" name="achievement-filter" value="gaming">Gaming</label>
+        <label><input type="radio" name="achievement-filter" value="basketball">Basketball</label>
+        <label><input type="radio" name="achievement-filter" value="projects">Projects</label>
+      </div>
+
+      <ul class="achievement-list">
+        <li class="achievement-card" data-category="school">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Dean’s Lister</h3><p>First year · First and second semesters</p></div>
+        </li>
+        <li class="achievement-card" data-category="school">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>With High Honors</h3><p>Grade 12</p></div>
+        </li>
+        <li class="achievement-card" data-category="school">
+  <span class="achievement-badge" aria-hidden="true"></span>
+  <div>
+    <h3>With Honors</h3>
+    <p>Grades 10 and 11</p>
+  </div>
+</li>
+        <li class="achievement-card" data-category="school">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>First Honor</h3><p>Kindergarten through Grade 3</p></div>
+        </li>
+
+        <li class="achievement-card" data-category="gaming">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Platinum</h3><p>VALORANT peak rank · Ascendant skills, if you ask me.</p></div>
+        </li>
+        <li class="achievement-card" data-category="gaming">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>100 Stars</h3><p>Mobile Legends ranked play</p></div>
+        </li>
+        <li class="achievement-card" data-category="gaming">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>One-Day Minecraft Run</h3><p>Finished Minecraft in a single day.</p></div>
+        </li>
+
+        <li class="achievement-card" data-category="basketball">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Champion</h3><p>Inter-Barangay 3×3 Basketball</p></div>
+        </li>
+        <li class="achievement-card" data-category="basketball">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Most Valuable Player</h3><p>Inter-Barangay 3×3 Basketball</p></div>
+        </li>
+        <li class="achievement-card" data-category="basketball">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div><h3>Mythical Five</h3><p>PATHFit Culminating Task</p></div>
+        </li>
+
+        <li class="achievement-card" data-category="projects">
+          <span class="achievement-badge" aria-hidden="true"></span>
+          <div>
+            <h3>Arcade Portfolio</h3>
+            <p>Customized this portfolio with playable games, unlockable reward pages, and saved progress.</p>
+          </div>
+        </li>
+      </ul>
+    </article>
+  </div>
+</div>
+   <div id="content-favorites" class="modal content-page"
+     role="dialog" aria-labelledby="favorites-title">
+  <div class="modal-content">
+    <article class="favorites-layout">
+      <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+      <h2 id="favorites-title">Favorites</h2>
+
+      <div class="favorite-grid">
+        <section class="favorite-card favorite-photo"
+                 style="--favorite-image: url('/alastair/images/pastil.jpg')">
+          <span>Favorite food</span>
+          <h3>Pastil</h3>
+        </section>
+
+        <section class="favorite-card favorite-photo"
+                 style="--favorite-image: url('/alastair/images/favorite-person.jpg')">
+          <span>Favorite person</span>
+          <h3>&lt;3</h3>
+        </section>
+
+     <section class="favorite-card favorite-wide favorite-playlist">
+  <span>Favorite songs</span>
+  <h3>MASTERPEACED</h3>
+
+  <div class="playlist-player">
+    <div class="playlist-cover" aria-hidden="true"></div>
+
+    <div class="playlist-current">
+      <strong id="playlist-title">Untitled</strong>
+      <span id="playlist-artist">Rex Orange County</span>
+
+      <div class="playlist-controls">
+        <button type="button" id="playlist-previous" aria-label="Previous track">◀◀</button>
+        <button type="button" id="playlist-play" aria-label="Play">▶</button>
+        <button type="button" id="playlist-next" aria-label="Next track">▶▶</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="favorite-audio" preload="none" hidden></audio>
+  <div id="favorite-track-status" role="status"></div>
+  <ol id="favorite-track-list" aria-label="Playlist"></ol>
+</section>
+
+        <section class="favorite-card favorite-purple">
+          <span>Favorite color</span>
+          <h3>Purple</h3>
+        </section>
+
+        <section class="favorite-card favorite-photo favorite-wide favorite-movie"
+                 style="--favorite-image: url('/alastair/images/spider-man.jpg')">
+          <span>Favorite movie</span>
+          <h3>Spider-Man</h3>
+        </section>
+
+        <button type="button" id="favorite-player"
+                class="favorite-card favorite-photo favorite-player" data-player="curry">
+          <span>Favorite NBA player</span>
+          <strong id="favorite-player-name" aria-live="polite">Stephen Curry</strong>
+          <small>Tap to switch</small>
+        </button>
+
+        <section class="favorite-card favorite-photo favorite-wide"
+                 style="--favorite-image: url('/alastair/images/ayala-manila-bay.jpg')">
+          <span>Favorite place</span>
+          <h3>Ayala Malls Manila Bay</h3>
+        </section>
+
+        <section class="favorite-card favorite-wide favorite-court">
+          <span>Favorite sport</span>
+          <h3>Basketball</h3>
+          <div id="favorite-shot-result" role="status">Pull the ball back and let go to shoot.</div>
+          <canvas id="favorite-court-canvas" width="480" height="260"
+                  aria-label="Basketball shooting game. Drag the ball back and release to shoot."></canvas>
+          <div class="favorite-shot-actions">
+            <span id="favorite-shot-score">0 of 0 made</span>
+          </div>
+        </section>
+      </div>
+    </article>
+  </div>
+</div>
+<div id="content-skills" class="modal content-page"
+     role="dialog" aria-labelledby="skills-title">
+  <div class="modal-content">
+    <article class="val-career">
+      <div class="val-topbar">
+        <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+        <div class="val-match-score">
+          <span class="val-score-win">16</span>
+          <span class="val-score-label">SKILLS // LOADOUT</span>
+          <span class="val-score-loss">04</span>
+        </div>
+      </div>
+
+      <header class="val-header">
+        <div class="val-title-block">
+          <span class="val-kicker">ACT III // COMPETITIVE SKILL LOG</span>
+          <h2 id="skills-title">Skills</h2>
+        </div>
+
+        <nav class="val-tabs" role="tablist" aria-label="Filter skills by category">
+          <button type="button" class="val-tab is-active" data-val-filter="all" aria-selected="true">All (16)</button>
+          <button type="button" class="val-tab" data-val-filter="code" aria-selected="false">Code &amp; Data</button>
+          <button type="button" class="val-tab" data-val-filter="systems" aria-selected="false">Systems</button>
+          <button type="button" class="val-tab" data-val-filter="basketball" aria-selected="false">Basketball</button>
+          <button type="button" class="val-tab" data-val-filter="gaming" aria-selected="false">Gaming</button>
+        </nav>
+      </header>
+
+      <div class="val-board-grid">
+        <aside class="val-loadout-col" aria-label="Skill domains">
+          <button type="button" class="val-agent-card is-active" data-val-filter="code">
+            <span class="val-agent-code">01 // DEV</span>
+            <strong>Code &amp; Data</strong>
+            <small>4 Core Skills</small>
+          </button>
+          <button type="button" class="val-agent-card" data-val-filter="systems">
+            <span class="val-agent-code">02 // ARCH</span>
+            <strong>Systems &amp; Modeling</strong>
+            <small>2 Core Skills</small>
+          </button>
+          <button type="button" class="val-agent-card" data-val-filter="basketball">
+            <span class="val-agent-code">03 // COURT</span>
+            <strong>Basketball</strong>
+            <small>6 Core Skills</small>
+          </button>
+          <button type="button" class="val-agent-card" data-val-filter="gaming">
+            <span class="val-agent-code">04 // FPS</span>
+            <strong>Gaming &amp; Movement</strong>
+            <small>4 Core Skills</small>
+          </button>
+        </aside>
+
+        <section class="val-scoreboard" aria-label="Skills scoreboard">
+          <div class="val-board-head">
+            <span>SKILL // ABILITY</span>
+            <span>DOMAIN</span>
+            <span>TAG</span>
+          </div>
+
+          <ul id="val-skill-rows" class="val-rows">
+            <li class="val-row is-selected" data-category="code" data-tier="CORE" data-code="DEV-01"
+                data-title="Java"
+                data-desc="Application logic, object-oriented fundamentals, and structured problem solving.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">JV</span>
+                  <span class="val-row-text">
+                    <strong>Java</strong>
+                    <small>Application logic, object-oriented fundamentals, and structured problem solving.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Code &amp; Data</span>
+                <span class="val-col-tag">CORE</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="code" data-tier="UI / DOM" data-code="DEV-02"
+                data-title="JavaScript"
+                data-desc="Interactive UI behavior, DOM/event handling, and canvas animations.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">JS</span>
+                  <span class="val-row-text">
+                    <strong>JavaScript</strong>
+                    <small>Interactive UI behavior, DOM/event handling, and canvas animations.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Code &amp; Data</span>
+                <span class="val-col-tag">UI / DOM</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="code" data-tier="DATA" data-code="DEV-03"
+                data-title="MySQL"
+                data-desc="Relational database queries, table structures, and data management.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">DB</span>
+                  <span class="val-row-text">
+                    <strong>MySQL</strong>
+                    <small>Relational database queries, table structures, and data management.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Code &amp; Data</span>
+                <span class="val-col-tag">DATA</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="code" data-tier="LAYOUT" data-code="DEV-04"
+                data-title="HTML &amp; CSS"
+                data-desc="Responsive layouts, custom styling, and interactive components.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">UI</span>
+                  <span class="val-row-text">
+                    <strong>HTML &amp; CSS</strong>
+                    <small>Responsive layouts, custom styling, and interactive components.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Code &amp; Data</span>
+                <span class="val-col-tag">LAYOUT</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="systems" data-tier="SCHEMA" data-code="SYS-01"
+                data-title="Data Flow Modeling (DFD)"
+                data-desc="Mapping system processes, data stores, and information flow across levels.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">DFD</span>
+                  <span class="val-row-text">
+                    <strong>Data Flow Modeling (DFD)</strong>
+                    <small>Mapping system processes, data stores, and information flow across levels.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Systems</span>
+                <span class="val-col-tag">SCHEMA</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="systems" data-tier="LOGIC" data-code="SYS-02"
+                data-title="System &amp; Functional Design"
+                data-desc="Breaking down workflows, inputs/outputs, and logic constraints.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">SYS</span>
+                  <span class="val-row-text">
+                    <strong>System &amp; Functional Design</strong>
+                    <small>Breaking down workflows, inputs/outputs, and logic constraints.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Systems</span>
+                <span class="val-col-tag">LOGIC</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="basketball" data-tier="OFFENSE" data-code="BB-01"
+                data-title="Catch-and-Shoot &amp; Spacing"
+                data-desc="Reading defenses off the ball, finding open pockets, and getting a clean shot off quickly.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">3PT</span>
+                  <span class="val-row-text">
+                    <strong>Catch-and-Shoot &amp; Spacing</strong>
+                    <small>Reading defenses off the ball, finding open pockets, and getting a clean shot off quickly.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Basketball</span>
+                <span class="val-col-tag">OFFENSE</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="basketball" data-tier="ISO / PACE" data-code="BB-02"
+                data-title="Handle &amp; Change of Pace"
+                data-desc="Controlling the dribble with either hand, shifting speeds, and using hesitation moves to create angles.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">HDL</span>
+                  <span class="val-row-text">
+                    <strong>Handle &amp; Change of Pace</strong>
+                    <small>Controlling the dribble with either hand, shifting speeds, and using hesitation moves to create angles.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Basketball</span>
+                <span class="val-col-tag">PACE</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="basketball" data-tier="PAINT" data-code="BB-03"
+                data-title="Finishing Through Contact"
+                data-desc="Taking bump/body contact in the paint and adjusting angles or using the glass to finish.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">AND1</span>
+                  <span class="val-row-text">
+                    <strong>Finishing Through Contact</strong>
+                    <small>Taking bump/body contact in the paint and adjusting angles or using the glass to finish.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Basketball</span>
+                <span class="val-col-tag">PAINT</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="basketball" data-tier="LOCKDOWN" data-code="BB-04"
+                data-title="On-Ball &amp; Help Defense"
+                data-desc="Sliding feet, staying in a low stance, and rotating to protect the lane or close out to shooters.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">DEF</span>
+                  <span class="val-row-text">
+                    <strong>On-Ball &amp; Help Defense</strong>
+                    <small>Sliding feet, staying in a low stance, and rotating to protect the lane or close out to shooters.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Basketball</span>
+                <span class="val-col-tag">DEFENSE</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="basketball" data-tier="PLAYMAKE" data-code="BB-05"
+                data-title="Pick-and-Roll Reads &amp; Passing"
+                data-desc="Using a screen effectively, reading whether to pull up, attack downhill, or hit the open man.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">PNR</span>
+                  <span class="val-row-text">
+                    <strong>Pick-and-Roll Reads &amp; Passing</strong>
+                    <small>Using a screen effectively, reading whether to pull up, attack downhill, or hit the open man.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Basketball</span>
+                <span class="val-col-tag">PLAYMAKE</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="basketball" data-tier="HUSTLE" data-code="BB-06"
+                data-title="Rebounding &amp; Boxing Out"
+                data-desc="Securing position early, tracking caroms, and grabbing defensive/offensive boards.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">REB</span>
+                  <span class="val-row-text">
+                    <strong>Rebounding &amp; Boxing Out</strong>
+                    <small>Securing position early, tracking caroms, and grabbing defensive/offensive boards.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Basketball</span>
+                <span class="val-col-tag">HUSTLE</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="gaming" data-tier="MOVEMENT" data-code="FPS-01"
+                data-title="Bunny Hop &amp; Strafing"
+                data-desc="Chaining movement inputs and counter-strafing/air-strafing to keep momentum, clean angles, and harder-to-hit timing.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">BHOP</span>
+                  <span class="val-row-text">
+                    <strong>Bunny Hop &amp; Strafing</strong>
+                    <small>Chaining movement inputs and counter-strafing/air-strafing to keep momentum, clean angles, and harder-to-hit timing.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Gaming</span>
+                <span class="val-col-tag">MOVEMENT</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="gaming" data-tier="MECHANICS" data-code="FPS-02"
+                data-title="Crosshair Placement &amp; Peeking"
+                data-desc="Holding head/angle lines before swinging and jiggle-peeking for info without giving up a free pick.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">PEEK</span>
+                  <span class="val-row-text">
+                    <strong>Crosshair Placement &amp; Peeking</strong>
+                    <small>Holding head/angle lines before swinging and jiggle-peeking for info without giving up a free pick.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Gaming</span>
+                <span class="val-col-tag">ANGLES</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="gaming" data-tier="AIM" data-code="FPS-03"
+                data-title="Aim Control &amp; Spray Discipline"
+                data-desc="Adjusting sensitivity/tracking smoothly and controlling burst vs. full-auto recoil.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">AIM</span>
+                  <span class="val-row-text">
+                    <strong>Aim Control &amp; Spray Discipline</strong>
+                    <small>Adjusting sensitivity/tracking smoothly and controlling burst vs. full-auto recoil.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Gaming</span>
+                <span class="val-col-tag">RECOIL</span>
+              </button>
+            </li>
+
+            <li class="val-row" data-category="gaming" data-tier="MACRO" data-code="FPS-04"
+                data-title="Map Awareness &amp; Rotation Timing"
+                data-desc="Reading sound cues, minimap info, and rotating early before a site or objective gets overrun.">
+              <button type="button" class="val-row-btn">
+                <span class="val-row-main">
+                  <span class="val-badge">IGL</span>
+                  <span class="val-row-text">
+                    <strong>Map Awareness &amp; Rotation Timing</strong>
+                    <small>Reading sound cues, minimap info, and rotating early before a site or objective gets overrun.</small>
+                  </span>
+                </span>
+                <span class="val-col-domain">Gaming</span>
+                <span class="val-col-tag">MACRO</span>
+              </button>
+            </li>
+          </ul>
+        </section>
+
+<aside class="val-rank-card val-photo-panel" aria-label="Skill showcase visual">
+  <img src="/alastair/images/skills.jpg" alt="Skills visual" class="val-panel-photo">
+</aside>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- ================= FUN FACTS - THE ALASTAIR SHOW ================= -->
+<!-- REPLACE your old empty #content-fun-facts div with this whole block -->
+
+
+<div id="content-fun-facts" class="modal content-page"
+     role="dialog" aria-labelledby="funfacts-title">
+  <div class="modal-content">
+    <article class="alastairflix">
+
+      <header class="af-topbar">
+        <button type="button" class="back-btn" data-close="true">← Back to Arcade</button>
+        <div class="af-brand" aria-label="AFlix">A<span>FLIX</span></div>
+      </header>
+
+      <!-- Hero Banner -->
+      <section class="af-hero" aria-live="polite">
+        <img id="af-feature-image"
+             src="/alastair/images/ff1.jpg"
+             alt="Best Chef in Town">
+        <div class="af-hero-vignette"></div>
+
+        <div class="af-hero-content">
+          <div class="af-series-tag">
+            <span class="af-n-badge">A</span>
+            <span>ORIGINAL SERIES · SEASON 1</span>
+          </div>
+
+          <h2 id="funfacts-title" class="af-show-title">THE ALASTAIR SHOW</h2>
+          <h3 id="af-feature-title">BEST CHEF IN TOWN</h3>
+
+          <div class="af-meta-row">
+            <span class="af-match">99% Match</span>
+            <span id="af-feature-episode">S1 · E1</span>
+            <span class="af-rating">PG-13</span>
+            <span id="af-feature-tag">Chef Arc</span>
+          </div>
+
+          <p id="af-feature-desc">
+            No recipe. Just vibes. Still better than your favorite resto.
+            If there is a food trip, I am the one cooking — everyone else just eats.
+          </p>
+
+          <div class="af-hero-actions">
+            <button type="button" id="af-watch-btn" class="af-btn-play">
+              ▶ View Full Photo
+            </button>
+            <button type="button" id="af-next-btn" class="af-btn-secondary">
+              Next Episode →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Episode Selector Row -->
+      <section class="af-episodes" aria-label="Season 1 Episodes">
+        <div class="af-section-head">
+          <div>
+            <h3>Episodes</h3>
+            <p>Select an episode to preview, or open full screen</p>
+          </div>
+          <span class="af-season-pill">SEASON 1 · 7 EPISODES</span>
+        </div>
+
+        <div class="af-episode-grid">
+          <button type="button" class="af-episode-card is-active" data-ep="0">
+            <div class="af-poster">
+              <img src="/alastair/images/ff1.jpg" alt="Best Chef in Town" loading="lazy">
+              <span class="af-ep-badge">E1</span>
+              <span class="af-play-icon" aria-hidden="true">▶</span>
+            </div>
+            <div class="af-card-body">
+              <strong>1. Best Chef in Town</strong>
+              <small>Chef arc · No recipe, just vibes</small>
+            </div>
+          </button>
+
+          <button type="button" class="af-episode-card" data-ep="1">
+            <div class="af-poster">
+              <img src="/alastair/images/ff2.jpg" alt="Bestfriends with Jed" loading="lazy">
+              <span class="af-ep-badge">E2</span>
+              <span class="af-play-icon" aria-hidden="true">▶</span>
+            </div>
+            <div class="af-card-body">
+              <strong>2. Bestfriends with Jed</strong>
+              <small>Day one · Package deal</small>
+            </div>
+          </button>
+
+          <button type="button" class="af-episode-card" data-ep="2">
+            <div class="af-poster">
+              <img src="/alastair/images/ff3.jpg" alt="Best Procrastinator" loading="lazy">
+              <span class="af-ep-badge">E3</span>
+              <span class="af-play-icon" aria-hidden="true">▶</span>
+            </div>
+            <div class="af-card-body">
+              <strong>3. Best Procrastinator</strong>
+              <small>11PM to 3AM · Still passes</small>
+            </div>
+          </button>
+
+          <button type="button" class="af-episode-card" data-ep="3">
+            <div class="af-poster">
+              <img src="/alastair/images/ff4.jpg" alt="Basketball Once a Week" loading="lazy">
+              <span class="af-ep-badge">E4</span>
+              <span class="af-play-icon" aria-hidden="true">▶</span>
+            </div>
+            <div class="af-card-body">
+              <strong>4. Basketball Once a Week</strong>
+              <small>Still buckets · Still trash talk</small>
+            </div>
+          </button>
+
+          <button type="button" class="af-episode-card" data-ep="4">
+            <div class="af-poster">
+              <img src="/alastair/images/ff5.jpg" alt="The Parlay Curse" loading="lazy">
+              <span class="af-ep-badge">E5</span>
+              <span class="af-play-icon" aria-hidden="true">▶</span>
+            </div>
+            <div class="af-card-body">
+              <strong>5. The Parlay Curse</strong>
+              <small>One leg away · Every single time</small>
+            </div>
+          </button>
+
+          <button type="button" class="af-episode-card" data-ep="5">
+            <div class="af-poster">
+              <img src="/alastair/images/ff6.jpg" alt="Fishball Stick Incident" loading="lazy">
+              <span class="af-ep-badge">E6</span>
+              <span class="af-play-icon" aria-hidden="true">▶</span>
+            </div>
+            <div class="af-card-body">
+              <strong>6. Fishball Stick Incident</strong>
+              <small>Would not share · Worth it</small>
+            </div>
+          </button>
+
+          <button type="button" class="af-episode-card" data-ep="6">
+            <div class="af-poster">
+              <img src="/alastair/images/ff7.jpg" alt="American Sitcoms" loading="lazy">
+              <span class="af-ep-badge">E7</span>
+              <span class="af-play-icon" aria-hidden="true">▶</span>
+            </div>
+            <div class="af-card-body">
+              <strong>7. American Sitcoms</strong>
+              <small>The Office · B99 · Friends</small>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Full-Size Photo Modal (uses the same single image) -->
+      <div class="af-image-modal" id="af-image-modal" hidden>
+        <div class="af-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="af-modal-title">
+          <button type="button" class="af-close" id="af-close" aria-label="Close preview">×</button>
+          <div class="af-modal-media">
+            <img id="af-modal-image" src="" alt="">
+          </div>
+          <div class="af-modal-info">
+            <span id="af-modal-episode">SEASON 1 · EPISODE 1</span>
+            <h3 id="af-modal-title">BEST CHEF IN TOWN</h3>
+            <p id="af-modal-desc"></p>
+          </div>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</div>
