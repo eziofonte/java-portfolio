@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:with="homeTitle='Dwayne Ezail Talavera — Design &amp; research',aboutTitle='About — Dwayne Ezail Talavera'">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${aboutPage ? aboutTitle : homeTitle}">Dwayne Ezail Talavera — Design &amp; research</title>
+    <meta name="description" th:content="${aboutPage}
+        ? 'Meet Dwayne, a BSIT student at Pamantasan ng Lungsod ng Maynila exploring design, code, cubing, books, and more.'
+        : 'Dwayne Ezail Talavera — student and UI/UX designer exploring thoughtful interfaces, design, and code.'">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-22" th:href="@{/dwayne/style.css(v='portfolio-22')}">
+    <link rel="stylesheet" href="/dwayne/about.css?v=19" th:href="@{/dwayne/about.css(v=19)}">
+    <script src="/dwayne/project-carousel.js" th:src="@{/dwayne/project-carousel.js}" defer></script>
+    <script src="/dwayne/about-interactions.js?v=9" th:src="@{/dwayne/about-interactions.js(v=9)}" defer></script>
+    <script src="/dwayne/portfolio-navigation.js" th:src="@{/dwayne/portfolio-navigation.js}" defer></script>
+    <script th:unless="${aboutPage}">
+        // Activate only with JavaScript; always uncover the page if initialization fails.
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.classList.add('is-entering');
+            window.entranceFallback = window.setTimeout(() => {
+                document.documentElement.classList.remove('is-entering');
+                document.querySelector('#portfolio')?.removeAttribute('inert');
+                document.querySelector('.entrance-loader')?.remove();
+            }, 6000);
+        }
+    </script>
+</head>
+<body th:class="${aboutPage ? 'about-page' : null}">
+    <th:block th:replace="~{dwayne/index :: home}"></th:block>
+    <th:block th:replace="~{dwayne/about :: about}"></th:block>
+</body>
+</html>

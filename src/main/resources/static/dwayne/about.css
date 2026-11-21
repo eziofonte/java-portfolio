@@ -133,10 +133,24 @@
 .music-artist { margin-top: 6px; color: var(--muted); font-size: 14px; }
 .music-status { margin-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.4; }
 .music-status:empty { display: none; }
-.music-progress { position: absolute; right: 22px; bottom: 72px; left: 22px; display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 8px; background: #252525; color: #fff; font-size: 10px; opacity: 0; transition: opacity .2s ease; }
+.music-progress { position: absolute; right: 22px; bottom: 72px; left: 22px; display: flex; align-items: center; gap: 8px; padding: 6px 8px; color: #fff; font-size: 10px; opacity: 0; transition: opacity .2s ease; }
 .music-top:hover ~ .music-progress, .music-progress:hover, .music-progress:focus-within { opacity: 1; }
-.music-progress input { flex: 1; min-width: 0; height: 3px; margin: 0; accent-color: currentColor; cursor: pointer; }
-.music-card:hover .music-progress, .music-card:focus-within .music-progress, .music-card.is-playing .music-progress { color: #fff; }
+.music-seek {
+    --seek-track: linear-gradient(to right, #fff var(--seek-fill, 0%), rgb(255 255 255 / .35) var(--seek-fill, 0%));
+    appearance: none;
+    flex: 1;
+    min-width: 0;
+    height: 16px;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.music-seek::-webkit-slider-runnable-track { height: 5px; border-radius: 999px; background: var(--seek-track); }
+.music-seek::-moz-range-track { height: 5px; border-radius: 999px; background: var(--seek-track); }
+.music-seek::-webkit-slider-thumb { appearance: none; width: 1px; height: 5px; opacity: 0; }
+.music-seek::-moz-range-thumb { width: 1px; height: 5px; opacity: 0; }
+.music-seek:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; border-radius: 4px; }
+.music-seek:disabled { cursor: default; }
 .music-controls { display: flex; align-items: center; justify-content: space-between; width: 100%; height: 44px; margin-top: auto; padding: 0 4px; border: 1px solid #555; border-radius: 100px; color: #aaa; }
 .music-card:hover .music-controls, .music-card:focus-within .music-controls, .music-card.is-playing .music-controls { background: #a8152e; border-color: transparent; }
 .music-controls button { display: grid; place-items: center; flex: 1; min-width: 0; height: 40px; padding: 0; border: 0; border-radius: 50%; background: transparent; font-size: 15px; }

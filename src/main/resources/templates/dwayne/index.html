@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dwayne Ezail Talavera — Design &amp; research</title>
-    <meta name="description" content="Dwayne Ezail Talavera — student and UI/UX designer exploring thoughtful interfaces, design, and code.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-22" th:href="@{/dwayne/style.css(v='portfolio-22')}">
-    <script src="/dwayne/project-carousel.js" th:src="@{/dwayne/project-carousel.js}" defer></script>
-    <script>
-        // Activate only with JavaScript; always uncover the page if initialization fails.
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            document.documentElement.classList.add('is-entering');
-            window.entranceFallback = window.setTimeout(() => {
-                document.documentElement.classList.remove('is-entering');
-                document.querySelector('main')?.removeAttribute('inert');
-                document.querySelector('.entrance-loader')?.remove();
-            }, 6000);
-        }
-    </script>
-</head>
-<body>
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="home" id="dwayne-home" data-path="/dwayne"
+     th:attr="data-path=@{/dwayne},data-title=${homeTitle},hidden=${aboutPage ? 'hidden' : null}">
     <a class="skip-link" href="#about">Skip to about</a>
     <div class="scroll-ruler" aria-hidden="true"><div class="scroll-ruler-fill"></div><span class="scroll-ruler-marker">0</span></div>
     <!-- Original vanilla implementation inspired by Skiper 8 / Dennis Snellenberg. -->
@@ -33,7 +11,7 @@
             </svg>
         </div>
     </div>
-    <main id="portfolio">
+    <main id="portfolio" tabindex="-1">
         <header class="site-header">
             <a class="identity" href="/dwayne/about" th:href="@{/dwayne/about}" aria-label="About Dwayne Ezail Talavera">
                 <span class="identity-name">Dwayne Ezail Talavera</span>
@@ -42,7 +20,7 @@
             <nav class="section-nav" aria-label="Portfolio navigation">
                 <a href="#work">Work</a>
                 <a href="#about">About</a>
-                <a href="#contact">Contact <span aria-hidden="true">↗</span></a>
+                <a href="#contact">Contact <span aria-hidden="true"></span></a>
             </nav>
         </header>
 
@@ -219,6 +197,7 @@
 
         (() => {
             const root = document.documentElement;
+            const home = document.getElementById('dwayne-home');
             const hero = document.querySelector('.hero');
             const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
             const skills = document.querySelector('.skills');
@@ -228,11 +207,11 @@
             const scrollMarker = document.querySelector('.scroll-ruler-marker');
             let activeSkill = null;
             let frame = 0;
-            let heroHeight = hero.offsetHeight;
 
             const updateScroll = () => {
                 frame = 0;
-                const progress = motion.matches ? 0 : Math.min(1, Math.max(0, window.scrollY / heroHeight));
+                if (home.hidden) return;
+                const progress = motion.matches ? 0 : Math.min(1, Math.max(0, window.scrollY / (hero.offsetHeight || 1)));
                 root.style.setProperty('--scroll-progress', progress.toFixed(4));
                 const scrollable = root.scrollHeight - window.innerHeight;
                 const pageProgress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
@@ -267,10 +246,8 @@
                 if (!frame) frame = window.requestAnimationFrame(updateScroll);
             };
             window.addEventListener('scroll', requestUpdate, { passive: true });
-            window.addEventListener('resize', () => {
-                heroHeight = hero.offsetHeight;
-                requestUpdate();
-            });
+            window.addEventListener('resize', requestUpdate);
+            home.addEventListener('portfolio:viewchange', requestUpdate);
             motion.addEventListener('change', requestUpdate);
             window.addEventListener('pageshow', requestUpdate);
             document.fonts?.ready.then(requestUpdate);
@@ -292,5 +269,4 @@
             }
         })();
     </script>
-</body>
-</html>
+</div>

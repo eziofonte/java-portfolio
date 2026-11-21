@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About — Dwayne Ezail Talavera</title>
-    <meta name="description" content="Meet Dwayne, a BSIT student at Pamantasan ng Lungsod ng Maynila exploring design, code, cubing, books, and more.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/dwayne/style.css?v=portfolio-18" th:href="@{/dwayne/style.css(v='portfolio-18')}">
-    <link rel="stylesheet" href="/dwayne/about.css?v=18" th:href="@{/dwayne/about.css(v=18)}">
-    <script src="/dwayne/about-interactions.js?v=7" th:src="@{/dwayne/about-interactions.js(v=7)}" defer></script>
-</head>
-<body class="about-page">
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="about" id="dwayne-about" data-path="/dwayne/about"
+     th:attr="data-path=@{/dwayne/about},data-title=${aboutTitle},hidden=${aboutPage ? null : 'hidden'}">
     <a class="skip-link" href="#about-story">Skip to my story</a>
     <header class="about-header">
         <a class="identity" href="/dwayne" th:href="@{/dwayne}" aria-label="Dwayne Ezail Talavera, portfolio home">
@@ -21,7 +9,7 @@
         <a class="about-back" href="/dwayne" th:href="@{/dwayne}"><span aria-hidden="true">↖</span> Back to portfolio</a>
     </header>
 
-    <main class="about-detail">
+    <main class="about-detail" tabindex="-1">
         <div class="about-intro">
             <h1 class="visually-hidden">WHATS UP SEAN DYOGI</h1>
         </div>
@@ -148,5 +136,4 @@
     <footer class="about-footer">
         <span>© 2026 Dwayne Ezail Talavera</span>
     </footer>
-</body>
-</html>
+</div>

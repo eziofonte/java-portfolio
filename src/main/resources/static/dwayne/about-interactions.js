@@ -30,6 +30,7 @@
         { title: 'Black', artist: 'Pearl Jam', album: 'Ten', artwork: '/dwayne/assets/music/pearljam.png', audio: '/dwayne/assets/music/Pearl%20Jam%20-%20Black.mp3', duration: '5:45' },
     ];
 
+    const about = document.getElementById('dwayne-about');
     const gallery = document.querySelector('.about-photo-card');
     const galleryNext = document.querySelector('.gallery-next');
     const categoryBar = document.querySelector('.gallery-categories');
@@ -71,7 +72,7 @@
     const resetTimer = () => {
         if (timer !== null) window.clearInterval(timer);
         timer = null;
-        if (!document.hidden && !galleryFocused && !reducedMotion.matches && visiblePhotos().length > 1) {
+        if (!about.hidden && !document.hidden && !galleryFocused && !reducedMotion.matches && visiblePhotos().length > 1) {
             timer = window.setInterval(() => showPhoto(photoIndex + 1), 7000);
         }
     };
@@ -100,6 +101,10 @@
     });
     document.addEventListener('visibilitychange', resetTimer);
     reducedMotion.addEventListener('change', resetTimer);
+    about.addEventListener('portfolio:viewchange', () => {
+        if (about.hidden) galleryFocused = false;
+        resetTimer();
+    });
     resetTimer();
 
     const music = document.querySelector('.music-card');
@@ -121,6 +126,7 @@
     let trackIndex = 0;
     let audioFailed = false;
 
+    const updateSeekFill = () => seek.style.setProperty('--seek-fill', `${seek.value / seek.max * 100}%`);
     const updateMusic = () => {
         const track = tracks[trackIndex];
         const available = Boolean(track.audio) && !audioFailed;
@@ -155,6 +161,7 @@
         updateMusic();
         elapsed.textContent = '0:00';
         seek.value = 0;
+        updateSeekFill();
         if (shouldPlay && track.audio) startPlayback();
     };
     playlist.replaceChildren(...tracks.map((track, index) => {
@@ -190,10 +197,16 @@
     audio.addEventListener('timeupdate', () => {
         const seconds = Math.floor(audio.currentTime);
         elapsed.textContent = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
-        seek.value = Number.isFinite(audio.duration) ? Math.round(audio.currentTime / audio.duration * 1000) : 0;
+        seek.value = Number.isFinite(audio.duration) ? Math.round(audio.currentTime / audio.duration * seek.max) : 0;
+        updateSeekFill();
     });
-    seek.addEventListener('input', () => { if (Number.isFinite(audio.duration)) audio.currentTime = seek.value / 1000 * audio.duration; });
+    seek.addEventListener('input', () => {
+        if (!Number.isFinite(audio.duration)) return;
+        audio.currentTime = seek.value / seek.max * audio.duration;
+        updateSeekFill();
+    });
     audio.addEventListener('ended', () => { if (trackIndex < tracks.length - 1) selectTrack(trackIndex + 1, true); else { music.classList.remove('is-playing'); updateMusic(); } });
     audio.addEventListener('error', () => { audioFailed = true; music.classList.remove('is-playing'); updateMusic(); });
+    window.addEventListener('pagehide', () => audio.pause());
     selectTrack(0);
 })();

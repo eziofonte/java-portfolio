@@ -54,6 +54,31 @@ h1 { padding-top: 62px; font-size: 88px; line-height: 1; font-weight: 500; lette
 .goat { display: inline-block; object-fit: contain; vertical-align: -8px; margin-left: 3px; }
 .hero-prompt { position: absolute; right: 109px; bottom: 100px; font-size: 11px; letter-spacing: .55px; text-transform: uppercase; }
 
+.hero-reveal {
+    position: absolute;
+    top: -80px;
+    right: 0;
+    bottom: 12px;
+    width: 32%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.hero-reveal:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+
+.hero-reveal img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-reveal[aria-pressed="true"] img { opacity: 1; }
+
 .section-labels { display: flex; justify-content: space-between; gap: 12px; min-height: 29px; font-size: 11px; line-height: 15px; letter-spacing: .65px; text-transform: uppercase; }
 .members { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .member { position: relative; display: flex; flex-direction: column; min-height: 408px; padding: 24px; border-radius: 4px; }
@@ -85,6 +110,7 @@ footer { min-height: 94px; padding-top: 25px; border-top: 1px solid var(--line);
 }
 
 @media (max-width: 850px) {
+    .hero-reveal { top: 150px; width: 100%; }
     .members { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .member { min-height: 350px; }
     h2 { margin-top: 65px; font-size: 52px; }
@@ -102,6 +128,7 @@ footer { min-height: 94px; padding-top: 25px; border-top: 1px solid var(--line);
     h1 { padding-top: 72px; font-size: clamp(32px, 8.5vw, 46px); letter-spacing: -1.8px; }
     .goat { width: 42px; height: 42px; vertical-align: -5px; }
     .hero-prompt { right: 16px; bottom: 30px; font-size: 9px; }
+    .hero-reveal { top: 126px; }
     .section-labels { font-size: 8px; letter-spacing: .3px; padding-top: 3px; }
     .members { grid-template-columns: 1fr; }
     .member { min-height: 340px; padding: 24px; }
@@ -111,4 +138,5 @@ footer { min-height: 94px; padding-top: 25px; border-top: 1px solid var(--line);
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+    .hero-reveal img { transition: none; }
 }
