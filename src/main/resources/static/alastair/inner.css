@@ -504,6 +504,71 @@
     color: #241939;
     }
 
+    /* Playlist progress bar */
+    .playlist-progress-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: .6rem;
+    margin-top: .75rem;
+    color: #ded2f3;
+    font: 600 .72rem ui-monospace, monospace;
+    }
+
+    #playlist-progress {
+    --progress: 0%;
+    width: 100%;
+    height: 18px;
+    margin: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    }
+
+    #playlist-progress::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(to right, #e2d2ff var(--progress), #ffffff2e var(--progress));
+    }
+
+    #playlist-progress::-moz-range-track {
+    height: 6px;
+    border-radius: 999px;
+    background: #ffffff2e;
+    }
+
+    #playlist-progress::-moz-range-progress {
+    height: 6px;
+    border-radius: 999px;
+    background: #e2d2ff;
+    }
+
+    #playlist-progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: -4px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 3px #e2d2ff55;
+    }
+
+    #playlist-progress::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 3px #e2d2ff55;
+    }
+
+    #playlist-progress:focus-visible {
+    outline: 2px solid #e2d2ff;
+    outline-offset: 3px;
+    }
+
     #content-favorites #favorite-track-status {
     min-height: 0;
     color: #f5c7cd;

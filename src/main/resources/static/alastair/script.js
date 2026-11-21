@@ -146,6 +146,13 @@ victoryButton.addEventListener('click', closeVictory);
     toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
   }
 
+  // Plays /alastair/sounds/<file>. Fails silently if the file is missing or the browser blocks it.
+  function playSound(file, volume = 0.8) {
+    const sound = new Audio(`/alastair/sounds/${file}`);
+    sound.volume = volume;
+    sound.play().catch(() => {});
+  }
+
   function endGame(gameId, outcome) {
     closeModal();
 
@@ -159,12 +166,15 @@ victoryButton.addEventListener('click', closeVictory);
 
     text.className = '';
 
-    if (outcome === 'win') {
-      if (gameId === 'game4') {
-        text.innerHTML = '<span class="coke-font">TOTA TOLA!</span>';
-      } else {
-        text.textContent = 'VICTORY!';
-      }
+  if (outcome === 'win') {
+  if (gameId === 'game4') {
+    text.innerHTML = '<span class="coke-font">TOTA TOLA!</span>';
+    window.SFX?.file('/alastair/music/tota-tola.mp3','tota', 1);
+  } else {
+    text.textContent = 'VICTORY!';
+    window.SFX?.file('/alastair/music/victory.mp3', 'win', 0.8);
+  }
+
       victoryButton.textContent = 'Collect Reward';
     } else {
       text.textContent = outcome === 'tie' ? 'STALEMATE!' : lossMessages[gameId];
@@ -792,4 +802,4 @@ function setupGodmode(unlockAll, resetAllLocks) {
       otp.focus();
     };
   }
-}
+} 
