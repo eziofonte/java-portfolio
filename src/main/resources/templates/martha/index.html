@@ -120,7 +120,7 @@
         </h1>
 
         <p>
-          Hover to flip a card, then click to explore.
+          Hover to flip a card, then click to know me.
         </p>
 
       </div>
@@ -1141,6 +1141,45 @@
       "hashchange",
       showPage
     );
+
+    const stickers = Array.from(document.querySelectorAll(".collage .sticker"));
+    const stickerMotion = window.matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)");
+    let hoveredSticker;
+    let companionSticker;
+
+    stickers.forEach((sticker) => {
+      sticker.addEventListener("pointerenter", (event) => {
+        if (!stickerMotion.matches || event.pointerType === "touch") {
+          return;
+        }
+
+        hoveredSticker = sticker;
+        const otherStickers = stickers.filter((otherSticker) => otherSticker !== sticker);
+        companionSticker = otherStickers[Math.floor(Math.random() * otherStickers.length)];
+
+        sticker.classList.add("is-pulsing");
+        companionSticker?.classList.add("is-pulsing");
+      });
+
+      sticker.addEventListener("pointerleave", (event) => {
+        if (event.pointerType !== "touch" && sticker === hoveredSticker) {
+          hoveredSticker = undefined;
+          companionSticker = undefined;
+        }
+      });
+
+      sticker.addEventListener("animationiteration", (event) => {
+        if (event.animationName === "sticker-pulse" && sticker !== hoveredSticker && sticker !== companionSticker) {
+          sticker.classList.remove("is-pulsing");
+        }
+      });
+
+      sticker.addEventListener("animationcancel", (event) => {
+        if (event.animationName === "sticker-pulse") {
+          sticker.classList.remove("is-pulsing");
+        }
+      });
+    });
 
     // Mobile: first tap flips, second tap opens.
     const cards = document.querySelectorAll(
