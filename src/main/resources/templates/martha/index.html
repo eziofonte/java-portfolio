@@ -334,19 +334,14 @@
 
       </div>
 
-      <section class="about screen">
+      <section class="about screen" aria-labelledby="about-title">
 
         <div class="about-left">
 
-          <p class="intro">
-
-            Hi my name is,
-
-            <strong>
-              Martha Issabelle Zamora.
-            </strong>
-
-          </p>
+          <h1 class="intro" id="about-title">
+            <span>Hi my name is,</span>
+            Martha Issabelle Zamora.
+          </h1>
 
           <h2 class="roles-title">
             &gt;CURRENT ROLES&gt;&gt;
@@ -356,10 +351,8 @@
 
             <article>
 
-              <div class="role-symbol blue">
-                ♧<br>
-                STUDENT LEADER
-              </div>
+              <img class="role-stamp" src="/martha/assets/stamp%201.png"
+                   width="772" height="477" alt="">
 
               <strong>
                 student leader
@@ -371,10 +364,8 @@
 
             <article>
 
-              <div class="role-symbol red">
-                ♡<br>
-                CARETAKER
-              </div>
+              <img class="role-stamp" src="/martha/assets/stamp%202.png"
+                   width="682" height="537" alt="Caretaker">
 
               <strong>
                 certified<br>
@@ -387,10 +378,8 @@
 
             <article>
 
-              <div class="role-symbol olive">
-                ▤<br>
-                STUDENT ASSISTANT
-              </div>
+              <img class="role-stamp" src="/martha/assets/stamp%203.png"
+                   width="726" height="642" alt="Student assistant">
 
               <strong>
                 PLM budget office
@@ -407,48 +396,37 @@
 
         <!-- PASSPORT -->
 
-        <aside class="passport">
-
-          <div class="passport-tape"></div>
-
-          <div class="passport-stamps">
-            ✈ MANILA &nbsp; ✈ PHILIPPINES
+        <aside class="passport" aria-label="Passport profile">
+          <div class="passport-stamps" aria-hidden="true">
+            <span class="passport-arrival">Arrival<br>Manila</span>
+            <span class="passport-entry">Philippines<br>Entry</span>
+            <span class="passport-departure">Departure<br>Manila ? PHI</span>
           </div>
 
-          <div class="passport-body">
+          <div class="passport-page">
+            <div class="passport-body">
+              <div class="passport-portrait" aria-hidden="true">
+                <span>Martha</span>
+                <img src="/martha/assets/passport-portrait.png" width="400" height="438" alt="">
+              </div>
 
-            <div class="sketch">
-              Martha<br>♡
+              <dl class="passport-data">
+                <dt>Name</dt>
+                <dd>Martha Issabelle Zamora</dd>
+                <dt>Based in</dt>
+                <dd>Metro Manila ? PHI</dd>
+                <dt>Educational background</dt>
+                <dd>STEM graduate</dd>
+                <dd>BS Information Technology</dd>
+                <dd class="passport-school">Pamantasan ng Lungsod ng Maynila</dd>
+              </dl>
             </div>
 
-            <div class="passport-data">
-
-              <span>NAME</span>
-
-              <b>
-                MARTHA ISSABELLE ZAMORA
-              </b>
-
-              <span>BASED IN</span>
-
-              <b>
-                METRO MANILA · PHI
-              </b>
-
-              <span>
-                EDUCATIONAL BACKGROUND
-              </span>
-
-              <b>STEM GRADUATE</b>
-
-              <b>
-                BS INFORMATION TECHNOLOGY
-              </b>
-
+            <div class="passport-footer" aria-hidden="true">
+              <div>P&lt;ZAMORA&lt;&lt;MARTHA&lt;ISSABELLE<br>PHI&lt;&lt;METRO&lt;MANILA&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+              <img src="/martha/assets/manila%20stamp.png" width="512" height="420" alt="">
             </div>
-
           </div>
-
         </aside>
 
 
@@ -483,87 +461,39 @@
 
       <!-- MY ESSENTIALS -->
 
-      <section class="essentials screen">
-
-        <h2>My Essentials.</h2>
-
+      <section class="essentials screen" aria-labelledby="essentials-title">
         <div class="tray">
+          <h2 id="essentials-title">My Essentials.</h2>
 
-          <div class="ticket">
-            BOARDING PASS<br>
-            ECONOMY ✈ MANILA
+          <div class="tray-objects">
+            <img class="tray-book" src="/martha/assets/object5.png" width="319" height="475"
+                 alt="Harry Potter and the Prisoner of Azkaban" loading="lazy">
+            <img class="tray-ticket" src="/martha/assets/object1.png" width="310" height="187"
+                 alt="Philippine Airlines boarding pass" loading="lazy">
+            <img class="tray-passport" src="/martha/assets/object2.png" width="199" height="331"
+                 alt="Philippine passport" loading="lazy">
+            <img class="tray-coffee" src="/martha/assets/object3.png" width="183" height="274"
+                 alt="Iced coffee" loading="lazy">
+            <a class="tray-headphones" href="https://open.spotify.com/playlist/3UX7SgQWNVmrgLG0dli3N5?si=c7ae28514bcc45be"
+               target="_blank" rel="noopener noreferrer" aria-label="Open Martha's Spotify playlist">
+              <img src="/martha/assets/object4.png" width="256" height="321" alt="" loading="lazy">
+            </a>
           </div>
-
-          <div class="headphones">
-            ◉<span>◉</span>
-          </div>
-
-          <div class="book">
-
-            <small>
-              HARRY<br>POTTER
-            </small>
-
-            <span>
-              and the Prisoner<br>
-              of Azkaban
-            </span>
-
-            <strong>✦</strong>
-
-          </div>
-
-          <div class="passport-book">
-
-            PILIPINAS<br>
-
-            <span>☀</span>
-
-            <br>PASAPORTE
-
-          </div>
-
-          <div class="iced">
-
-            ☕
-
-            <small>iced coffee</small>
-
-          </div>
-
         </div>
-
       </section>
 
 
       <!-- PLAYLIST -->
 
-      <section class="playlist screen">
-
-        <div class="frog"
-             aria-label="Frog wearing headphones">
-
-          🐸<span>🎧</span>
-
+      <section class="playlist screen" aria-label="If I were a playlist">
+        <div class="playlist-art">
+          <a class="playlist-cassette" href="https://open.spotify.com/playlist/3UX7SgQWNVmrgLG0dli3N5?si=c7ae28514bcc45be"
+             target="_blank" rel="noopener noreferrer" aria-label="Open Martha's Spotify playlist">
+            <img src="/martha/assets/playlist-cassette.png" width="1536" height="1024" alt="" loading="lazy">
+          </a>
+          <img class="playlist-frog" src="/martha/assets/playlist-frog.png" width="1305" height="1205"
+               alt="Lime-green plush frog wearing black headphones" loading="lazy">
         </div>
-
-        <div class="cassette">
-
-          <div class="cassette-title">
-            A &nbsp; if i were a playlist...
-          </div>
-
-          <div class="cassette-reels">
-            <span>◉</span>
-            <span>◉</span>
-          </div>
-
-          <div class="cassette-bottom">
-            TDK &nbsp; HIGH BIAS &nbsp; 90
-          </div>
-
-        </div>
-
       </section>
 
     </div>

@@ -408,158 +408,320 @@ button, a {
 
 .about.screen {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
   align-items: start;
-  gap: 45px;
+  column-gap: clamp(28px, 4vw, 70px);
+  row-gap: clamp(34px, 5vw, 76px);
+  min-height: auto;
+  overflow: hidden;
   background: white;
+  color: #141414;
 }
 
 .about-left .intro {
-  margin: 0 0 35px;
-  font-size: clamp(21px, 2.2vw, 32px);
-  line-height: 1.5;
+  margin: 0;
+  font-size: clamp(27px, 2.65vw, 46px);
+  font-weight: 800;
+  line-height: 1.15;
 }
 
-.intro strong {
+.intro span {
   display: block;
-  color: #202020;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(29px, 3vw, 45px);
+  margin-bottom: 8px;
+  font-weight: 400;
 }
 
 .roles-title {
-  margin: 20px 0;
-  font-size: clamp(18px, 2vw, 28px);
-  font-weight: 800;
+  margin: clamp(30px, 3vw, 50px) 0 12px;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(19px, 2.05vw, 29px);
+  letter-spacing: -0.06em;
+  text-align: center;
 }
 
 .roles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 2vw, 24px);
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.roles article {
-  flex: 1 1 120px;
-  text-align: center;
+.roles article:nth-child(-n+2) {
+  padding-top: clamp(12px, 2vw, 28px);
+}
+
+.role-stamp {
+  display: block;
+  width: 100%;
+  max-width: 205px;
+  height: auto;
+  margin: 0 auto;
 }
 
 .roles article strong {
   display: block;
-  margin: 10px 0 5px;
-  font-size: 12px;
+  margin: 10px 0 3px;
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
 .roles article span {
   display: block;
-  font-size: 11px;
-  line-height: 1.5;
-}
-
-.role-symbol {
-  height: 130px;
-  padding: 15px;
-  display: grid;
-  place-items: center;
-  border: 3px double currentColor;
-  background: #fffdf8;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.blue {
-  color: #3a6e8e;
-}
-
-.red {
-  color: #a94b50;
-}
-
-.olive {
-  color: #6a7d4e;
+  font-size: 0.9375rem;
 }
 
 /* PASSPORT */
 
 .passport {
-  position: relative;
-  min-height: 380px;
-  padding: 28px;
-  background: linear-gradient(135deg, #f6efdc, #e4dac1);
-  border: 6px double #b4a488;
-  box-shadow: 0 20px 35px #0002;
-  transform: rotate(6deg);
-}
-
-.passport-tape {
-  position: absolute;
-  top: -17px;
-  left: 38%;
-  width: 110px;
-  height: 35px;
-  background: #d9bfa399;
-  transform: rotate(-6deg);
+  --passport-pattern:
+    repeating-linear-gradient(60deg, transparent 0 8px, #b28b5314 9px, transparent 10px 16px),
+    repeating-linear-gradient(120deg, transparent 0 8px, #b28b5314 9px, transparent 10px 16px);
+  width: calc(100% + 35px);
+  max-width: 760px;
+  margin-top: -44px;
+  border-radius: 14px 14px 22px 22px;
+  background: #f2e6d4;
+  box-shadow: 10px 17px 20px #332a2150;
+  color: #29251e;
+  font-family: 'Courier New', monospace;
+  transform: translateX(12px) rotate(13deg);
 }
 
 .passport-stamps {
-  padding-bottom: 15px;
-  border-bottom: 1px dashed #aa9d85;
-  color: #647b70;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 2px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 16px clamp(14px, 3vw, 48px);
+  border-bottom: 2px dashed #d3bfa6;
+  border-radius: 14px 14px 0 0;
+  background: var(--passport-pattern), #ebddc8;
   text-align: center;
+}
+
+.passport-stamps span {
+  display: grid;
+  place-content: center;
+  padding: 6px clamp(4px, 1vw, 12px);
+  border: 3px double currentColor;
+  font-size: clamp(9px, 1.1vw, 15px);
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.passport-stamps .passport-arrival {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: #3d6092;
+  transform: rotate(-18deg);
+}
+
+.passport-stamps .passport-entry {
+  color: #9c5957;
+  transform: rotate(6deg);
+}
+
+.passport-stamps .passport-departure {
+  border-radius: 8px;
+  color: #5f7253;
+  transform: rotate(-7deg);
+}
+
+.passport-page {
+  padding: clamp(18px, 2.25vw, 36px);
+  border-radius: 0 0 22px 22px;
+  background: var(--passport-pattern), linear-gradient(145deg, #f8f1e5, #ebddc7);
+  box-shadow: inset 0 4px 8px #6f56331a;
 }
 
 .passport-body {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 30px;
+  grid-template-columns: minmax(0, 0.74fr) minmax(0, 1.26fr);
+  align-items: center;
+  gap: clamp(10px, 1.45vw, 24px);
 }
 
-.sketch {
-  min-height: 180px;
+.passport-portrait {
   display: grid;
-  place-items: center;
-  border: 2px solid #b7ac8d;
-  background: #f8f6e9;
-  color: #425a4b;
+  justify-items: center;
+  align-self: start;
+  padding: 8px 6px 0;
+  background: white;
+  color: #171714;
+}
+
+.passport-portrait span {
   font-family: 'Caveat', cursive;
-  font-size: 45px;
+  font-size: clamp(23px, 3.4vw, 54px);
+  font-weight: 700;
+  line-height: 1;
+  transform: rotate(4deg);
+}
+
+.passport-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .passport-data {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 12px;
-  line-height: 1.5;
+  margin: 0;
+  font-size: clamp(0.6875rem, 1.04vw, 0.9375rem);
+  line-height: 1.25;
+  text-transform: uppercase;
 }
 
-.passport-data span {
-  color: #7a745f;
-  font-weight: 800;
+.passport-data dt {
+  margin: 0 0 4px;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+}
+
+.passport-data dt:not(:first-child) {
+  margin-top: 10px;
+}
+
+.passport-data dd {
+  margin: 0 0 4px;
+  padding: 4px 6px;
+  background: #fffdf9;
+  overflow-wrap: anywhere;
+}
+
+.passport-data .passport-school {
+  margin-left: 10%;
+  font-size: 0.85em;
+}
+
+.passport-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 12px;
+  color: #4d4234;
+  font-size: clamp(0.5625rem, 1vw, 0.8125rem);
+  line-height: 1.45;
+}
+
+.passport-footer img {
+  width: 22%;
+  max-width: 104px;
+  height: auto;
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+  transform: rotate(-7deg);
 }
 
 .bio {
   grid-column: 1 / -1;
-  max-width: 1100px;
-  margin: 20px auto;
-  font-size: 16px;
-  line-height: 1.9;
-  text-align: justify;
+  width: min(100%, 1140px);
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.45;
+  text-align: center;
 }
 
 /* MY ESSENTIALS */
 
-.essentials {
-  background: #f6f4ec;
+.essentials.screen {
+  min-height: auto;
+  background: #fbf6e7;
+}
+
+.tray {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(16px, 3.5vw, 50px);
+  border: clamp(9px, 1.5vw, 20px) solid #a3a5a5;
+  border-top-color: #c5c7c6;
+  border-bottom-color: #777b7a;
+  border-radius: clamp(18px, 3vw, 36px);
+  background: linear-gradient(155deg, #424747 0%, #555a5a 28%, #777c7b 72%, #878c8b 100%);
+  box-shadow: inset 0 10px 18px #0005, inset 0 -4px 10px #fff3, 0 12px 22px #27282340;
+  color: #fff;
   text-align: center;
 }
 
-.essentials h2,
+.tray h2 {
+  margin: 0 0 clamp(16px, 2.5vw, 34px);
+  font-size: clamp(1.6rem, 5vw, 4.25rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.tray-objects {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-areas:
+    "book ticket ticket headphones"
+    "book passport coffee headphones";
+  align-items: center;
+  justify-items: center;
+  gap: clamp(8px, 2vw, 24px);
+}
+
+.tray-objects img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(3px 6px 5px #171b1a80);
+}
+
+.tray-book {
+  grid-area: book;
+  max-width: 154px;
+  transform: rotate(-5deg);
+}
+
+.tray-ticket {
+  grid-area: ticket;
+  max-width: 225px;
+  transform: rotate(-4deg);
+}
+
+.tray-passport {
+  grid-area: passport;
+  max-width: 96px;
+  transform: rotate(6deg);
+}
+
+.tray-coffee {
+  grid-area: coffee;
+  max-width: 103px;
+  transform: rotate(-4deg);
+}
+
+.tray-headphones {
+  grid-area: headphones;
+  width: 100%;
+  max-width: 165px;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.tray-headphones img {
+  transform: rotate(7deg);
+}
+
+.tray-headphones:focus-visible,
+.playlist-cassette:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .tray-objects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "book passport headphones"
+      "ticket ticket coffee";
+    row-gap: 16px;
+  }
+}
+
 .facts h2,
 .contact h2 {
   margin: 0 0 35px;
@@ -568,129 +730,57 @@ button, a {
   font-size: clamp(38px, 5vw, 75px);
 }
 
-.tray {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  gap: 20px;
-  max-width: 1100px;
-  min-height: 470px;
-  margin: auto;
-  padding: 30px;
-  border: 18px solid #b68d66;
-  border-radius: 35px;
-  background: #d9b991;
-  box-shadow: inset 0 0 0 10px #bd9a75, 0 18px 35px #0002;
-}
-
-.tray > div {
-  box-shadow: 4px 8px 14px #0002;
-}
-
-.ticket {
-  padding: 30px;
-  background: #f2e6c5;
-  font-weight: 700;
-  transform: rotate(-8deg);
-}
-
-.headphones {
-  color: #222;
-  font-size: 85px;
-}
-
-.book {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 180px;
-  min-height: 270px;
-  padding: 24px;
-  background: #254c46;
-  color: #e4d7ac;
-  font-family: Georgia, serif;
-}
-
-.book strong {
-  font-size: 70px;
-}
-
-.passport-book {
-  min-height: 240px;
-  padding: 30px 20px;
-  background: #355c4d;
-  color: #d6c98b;
-  font-family: Georgia, serif;
-}
-
-.passport-book span {
-  font-size: 75px;
-}
-
-.iced {
-  font-size: 90px;
-}
-
-.iced small {
-  display: block;
-  font-family: 'Caveat', cursive;
-  font-size: 20px;
-}
-
 /* PLAYLIST */
 
-.playlist {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  background: #214c39;
+.playlist.screen {
+  display: grid;
+  place-items: center;
+  min-height: clamp(380px, 55vw, 800px);
+  background: #19734b;
 }
 
-.frog {
-  font-size: 140px;
+.playlist-art {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2.8fr);
+  grid-template-areas: "frog cassette";
+  align-items: start;
+  gap: clamp(8px, 2.5vw, 36px);
+  width: min(100%, 1060px);
 }
 
-.frog span {
-  font-size: 70px;
+.playlist-art img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.cassette {
-  width: min(690px, 90vw);
-  height: 390px;
-  padding: 25px;
-  border: 18px solid #303030;
-  border-radius: 28px;
-  background: #eee5cc;
-  box-shadow: 0 12px 30px #0003;
+.playlist-cassette {
+  grid-area: cassette;
+  width: 100%;
 }
 
-.cassette-title {
-  padding: 15px;
-  background: #e7a6a5;
-  font-family: 'Caveat', cursive;
-  font-size: 32px;
-  font-weight: 700;
+.playlist-frog {
+  grid-area: frog;
+  margin-top: clamp(44px, 10.5vw, 150px);
 }
 
-.cassette-reels {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 200px;
-}
+@media (max-width: 600px) {
+  .playlist.screen {
+    min-height: auto;
+  }
 
-.cassette-reels span {
-  color: #424242;
-  font-size: 115px;
-}
+  .playlist-art {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "cassette"
+      "frog";
+    justify-items: center;
+  }
 
-.cassette-bottom {
-  padding: 12px;
-  background: #303030;
-  color: white;
+  .playlist-art .playlist-frog {
+    width: 68%;
+    margin-top: 0;
+  }
 }
 
 /* COFFEE PAGE */
@@ -1086,14 +1176,11 @@ footer a {
     grid-template-columns: 1fr;
   }
 
-  .bio {
-    grid-column: auto;
-  }
-
   .passport {
     width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
+    max-width: 520px;
+    margin: 0 auto;
+    transform: rotate(3deg);
   }
 
   .coffee-gallery {
@@ -1244,34 +1331,24 @@ footer a {
   }
 
   .roles {
-    gap: 12px;
+    gap: 8px;
+  }
+
+  .roles article strong,
+  .roles article span {
+    font-size: 0.875rem;
   }
 
   .passport {
-    padding: 18px;
-    transform: rotate(2deg);
+    transform: none;
   }
 
-  .passport-body {
-    grid-template-columns: 1fr;
+  .passport-page {
+    padding: 14px;
   }
 
-  .tray {
-    border-width: 10px;
-  }
-
-  .cassette {
-    height: 280px;
-    padding: 10px;
-    border-width: 10px;
-  }
-
-  .cassette-reels {
-    height: 140px;
-  }
-
-  .cassette-reels span {
-    font-size: 70px;
+  .passport-data dt:not(:first-child) {
+    margin-top: 6px;
   }
 
   .coffee-gallery {
